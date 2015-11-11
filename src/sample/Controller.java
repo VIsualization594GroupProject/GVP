@@ -17,7 +17,7 @@ public class Controller {
     public void addToLunch(ActionEvent actionEvent) {
     }
 
-    public void addToBreakfast(ActionEvent actionEvent) {
+    public void addToBreakfast(ActionEvent actionEvent) {//Official change by Anthony
     }
 
     public void printLabels(ActionEvent actionEvent) {//Now Sofy added this change
