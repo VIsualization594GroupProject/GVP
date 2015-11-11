@@ -20,7 +20,7 @@ public class Controller {
     public void addToBreakfast(ActionEvent actionEvent) {
     }
 
-    public void printLabels(ActionEvent actionEvent) {
+    public void printLabels(ActionEvent actionEvent) {//Now Sofy added this change
     }
 
     public void removeAllItems(ActionEvent actionEvent) {//This is another change
