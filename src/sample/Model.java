@@ -17,10 +17,11 @@ public class Model extends Observable{
             headers = new ArrayList<String>(),
             categories = new ArrayList<String>();
 
-    ArrayList<ArrayList<String>> stringTable= new ArrayList<ArrayList<String>>();
-    ArrayList<ArrayList<Double>> table = new ArrayList<ArrayList<Double>>();
-    Hashtable<String, Integer> labelToIndex = new Hashtable<String, Integer>(),
-            nameToRowIndex = new Hashtable<String, Integer>();
+    ArrayList<Integer> nutrientsToTrack = new ArrayList<Integer>(5);//Correspond to the columns we'll be using to index into table
+    ArrayList<ArrayList<String>> stringTable= new ArrayList<ArrayList<String>>();//holds the strings for categories and foods
+    ArrayList<ArrayList<Double>> table = new ArrayList<ArrayList<Double>>();//Holds all the numerical nutritional data
+    Hashtable<String, Integer> labelToIndex = new Hashtable<String, Integer>(),//quickly looks up the column from the string label
+            nameToRowIndex = new Hashtable<String, Integer>();//quickly looks up the row from the string name of the item
     private ArrayList<Observer> observerList = new ArrayList<Observer>();
 
     Model(String file){
@@ -31,6 +32,9 @@ public class Model extends Observable{
           System.err.println("IO failed, "+ e.getMessage());
           //System.exit(-1);
       }
+        for (int i = 0; i < 5; i++) {
+            nutrientsToTrack.add(i);
+        }
 
     }
 
@@ -44,7 +48,11 @@ public class Model extends Observable{
         Scanner line, in;
         in = new Scanner(new File(file));
         String firstLine = in.nextLine();
-        for (String x : firstLine.split(", ")) headers.add(x);
+        int stringColumns = 3;//Used as a constant, to selectively ignore the first (three) columns of the csv file
+        String[] headerLabels = firstLine.split(", ");
+        for (int i = stringColumns; i < headerLabels.length; i++) {
+            headers.add(headerLabels[i]);
+        }
         labelToIndex = new Hashtable<String, Integer>(headers.size());
         for (int i = 0; i < headers.size(); ++i)
             labelToIndex.put(labels.get(i), i);
@@ -55,14 +63,15 @@ public class Model extends Observable{
             line.useDelimiter(", ");
             //Except for the first line, csv should have a couple of strings which go in stringTable, then the rest
             //go in table; if I missed other string descriptors, change i's bound for that case.
-            ArrayList<String> tempString = new ArrayList<String>(2);//Size doesn't really matter here, slightly
-            //faster if it matches i's bound above, but ArrayList will resize automatically
-            for (int i = 0; i < 2; ++i) {
+            ArrayList<String> tempString = new ArrayList<String>(stringColumns);
+            for (int i = 0; i < stringColumns; ++i) {
 
                 if(line.hasNext())
                     tempString.add(line.next());
 
             }//Now that strings are done, grab numbers:
+
+
             stringTable.add(tempString);
             while (line.hasNext()){
                 if (line.hasNextDouble()) {
@@ -88,5 +97,9 @@ public class Model extends Observable{
         super.notifyObservers();
         for (Observer x : observerList)
             x.update(this, "dirt");
+    }
+
+    public List<String> getNutrients() {
+        return labels;
     }
 }
