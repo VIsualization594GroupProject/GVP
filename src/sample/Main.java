@@ -6,55 +6,34 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+//Sets everything up, don't make any changes unless absolutely necessary.
 public class Main extends Application {
 
+    static Model model;
+    static Controller controller;
+    static Parent root;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Not a title");
-        primaryStage.setScene(new Scene(root));//This change made on github in  Vis... /GVP
-        primaryStage.show();//This is more complicated than it needs to be.ggg
+        URL location = getClass().getResource("sample.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(location);
+        controller = new Controller();
+        fxmlLoader.setController(controller);
+        root = fxmlLoader.load(getClass().getResource("sample.fxml"));
 
+        primaryStage.setTitle("Not a title");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+        controller.setModel(model);
+        model.addObserver(controller);
     }
 
 
     public static void main(String[] args) {
+        model = new Model();
         launch(args);
-    }
-
-    /*
-    Load function, core.  Needs touching up for our specific needs:
-
-
-
-     //Reads data in from a file.  Non-numerics are translated as 0, expects comma[space] as delimeter, probably unnecessary
-    public static void load(String file) throws IOException {
-
-        Scanner line, in;
-        in = new Scanner(new File(file));
-        String firstLine = in.nextLine();
-        for (String x : firstLine.split(", ")) labels.add(x);
-        labelToIndex = new Hashtable<String, Integer>(labels.size());
-        for (int i = 0; i < labels.size(); ++i)
-            labelToIndex.put(labels.get(i), i);
-
-        while (in.hasNextLine()) {
-            ArrayList<Double> tempData = new ArrayList<Double>(labels.size());
-            line = new Scanner(in.nextLine());
-            line.useDelimiter(", ");
-            while (line.hasNext()) {
-                if (line.hasNextDouble()) {
-                    tempData.add(line.nextDouble());
-                } else {
-                    tempData.add(0.0);
-                    line.next();
-                }
-            }
-            data.add(tempData);
-
-
-        }
 
     }
-     */
 }

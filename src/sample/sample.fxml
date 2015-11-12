@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
-<VBox prefHeight="644.0" prefWidth="1226.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="644.0" prefWidth="1226.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <Pane prefHeight="32.0" prefWidth="866.0">
             <children>
@@ -80,15 +73,15 @@
                                         <ComboBox layoutX="142.0" layoutY="9.0" prefWidth="150.0" promptText="Category" />
                                         <ComboBox layoutX="395.0" layoutY="9.0" prefWidth="150.0" promptText="Food" />
                                         <Label alignment="CENTER" layoutX="14.0" layoutY="40.0" prefHeight="21.0" prefWidth="300.0" text="Add to:" textAlignment="CENTER" />
-                                        <Button disable="true" layoutX="24.0" layoutY="256.0" mnemonicParsing="false" text="Remove Item" />
-                                        <ListView layoutX="14.0" layoutY="116.0" prefHeight="113.0" prefWidth="150.0" />
-                                        <Button disable="true" layoutX="201.0" layoutY="256.0" mnemonicParsing="false" text="Clear All Selections" />
-                                        <Button layoutX="423.0" layoutY="256.0" mnemonicParsing="false" text="Print" />
-                                        <Button layoutX="24.0" layoutY="78.0" mnemonicParsing="false" text="Breakfast" />
-                                        <Button layoutX="199.0" layoutY="78.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="81.0" text="Lunch" />
-                                        <Button layoutX="382.0" layoutY="78.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="81.0" text="Dinner" />
-                                        <ListView layoutX="199.0" layoutY="116.0" prefHeight="113.0" prefWidth="150.0" />
-                                        <ListView layoutX="369.0" layoutY="116.0" prefHeight="113.0" prefWidth="150.0" />
+                                        <Button disable="true" layoutX="24.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeFocusedItem" text="Remove Item" />
+                                        <ListView fx:id="BreakfastView" layoutX="14.0" layoutY="116.0" onMouseClicked="#makeBreakfastFocus" prefHeight="113.0" prefWidth="150.0" />
+                                        <Button disable="true" layoutX="201.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeAllItems" text="Clear All Selections" />
+                                        <Button layoutX="423.0" layoutY="256.0" mnemonicParsing="false" onAction="#printLabels" text="Print" />
+                                        <Button layoutX="24.0" layoutY="78.0" mnemonicParsing="false" onAction="#addToBreakfast" text="Breakfast" />
+                                        <Button layoutX="199.0" layoutY="78.0" mnemonicParsing="false" onAction="#addToLunch" prefHeight="31.0" prefWidth="81.0" text="Lunch" />
+                                        <Button layoutX="382.0" layoutY="78.0" mnemonicParsing="false" onAction="#addToDinner" prefHeight="31.0" prefWidth="81.0" text="Dinner" />
+                                        <ListView fx:id="LunchView" layoutX="199.0" layoutY="116.0" onMouseClicked="#makeLunchFocus" prefHeight="113.0" prefWidth="150.0" />
+                                        <ListView fx:id="DinnerView" layoutX="369.0" layoutY="116.0" onMouseClicked="#makeDinnerFocus" prefHeight="113.0" prefWidth="150.0" />
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="291.0" prefWidth="529.0">
