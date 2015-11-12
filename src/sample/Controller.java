@@ -65,4 +65,8 @@ public class Controller implements Observer {
     public void update(Observable o, Object arg) {
 
     }
+
+    public void runAlgorithm(ActionEvent actionEvent) {
+
+    }
 }
