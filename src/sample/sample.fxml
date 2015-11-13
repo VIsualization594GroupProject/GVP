@@ -1,60 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 
-<VBox prefHeight="644.0" prefWidth="1226.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox prefHeight="644.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Pane prefHeight="32.0" prefWidth="866.0">
             <children>
-                <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="1100.0" text="Let's Create a Meal Plan!">
+                <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="1226.0" text="Let's Create a Meal Plan!">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
             </children>
         </Pane>
-        <SplitPane dividerPositions="0.33449074074074076" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="1226.0">
+        <SplitPane dividerPositions="0.24673202614379086" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="1226.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
-                        <SplitPane dividerPositions="0.5" layoutX="47.0" layoutY="185.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <SplitPane dividerPositions="0.5" layoutX="47.0" layoutY="185.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <items>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="302.0">
                                     <children>
-                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="56.0" layoutX="13.0" layoutY="43.0" stroke="#838383a3" strokeType="INSIDE" width="254.0" />
-                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="133.0" layoutX="13.0" layoutY="131.0" stroke="#838383a3" strokeType="INSIDE" width="254.0" />
-                                        <Label layoutX="13.0" layoutY="14.0" prefHeight="21.0" prefWidth="225.0" text="Enter your daily target:" />
-                                        <Label layoutX="117.0" layoutY="112.0" text="Or" />
-                                        <TextField layoutX="145.0" layoutY="143.0" prefHeight="31.0" prefWidth="108.0" />
-                                        <TextField layoutX="145.0" layoutY="185.0" prefHeight="31.0" prefWidth="108.0" />
-                                        <TextField layoutX="145.0" layoutY="228.0" prefHeight="31.0" prefWidth="108.0" />
-                                        <TextField layoutX="145.0" layoutY="61.0" prefHeight="31.0" prefWidth="108.0" />
-                                        <Label layoutX="36.0" layoutY="65.0" text="Daily Calories:" />
-                                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="36.0" layoutY="148.0" prefHeight="21.0" prefWidth="93.0" text="Age (Years):" textAlignment="RIGHT" />
-                                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="36.0" layoutY="190.0" prefHeight="21.0" prefWidth="93.0" text="Weight (lbs.):" textAlignment="RIGHT" />
-                                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="36.0" layoutY="233.0" prefHeight="21.0" prefWidth="93.0" text="Height (in.):" textAlignment="RIGHT" />
-                                        <Button layoutX="108.0" layoutY="271.0" mnemonicParsing="false" onAction="#runAlgorithm" text="Calculate" />
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="215.0" layoutX="13.0" layoutY="42.0" stroke="#838383a3" strokeType="INSIDE" width="254.0" />
+                                        <Label layoutX="43.0" layoutY="14.0" prefHeight="25.0" prefWidth="199.0" text="Enter your personal details:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Label>
+                                        <TextField layoutX="141.0" layoutY="56.0" prefHeight="31.0" prefWidth="108.0" />
+                                        <TextField layoutX="141.0" layoutY="96.0" prefHeight="31.0" prefWidth="108.0" />
+                                        <TextField layoutX="141.0" layoutY="136.0" prefHeight="31.0" prefWidth="108.0" />
+                                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="32.0" layoutY="61.0" prefHeight="21.0" prefWidth="93.0" text="Age (Years):" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="32.0" layoutY="101.0" prefHeight="21.0" prefWidth="93.0" text="Weight (lbs.):" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="32.0" layoutY="139.0" prefHeight="21.0" prefWidth="93.0" text="Height (in.):" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                                        <Button layoutX="107.0" layoutY="264.0" mnemonicParsing="false" text="Calculate">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Button>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="32.0" layoutY="179.0" prefHeight="21.0" prefWidth="93.0" text="Gender:" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="32.0" layoutY="215.0" prefHeight="21.0" prefWidth="93.0" text="Activity Level:" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox layoutX="141.0" layoutY="177.0" prefHeight="25.0" prefWidth="108.0" promptText="Choose..." />
+                              <ComboBox layoutX="141.0" layoutY="213.0" prefHeight="25.0" prefWidth="108.0" promptText="Choose..." />
                                     </children>
                                 </AnchorPane>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="404.0">
                                     <children>
-                                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="254.0" text="Here are today's goals:" textAlignment="CENTER" />
-                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="242.0" layoutX="15.0" layoutY="41.0" stroke="#838383a3" strokeType="INSIDE" width="340.0" />
-                                        <Label layoutX="209.0" layoutY="58.0" prefHeight="21.0" prefWidth="119.0" text="numCals" textAlignment="RIGHT" />
-                                        <Label layoutX="209.0" layoutY="93.0" prefHeight="21.0" prefWidth="119.0" text="numProt" textAlignment="RIGHT" />
-                                        <Label layoutX="209.0" layoutY="128.0" prefHeight="21.0" prefWidth="119.0" text="numCarbs" textAlignment="RIGHT" />
-                                        <Label layoutX="209.0" layoutY="163.0" prefHeight="21.0" prefWidth="119.0" text="numFats" textAlignment="RIGHT" />
-                                        <Label layoutX="209.0" layoutY="203.0" prefHeight="21.0" prefWidth="119.0" text="numSodiums" textAlignment="RIGHT" />
-                              <ComboBox fx:id="firstNutrientBox" layoutX="35.0" layoutY="53.0" prefWidth="150.0" promptText="Calories" />
-                              <ComboBox fx:id="secondNutrientBox" layoutX="35.0" layoutY="88.0" prefWidth="150.0" promptText="Proteins" />
-                              <ComboBox fx:id="thirdNutrientBox" layoutX="35.0" layoutY="123.0" prefWidth="150.0" promptText="Carbohydrates" />
-                              <ComboBox fx:id="fourthNutrientBox" layoutX="35.0" layoutY="158.0" prefWidth="150.0" promptText="Fats" />
-                              <ComboBox fx:id="fifthNutrientBox" layoutX="35.0" layoutY="198.0" prefWidth="150.0" promptText="Sodium" />
+                                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="254.0" text="Here are today's goals:" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Label>
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="242.0" layoutX="15.0" layoutY="41.0" stroke="#838383a3" strokeType="INSIDE" width="254.0" />
+                              <ComboBox layoutX="33.0" layoutY="58.0" prefHeight="25.0" prefWidth="134.0" promptText="Calories" />
+                              <ComboBox layoutX="33.0" layoutY="105.0" prefHeight="25.0" prefWidth="134.0" promptText="Proteins (g)" />
+                              <ComboBox layoutX="33.0" layoutY="153.0" prefHeight="25.0" prefWidth="134.0" promptText="Carbohydrates (g)" />
+                              <ComboBox layoutX="33.0" layoutY="200.0" prefHeight="25.0" prefWidth="134.0" promptText="Fats (g)" />
+                              <ComboBox layoutX="33.0" layoutY="246.0" prefHeight="25.0" prefWidth="134.0" promptText="Sodium (mg)" />
+                              <TextField layoutX="177.0" layoutY="55.0" prefHeight="31.0" prefWidth="81.0" />
+                              <TextField layoutX="177.0" layoutY="102.0" prefHeight="31.0" prefWidth="81.0" />
+                              <TextField layoutX="177.0" layoutY="150.0" prefHeight="31.0" prefWidth="81.0" />
+                              <TextField layoutX="177.0" layoutY="197.0" prefHeight="31.0" prefWidth="81.0" />
+                              <TextField layoutX="177.0" layoutY="243.0" prefHeight="31.0" prefWidth="81.0" />
                                     </children>
                                 </AnchorPane>
                             </items>
@@ -63,68 +96,564 @@
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="610.0" prefWidth="672.0">
                     <children>
-                        <SplitPane dividerPositions="0.5" layoutX="222.0" layoutY="206.0" orientation="VERTICAL" prefHeight="601.0" prefWidth="554.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="257.0" AnchorPane.topAnchor="0.0">
+                        <SplitPane dividerPositions="0.5" layoutX="222.0" layoutY="206.0" orientation="VERTICAL" prefHeight="601.0" prefWidth="554.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="257.0" AnchorPane.topAnchor="0.0">
                             <items>
                                 <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0">
                                     <children>
-                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="188.0" layoutY="61.0" stroke="#838383a3" strokeType="INSIDE" width="546.0" />
-                                        <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="119.0" text="Select a category:" textAlignment="CENTER" />
-                                        <Label alignment="CENTER_RIGHT" layoutX="302.0" layoutY="14.0" prefHeight="21.0" prefWidth="93.0" text="Select a food:" textAlignment="CENTER" />
-                                        <ComboBox layoutX="142.0" layoutY="9.0" prefWidth="150.0" promptText="Category" />
-                                        <ComboBox layoutX="395.0" layoutY="9.0" prefWidth="150.0" promptText="Food" />
-                                        <Label alignment="CENTER" layoutX="14.0" layoutY="40.0" prefHeight="21.0" prefWidth="300.0" text="Add to:" textAlignment="CENTER" />
-                                        <Button disable="true" layoutX="24.0" layoutY="256.0" mnemonicParsing="false" text="Remove Item" />
-                                        <ListView layoutX="14.0" layoutY="116.0" onMouseClicked="#makeBreakfastFocus" prefHeight="113.0" prefWidth="150.0" />
-                                        <Button disable="true" layoutX="201.0" layoutY="256.0" mnemonicParsing="false" text="Clear All Selections" />
-                                        <Button layoutX="423.0" layoutY="256.0" mnemonicParsing="false" onAction="#printLabels" text="Print" />
-                                        <Button layoutX="24.0" layoutY="78.0" mnemonicParsing="false" onAction="#addToBreakfast" text="Breakfast" />
-                                        <Button layoutX="199.0" layoutY="78.0" mnemonicParsing="false" onAction="#addToLunch" prefHeight="31.0" prefWidth="81.0" text="Lunch" />
-                                        <Button layoutX="382.0" layoutY="78.0" mnemonicParsing="false" onAction="#addToDinner" prefHeight="31.0" prefWidth="81.0" text="Dinner" />
-                                        <ListView layoutX="199.0" layoutY="116.0" onMouseClicked="#makeLunchFocus" prefHeight="113.0" prefWidth="150.0" />
-                                        <ListView layoutX="369.0" layoutY="116.0" onMouseClicked="#makeDinnerFocus" prefHeight="113.0" prefWidth="150.0" />
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="182.0" layoutX="5.0" layoutY="67.0" stroke="#838383a3" strokeType="INSIDE" width="644.0" />
+                                        <Label alignment="CENTER_RIGHT" layoutX="5.0" layoutY="14.0" prefHeight="21.0" prefWidth="101.0" text="Select a category:" textAlignment="CENTER" />
+                                        <Label alignment="CENTER_RIGHT" layoutX="306.0" layoutY="14.0" prefHeight="21.0" prefWidth="74.0" text="Select a food:" textAlignment="CENTER" />
+                                        <ComboBox layoutX="111.0" layoutY="12.0" prefHeight="25.0" prefWidth="180.0" promptText="Category" />
+                                        <ComboBox layoutX="382.0" layoutY="12.0" prefHeight="25.0" prefWidth="263.0" promptText="Food" />
+                                        <Label alignment="CENTER" layoutX="177.0" layoutY="45.0" prefHeight="21.0" prefWidth="300.0" text="Add food to:" textAlignment="CENTER" />
+                                        <Button disable="true" layoutX="84.0" layoutY="261.0" mnemonicParsing="false" text="Remove Item" />
+                                        <ListView layoutX="24.0" layoutY="116.0" prefHeight="123.0" prefWidth="190.0" />
+                                        <Button disable="true" layoutX="272.0" layoutY="261.0" mnemonicParsing="false" text="Clear All Selections" />
+                                        <Button layoutX="487.0" layoutY="261.0" mnemonicParsing="false" text="Print Your Plan!" />
+                                        <Button layoutX="87.0" layoutY="77.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" text="Breakfast">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Button>
+                                        <Button layoutX="287.0" layoutY="77.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="81.0" text="Lunch">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Button>
+                                        <Button layoutX="494.0" layoutY="76.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" text="Dinner">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Button>
+                                        <ListView layoutX="231.0" layoutY="116.0" prefHeight="123.0" prefWidth="190.0" />
+                                        <ListView layoutX="439.0" layoutY="116.0" prefHeight="123.0" prefWidth="190.0" />
                                     </children>
                                 </AnchorPane>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="291.0" prefWidth="529.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="611.0">
                                     <children>
-                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="242.0" layoutX="20.0" layoutY="41.0" stroke="#838383a3" strokeType="INSIDE" width="529.0" />
-                                        <Label alignment="CENTER" layoutX="135.0" layoutY="14.0" prefHeight="21.0" prefWidth="300.0" text="Are you reaching your goals for today?" textAlignment="CENTER" />
-                                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="60.0" prefHeight="21.0" prefWidth="125.0" text="Calories:" textAlignment="RIGHT" />
-                                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="130.0" prefHeight="21.0" prefWidth="125.0" text="Carbohydrates (g):" textAlignment="RIGHT" />
-                                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="95.0" prefHeight="21.0" prefWidth="125.0" text="Proteins (g):" textAlignment="RIGHT" />
-                                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="165.0" prefHeight="21.0" prefWidth="125.0" text="Fats (g):" textAlignment="RIGHT" />
-                                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="205.0" prefHeight="21.0" prefWidth="125.0" text="Sodium (mg):" textAlignment="RIGHT" />
-                                        <ProgressBar layoutX="185.0" layoutY="60.0" prefHeight="23.0" prefWidth="354.0" progress="0.76" />
-                                        <ProgressBar layoutX="185.0" layoutY="95.0" prefHeight="23.0" prefWidth="354.0" progress="0.42">
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="242.0" layoutX="20.0" layoutY="41.0" stroke="#838383a3" strokeType="INSIDE" width="625.0" />
+                                        <Label alignment="CENTER" layoutX="183.0" layoutY="14.0" prefHeight="21.0" prefWidth="300.0" text="Are you reaching your goals for today?" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Label>
+                                        <Label alignment="CENTER_RIGHT" layoutX="31.0" layoutY="61.0" prefHeight="21.0" prefWidth="125.0" text="Calories:" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                                        <Label alignment="CENTER_RIGHT" layoutX="31.0" layoutY="155.0" prefHeight="21.0" prefWidth="125.0" text="Carbohydrates (g):" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                                        <Label alignment="CENTER_RIGHT" layoutX="31.0" layoutY="108.0" prefHeight="21.0" prefWidth="125.0" text="Proteins (g):" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                                        <Label alignment="CENTER_RIGHT" layoutX="31.0" layoutY="206.0" prefHeight="21.0" prefWidth="125.0" text="Fats (g):" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                                        <Label alignment="CENTER_RIGHT" layoutX="31.0" layoutY="251.0" prefHeight="21.0" prefWidth="125.0" text="Sodium (mg):" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                                        <ProgressBar layoutX="175.0" layoutY="58.0" prefHeight="27.0" prefWidth="403.0" progress="0.76">
+                                 <effect>
+                                    <ColorAdjust hue="0.03" saturation="-0.43" />
+                                 </effect></ProgressBar>
+                                        <ProgressBar layoutX="175.0" layoutY="105.0" prefHeight="27.0" prefWidth="403.0" progress="0.35">
                                             <effect>
-                                                <ColorAdjust brightness="0.65" hue="0.75" />
+                                                <ColorAdjust hue="0.89" saturation="-0.69" />
                                             </effect>
                                         </ProgressBar>
-                                        <ProgressBar layoutX="185.0" layoutY="130.0" prefHeight="23.0" prefWidth="354.0" progress="1.0">
+                                        <ProgressBar layoutX="175.0" layoutY="152.0" prefHeight="27.0" prefWidth="403.0" progress="1.0">
                                             <effect>
-                                                <ColorAdjust hue="-1.0" />
+                                                <ColorAdjust hue="0.43" saturation="-0.74" />
                                             </effect>
                                         </ProgressBar>
-                                        <ProgressBar layoutX="185.0" layoutY="165.0" prefHeight="23.0" prefWidth="354.0" progress="0.54">
+                                        <ProgressBar layoutX="175.0" layoutY="203.0" prefHeight="27.0" prefWidth="403.0" progress="0.5">
                                             <effect>
-                                                <ColorAdjust brightness="0.45" hue="-0.2" />
+                                                <ColorAdjust hue="-0.2" saturation="-0.6" />
                                             </effect>
                                         </ProgressBar>
-                                        <ProgressBar layoutX="185.0" layoutY="205.0" prefHeight="23.0" prefWidth="354.0" progress="0.27">
+                                        <ProgressBar layoutX="175.0" layoutY="248.0" prefHeight="27.0" prefWidth="403.0" progress="0.2">
                                             <effect>
-                                                <ColorAdjust brightness="0.43" hue="-0.87" />
+                                                <ColorAdjust hue="-0.87" saturation="-0.45" />
                                             </effect>
                                         </ProgressBar>
+                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="61.0" prefHeight="21.0" prefWidth="41.0" text="70%" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="155.0" prefHeight="21.0" prefWidth="41.0" text="120%" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="108.0" prefHeight="21.0" prefWidth="41.0" text="35%" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="206.0" prefHeight="21.0" prefWidth="41.0" text="50%" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="251.0" prefHeight="21.0" prefWidth="41.0" text="20%" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="314.0" layoutY="61.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="314.0" layoutY="108.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="314.0" layoutY="155.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="314.0" layoutY="206.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="314.0" layoutY="251.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
                                     </children>
                                 </AnchorPane>
                             </items>
                         </SplitPane>
-                        <Pane layoutX="554.0" layoutY="14.0" prefHeight="588.0" prefWidth="254.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="588.0" layoutX="569.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="234.0" />
-                        <Label layoutX="569.0" layoutY="24.0" prefHeight="27.0" prefWidth="180.0" text="Nutrition Facts:">
+                        <Pane layoutX="673.0" layoutY="14.0" prefHeight="588.0" prefWidth="254.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="411.0" layoutX="674.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="234.0" />
+                        <Label layoutX="684.0" layoutY="22.0" prefHeight="27.0" prefWidth="180.0" text="Nutrition Facts:">
                             <font>
                                 <Font name="Arial Black" size="18.0" />
                             </font>
                         </Label>
+                  <Label layoutX="684.0" layoutY="42.0" prefHeight="27.0" prefWidth="74.0" text="Serving Size:">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="763.0" layoutY="42.0" prefHeight="27.0" prefWidth="41.0" text="[string]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="12.0" layoutX="683.0" layoutY="68.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="217.0" />
+                  <Label layoutX="684.0" layoutY="79.0" prefHeight="21.0" prefWidth="125.0" text="Amount per Serving">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="684.0" layoutY="101.0" prefHeight="21.0" prefWidth="98.0" text="Calories">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="736.0" layoutY="101.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="4.0" layoutX="683.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="217.0" />
+                  <Label layoutX="684.0" layoutY="121.0" prefHeight="21.0" prefWidth="98.0" text="Total Fat">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="736.0" layoutY="121.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="759.0" layoutY="121.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="699.0" layoutY="142.0" prefHeight="21.0" prefWidth="98.0" text="Saturated Fat">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="777.0" layoutY="142.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="800.0" layoutY="142.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Line endX="108.0" layoutX="791.0" layoutY="121.0" startX="-108.0" />
+                  <Line endX="108.0" layoutX="791.0" layoutY="142.0" startX="-108.0" />
+                  <Line endX="108.0" layoutX="791.0" layoutY="163.0" startX="-108.0" />
+                  <Label layoutX="684.0" layoutY="163.0" prefHeight="21.0" prefWidth="98.0" text="Cholesterol">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="754.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="777.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Line endX="108.0" layoutX="791.0" layoutY="184.0" startX="-108.0" />
+                  <Label layoutX="684.0" layoutY="184.0" prefHeight="21.0" prefWidth="98.0" text="Sodium">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="736.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="759.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Line endX="108.0" layoutX="791.0" layoutY="205.0" startX="-108.0" />
+                  <Label layoutX="684.0" layoutY="206.0" prefHeight="21.0" prefWidth="125.0" text="Total Carbohydrates">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="806.0" layoutY="206.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="829.0" layoutY="206.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Line endX="108.0" layoutX="791.0" layoutY="227.0" startX="-108.0" />
+                  <Label layoutX="699.0" layoutY="227.0" prefHeight="21.0" prefWidth="98.0" text="Sugars">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="741.0" layoutY="227.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="764.0" layoutY="227.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Line endX="108.0" layoutX="791.0" layoutY="248.0" startX="-108.0" />
+                  <Label layoutX="699.0" layoutY="248.0" prefHeight="21.0" prefWidth="98.0" text="Dietary Fiber">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="773.0" layoutY="248.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="796.0" layoutY="248.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Line endX="108.0" layoutX="791.0" layoutY="269.0" startX="-108.0" />
+                  <Label layoutX="684.0" layoutY="270.0" prefHeight="21.0" prefWidth="98.0" text="Protein">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="736.0" layoutY="270.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="759.0" layoutY="270.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="6.0" layoutX="683.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="217.0" />
+                  <Label layoutX="788.0" layoutY="101.0" prefHeight="21.0" prefWidth="98.0" text="Calories from fat">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="880.0" layoutY="101.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="823.0" layoutY="122.0" prefHeight="21.0" prefWidth="77.0" text="\% Daily Value*">
+                     <font>
+                        <Font name="Arial" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="142.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="142.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="206.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="206.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="227.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="227.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="248.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="248.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="270.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="270.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Line endX="108.0" layoutX="791.0" layoutY="315.0" startX="-108.0" />
+                  <Line endX="108.0" layoutX="791.0" layoutY="336.0" startX="-108.0" />
+                  <Line endX="108.0" layoutX="791.0" layoutY="358.0" startX="-108.0" />
+                  <Line endX="108.0" layoutX="791.0" layoutY="379.0" startX="-108.0" />
+                  <Line endX="108.0" layoutX="791.0" layoutY="400.0" startX="-108.0" />
+                  <Label layoutX="864.0" layoutY="294.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="294.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="315.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="315.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="337.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="337.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="358.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="358.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="864.0" layoutY="379.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="379.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="748.0" layoutY="295.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="771.0" layoutY="295.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="748.0" layoutY="316.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="771.0" layoutY="316.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="748.0" layoutY="338.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="771.0" layoutY="338.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="748.0" layoutY="359.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="771.0" layoutY="359.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="748.0" layoutY="380.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="771.0" layoutY="380.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="684.0" layoutY="295.0" prefHeight="21.0" prefWidth="98.0" text="Calcium">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="684.0" layoutY="316.0" prefHeight="21.0" prefWidth="98.0" text="Iron">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="684.0" layoutY="337.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin A">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="684.0" layoutY="359.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin B6">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="684.0" layoutY="379.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin D">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="791.0" layoutY="338.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin C">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                     <graphic>
+                        <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Label>
+                  <Label layoutX="791.0" layoutY="359.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin B12">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                     <graphic>
+                        <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Label>
+                  <Label layoutX="791.0" layoutY="379.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin E">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                     <graphic>
+                        <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Label>
+                  <Label layoutX="791.0" layoutY="316.0" prefHeight="21.0" prefWidth="98.0" text="Folic Acid">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                     <graphic>
+                        <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Label>
+                  <Label layoutX="791.0" layoutY="295.0" prefHeight="21.0" prefWidth="98.0" text="Potassium">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                     <graphic>
+                        <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Label>
+                  <Label layoutX="684.0" layoutY="400.0" prefHeight="21.0" prefWidth="217.0" text="* Percent daily values based on your current daily goals">
+                     <font>
+                        <Font name="Arial" size="8.0" />
+                     </font>
+                  </Label>
                     </children>
                 </AnchorPane>
             </items>
