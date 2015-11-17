@@ -13,9 +13,16 @@ import java.util.*;
  */
 public class Model extends Observable{
 
+
+    NutrientCalculator nutrients = new NutrientCalculator(this);
     ArrayList<String> labels= new ArrayList<String>(),
             headers = new ArrayList<String>(),
             categories = new ArrayList<String>();
+    String[] goalNames = {"Calories","Protein","Fats","Carbohydrates","Fiber","Sugar","Calcium","Iron","Potassium",
+            "Sodium","Zinc","Vitamin C","Vitamin B6","Folic Acid","Vitamin B12","Vitamin A (IU)",
+            "Vitamin E","Vitamin D","Vit_K","Saturated Fats","Monounsaturated Fats",
+            "Polyunsaturated Fats","Cholesterol"};
+
 
     ArrayList<Integer> nutrientsToTrack = new ArrayList<Integer>(5);//Correspond to the columns we'll be using to index into table
     ArrayList<ArrayList<String>> stringTable= new ArrayList<ArrayList<String>>();//holds the strings for categories and foods
@@ -36,7 +43,15 @@ public class Model extends Observable{
             nutrientsToTrack.add(i);
         }
 
+
+
     }
+
+
+    public void updateNutrientCalcBasedonPersonalDetails(){
+        nutrients.GenerateNewGoalsUsingAgeEtc();
+    }
+
 
     Model(){
         this("foodFile.csv");
