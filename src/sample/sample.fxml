@@ -231,7 +231,14 @@
                                 </AnchorPane>
                             </items>
                         </SplitPane>
-                        <Pane layoutX="673.0" layoutY="14.0" prefHeight="588.0" prefWidth="254.0" />
+                        <Pane layoutX="673.0" layoutY="14.0" prefHeight="588.0" prefWidth="254.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="27.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../dino1.png" />
+                           </image>
+                        </ImageView>
+                     </children></Pane>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="411.0" layoutX="674.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="234.0" />
                         <Label layoutX="684.0" layoutY="22.0" prefHeight="27.0" prefWidth="180.0" text="Nutrition Facts:">
                             <font>
