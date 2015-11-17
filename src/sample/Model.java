@@ -119,4 +119,9 @@ public class Model extends Observable{
     public List<String> getNutrients() {
         return labels;
     }
+
+    public void addSelectedItem(String selectedItem) {
+        int row = nameToRowIndex.get(selectedItem);
+
+    }
 }

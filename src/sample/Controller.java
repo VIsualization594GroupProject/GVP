@@ -25,6 +25,8 @@ public class Controller implements Observer {
     public void makeBreakfastFocus(Event event) {//This is a change
         System.err.println("Breakfast is focus (really)");
         focus = (ListView) Main.root.lookup("#BreakfastView");
+        String SelectedItem = "Temp";
+        model.addSelectedItem(SelectedItem);
     }
 
     public void makeLunchFocus(Event event) {

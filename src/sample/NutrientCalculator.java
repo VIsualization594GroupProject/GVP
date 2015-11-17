@@ -14,7 +14,7 @@ public class NutrientCalculator {
     Hashtable<String, Double> goals = new Hashtable<String, Double>();
 
     public enum ExerciseLevel{Sedentary, Low, Moderate, Active, Masochist}
-    ExerciseLevel exerciseLevel;
+    ExerciseLevel exerciseLevel = ExerciseLevel.Moderate;
     double exerciseFactor;
 
     Model model;
