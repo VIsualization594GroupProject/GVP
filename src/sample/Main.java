@@ -7,8 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,6 +43,11 @@ public class Main extends Application {
         primaryStage.show();
         controller.setModel(model);
         model.addObserver(controller);
+        ImageView dinoImageView = (ImageView) root.lookup("#DinosaurImageView");
+        InputStream inDino = new FileInputStream("dino1.png");
+        Image dino = new Image(inDino);
+        dinoImageView.setImage(dino);
+
     }
 
 

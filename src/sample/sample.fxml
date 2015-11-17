@@ -233,7 +233,7 @@
                         </SplitPane>
                         <Pane layoutX="673.0" layoutY="14.0" prefHeight="588.0" prefWidth="254.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="27.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id = "DinosaurImageView" fitHeight="150.0" fitWidth="200.0" layoutX="27.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../dino1.png" />
                            </image>
