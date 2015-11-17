@@ -15,10 +15,10 @@ import java.util.Observer;
 
  */
 public class Controller implements Observer {
-    Model model;
+    static Model model;
     ListView focus;
-    public void setModel(Model model){
-        this.model = model;
+    public void setModel(Model m){
+        model = m;
     }
 
 

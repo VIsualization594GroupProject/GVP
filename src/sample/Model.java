@@ -1,6 +1,8 @@
 package sample;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
@@ -54,14 +56,14 @@ public class Model extends Observable{
 
 
     Model(){
-        this("foodFile.csv");
+        this("USDAmodifiedFile.csv");
         //Do stuff
     }
 
     public void load(String file) throws IOException {
 
         Scanner line, in;
-        in = new Scanner(new File(file));
+        in = new Scanner(new BufferedReader(new FileReader(file)));
         String firstLine = in.nextLine();
         int stringColumns = 3;//Used as a constant, to selectively ignore the first (three) columns of the csv file
         String[] headerLabels = firstLine.split(", ");
