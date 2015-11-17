@@ -15,9 +15,9 @@ import java.util.Observer;
 
  */
 public class Controller implements Observer {
-    Observable model;
+    Model model;
     ListView focus;
-    public void setModel(Observable model){
+    public void setModel(Model model){
         this.model = model;
     }
 
@@ -36,6 +36,8 @@ public class Controller implements Observer {
         System.err.println("Dinner is focus (not really)");
 
     }
+
+
 
     public void addToDinner(ActionEvent actionEvent) {
         System.err.println("Dinner Stuff");
@@ -68,5 +70,10 @@ public class Controller implements Observer {
 
     public void runAlgorithm(ActionEvent actionEvent) {
 
+    }
+
+    public void calculateStuff(ActionEvent actionEvent) {
+        model.updateNutrientCalcBasedonPersonalDetails();
+        System.err.println("Calculating things on click");
     }
 }
