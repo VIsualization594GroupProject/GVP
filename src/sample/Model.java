@@ -31,6 +31,7 @@ public class Model extends Observable{
     ArrayList<ArrayList<Double>> table = new ArrayList<ArrayList<Double>>();//Holds all the numerical nutritional data
     Hashtable<String, Integer> labelToIndex = new Hashtable<String, Integer>(),//quickly looks up the column from the string label
             nameToRowIndex = new Hashtable<String, Integer>();//quickly looks up the row from the string name of the item
+    ArrayList<Integer> totalNutrients = new ArrayList<Integer>();
     private ArrayList<Observer> observerList = new ArrayList<Observer>();
 
     Model(String file){
@@ -121,7 +122,13 @@ public class Model extends Observable{
     }
 
     public void addSelectedItem(String selectedItem) {
+        int holds;
         int row = nameToRowIndex.get(selectedItem);
+        for(int i = 0; i < table.get(row).size(); i++) {
+            holds = totalNutrients.get(i);
+            holds += table.get(row).get(i);
+            totalNutrients.add(i, holds);
+        }
 
     }
 }
