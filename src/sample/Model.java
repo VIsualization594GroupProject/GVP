@@ -45,6 +45,9 @@ public class Model extends Observable{
         for (int i = 0; i < 5; i++) {
             nutrientsToTrack.add(i);
         }
+        for(int i = 0; i < table.get(0).size(); i++) { //Set totalNutrients size to table size
+            totalNutrients.add(0.0);
+        }
 
 
 
@@ -130,6 +133,5 @@ public class Model extends Observable{
             totalNutrients.set(i, holds);
         }
         notifyObservers();
-
     }
 }
