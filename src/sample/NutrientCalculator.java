@@ -9,7 +9,7 @@ import java.util.Hashtable;
  */
 public class NutrientCalculator {
     int weight, height, age;
-    boolean female;
+    boolean male;
     double BMR;
     Hashtable<String, Double> goals = new Hashtable<String, Double>();
 
@@ -19,11 +19,23 @@ public class NutrientCalculator {
 
     Model model;
 
+    //String[] goalNames = {0"Calories",1"Protein",2"Fats",3"Carbohydrates",4"Fiber",5"Sugar",6"Calcium",7"Iron",8"Potassium",
+    //        9"Sodium",10"Zinc",11"Vitamin C",12"Vitamin B6",13"Folic Acid",14"Vitamin B12",15"Vitamin A (IU)",
+     //       16"Vitamin E",17"Vitamin D",18"Vit_K",19"Saturated Fats",20"Monounsaturated Fats",
+     //       21"Polyunsaturated Fats",22"Cholesterol"};
+
+
     NutrientCalculator(Model m){
         model = m;
 
     }
 
+    public void GenerateNewGoalsUsingAgeEtc()
+    {
+        calculateExerciseFactor();
+        calculateBMR();
+        calculateGoals();
+    }
 
     void calculateExerciseFactor(){
         switch(exerciseLevel){
@@ -42,42 +54,42 @@ public class NutrientCalculator {
 
     }
 
-    public void GenerateNewGoalsUsingAgeEtc()
-    {
-        calculateExerciseFactor();
-        calculateBMR();
-        calculateTotalCalories();
-        calculateOtherGoals();
+    private void calculateBMR() {
+        if(female){
+            BMR = 88.362 + (13.397*weight) + (4.799 *height) - (5.677 *age); // Male BMR
+        }
+        else{
+            BMR = 447.593 + (9.247*weight) + (3.098 *height) - (4.330 *age); // Female BMR
+        }
     }
 
-    private void calculateOtherGoals() {
-        
+    private void calculateGoals() {
+        // Calories
+        double tempCalories = 0;
+        tempCalories = (double)Math.round(BMR * exc_factor);
+        goals.put(model.goalNames[0], tempCalories);
+
+        //
+        double tempCalories = 0;
+        tempCalories = (double)Math.round(BMR * exc_factor);
+        goals.put(model.goalNames[0], tempCalories);
+
     }
 
     public void setGoal(String key, double newGoal){
         goals.put(key, newGoal);
     }
+
     public double getGoal(String key){
         return goals.get(key);
     }
 
-    private void calculateTotalCalories() {
-        double tempCalories = 0;
-        goals.put(model.goalNames[0], tempCalories);
-        double newCalories = goals.get(model.goalNames[0]);
-    }
+
 
     public void setCalories(double newCalories){
         goals.put(model.goalNames[0], newCalories);
     }
 
-    private void calculateBMR() {
-        if(female){
-            BMR = 1;//Numbers
-        }
-        else{
-            BMR = 2;//Other numbers;
-        }
-    }
+
 
 }
