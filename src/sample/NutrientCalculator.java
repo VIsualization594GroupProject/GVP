@@ -13,7 +13,7 @@ public class NutrientCalculator {
     double BMR;
     Hashtable<String, Double> goals = new Hashtable<String, Double>();
 
-    public enum ExerciseLevel{Sedentary, Low, Moderate, Active, Masochist}
+    public enum ExerciseLevel{Sedentary, Low, Moderate, Active, Strenous}
     ExerciseLevel exerciseLevel = ExerciseLevel.Moderate;
     double exerciseFactor;
 
@@ -29,7 +29,13 @@ public class NutrientCalculator {
         switch(exerciseLevel){
             case Sedentary: exerciseFactor = 1.2;
                 break;
-            case Low: exerciseFactor = 1.4;
+            case Low: exerciseFactor = 1.375;
+                break;
+            case Moderate: exerciseFactor = 1.55;
+                break;
+            case Active: exerciseFactor = 1.725;
+                break;
+            case Strenous: exerciseFactor = 1.9;
                 break;
             //TODO: Finish
         }
@@ -38,9 +44,9 @@ public class NutrientCalculator {
 
     public void GenerateNewGoalsUsingAgeEtc()
     {
-        calculateTotalCalories();
         calculateExerciseFactor();
         calculateBMR();
+        calculateTotalCalories();
         calculateOtherGoals();
     }
 
