@@ -75,8 +75,9 @@ public class Controller implements Observer {
 
         categoryList = new ArrayList<String>();
         for(String x : categories.keySet())categoryList.add(x);
+        ArrayList<String> temp = model.getCategoryToItemsList().get(categoryList.get(0));
+        prepComboBox(food, temp);
         prepComboBox(category, categoryList);
-        prepComboBox(food, categories.get(categoryList.get(0)));
         prepComboBox(gender, genderList);
         prepComboBox(activity, activityList);
         for (int i = 0; i < 5; i++) {
@@ -169,5 +170,12 @@ public class Controller implements Observer {
     }
     public void updateBox5(ActionEvent actionEvent) {
     changeBoxAndAssigns(4);
+    }
+
+    public void selectItemFromFood(ActionEvent actionEvent) {
+    }
+
+    public void changeCategory(ActionEvent actionEvent) {
+        prepComboBox(food, model.getCategoryToItemsList().get(category.getValue().toString()));
     }
 }

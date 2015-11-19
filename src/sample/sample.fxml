@@ -103,8 +103,8 @@
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="182.0" layoutX="5.0" layoutY="67.0" stroke="#838383a3" strokeType="INSIDE" width="644.0" />
                                         <Label alignment="CENTER_RIGHT" layoutX="5.0" layoutY="14.0" prefHeight="21.0" prefWidth="101.0" text="Select a category:" textAlignment="CENTER" />
                                         <Label alignment="CENTER_RIGHT" layoutX="306.0" layoutY="14.0" prefHeight="21.0" prefWidth="74.0" text="Select a food:" textAlignment="CENTER" />
-                                        <ComboBox id="categoryCombo" editable="true" layoutX="111.0" layoutY="12.0" prefHeight="25.0" prefWidth="180.0" promptText="Category" />
-                                        <ComboBox id="foodCombo" editable="true" layoutX="382.0" layoutY="12.0" prefHeight="25.0" prefWidth="263.0" promptText="Food" />
+                                        <ComboBox id="categoryCombo" editable="true" layoutX="111.0" layoutY="12.0" prefHeight="25.0" prefWidth="180.0" promptText="Category" onAction="#changeCategory" />
+                                        <ComboBox id="foodCombo" editable="true" layoutX="382.0" layoutY="12.0" prefHeight="25.0" prefWidth="263.0" promptText="Food" onAction="#selectItemFromFood" />
                                         <Label alignment="CENTER" layoutX="177.0" layoutY="45.0" prefHeight="21.0" prefWidth="300.0" text="Add food to:" textAlignment="CENTER" />
                                         <Button id="removeButton" disable="true" layoutX="84.0" layoutY="261.0" mnemonicParsing="false" text="Remove Item" />
                                         <ListView layoutX="24.0" layoutY="116.0" onDragDropped="#addToBreakfast" onMouseClicked="#makeBreakfastFocus" prefHeight="123.0" prefWidth="190.0" />

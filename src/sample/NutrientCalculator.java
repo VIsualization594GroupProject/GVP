@@ -1,7 +1,6 @@
 package sample;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class NutrientCalculator {
     double BMR;
     Hashtable<String, Double> goals = new Hashtable<String, Double>();
 
-    public enum ExerciseLevel{Sedentary, Low, Moderate, Active, Strenous}
+    public enum ExerciseLevel{Sedentary, Low, Moderate, Active, Strenuous}
     public static List<ExerciseLevel> allLevels = new ArrayList<ExerciseLevel>(5);
     ExerciseLevel exerciseLevel = ExerciseLevel.Moderate;
     double exerciseFactor;
@@ -30,7 +29,7 @@ public class NutrientCalculator {
         allLevels.add(ExerciseLevel.Low);
         allLevels.add(ExerciseLevel.Moderate);
         allLevels.add(ExerciseLevel.Active);
-        allLevels.add(ExerciseLevel.Strenous);
+        allLevels.add(ExerciseLevel.Strenuous);
 
     }
 
@@ -51,7 +50,7 @@ public class NutrientCalculator {
                 break;
             case Active: exerciseFactor = 1.725;
                 break;
-            case Strenous: exerciseFactor = 1.9;
+            case Strenuous: exerciseFactor = 1.9;
                 break;
             //TODO: Finish
         }
