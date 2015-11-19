@@ -21,10 +21,9 @@ public class NutrientCalculator {
 
     Model model;
 
-    //String[] goalNames = {0"Calories",1"Protein",2"Fats",3"Carbohydrates",4"Fiber",5"Sugar",6"Calcium",7"Iron",8"Potassium",
-    //        9"Sodium",10"Zinc",11"Vitamin C",12"Vitamin B6",13"Folic Acid",14"Vitamin B12",15"Vitamin A (IU)",
-     //       16"Vitamin E",17"Vitamin D",18"Vit_K",19"Saturated Fats",20"Monounsaturated Fats",
-     //       21"Polyunsaturated Fats",22"Cholesterol"};
+    //String[] goalNames = {0"Calories,1Total Fat (g),2Saturated Fat (g),3Cholesterol (g),4Sodium (mg),5Carbohydrates (g),
+    // 6Sugar (g),7Dietary Fiber (g),8Protein (g),9Calcium (mg),10Potassium (mg),11Iron (mg),12Zinc (mg),13Vitamin A (IU),
+    // 14Vitamin B6 (mg),15Vitamin B12 (mcg),16Vitamin C (mg),17Vitamin D (IU),18Vitamin E (mg)
 
 
     NutrientCalculator(Model m){
@@ -73,13 +72,18 @@ public class NutrientCalculator {
     private void calculateGoals() {
         // Calories
         double tempCalories = 0;
-        tempCalories = (double)Math.round(BMR * exerciseFactor);
+        tempCalories = (double) Math.round(BMR * exerciseFactor);
         goals.put(model.goalNames[0], tempCalories);
 
-        //
-        tempCalories = (double)Math.round(BMR * exerciseFactor);
-        goals.put(model.goalNames[0], tempCalories);
+        // Total Fat
+        double tempTotalFat = 0;
+        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/4);
+        goals.put(model.goalNames[1], tempTotalFat);
 
+        // Total Fat
+        double tempTotalFat = 0;
+        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/4);
+        goals.put(model.goalNames[1], tempTotalFat);
     }
 
     public void setGoal(String key, double newGoal){
