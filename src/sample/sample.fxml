@@ -159,27 +159,27 @@
                                         <ProgressBar id = "nutrientProgress4" layoutX="175.0" layoutY="203.0" prefHeight="27.0" prefWidth="403.0" progress="0.5"/>
                                         <ProgressBar id = "nutrientProgress5" layoutX="175.0" layoutY="248.0" prefHeight="27.0" prefWidth="403.0" progress="0.2"/>
 
-                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="61.0" prefHeight="21.0" prefWidth="41.0" text="70%" textAlignment="RIGHT">
+                              <Label id="progressText1" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="61.0" prefHeight="21.0" prefWidth="45.0" text="70%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="155.0" prefHeight="21.0" prefWidth="41.0" text="120%" textAlignment="RIGHT">
+                              <Label  id="progressText2"  alignment="CENTER_RIGHT" layoutX="588.0" layoutY="108.0" prefHeight="21.0" prefWidth="45.0" text="120%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="108.0" prefHeight="21.0" prefWidth="41.0" text="35%" textAlignment="RIGHT">
+                              <Label  id="progressText3" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="155.0" prefHeight="21.0" prefWidth="45.0" text="35%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="206.0" prefHeight="21.0" prefWidth="41.0" text="50%" textAlignment="RIGHT">
+                              <Label  id="progressText4" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="206.0" prefHeight="21.0" prefWidth="45.0" text="50%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="251.0" prefHeight="21.0" prefWidth="41.0" text="20%" textAlignment="RIGHT">
+                              <Label  id="progressText5" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="251.0" prefHeight="21.0" prefWidth="45.0" text="20%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

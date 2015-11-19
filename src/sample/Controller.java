@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.scene.control.*;
 
+import java.text.DecimalFormat;
+import java.text.Format;
 import java.util.*;
 
 /*
@@ -27,9 +29,10 @@ public class Controller implements Observer {
     ArrayList<String> categoryList;
     static ComboBox category, food, gender, activity;
     static ComboBox[] trackNutrient = new ComboBox[5];
-    static Label [] nutrientLabels = new Label[5], warningLabels=new Label[5];
+    static Label [] nutrientLabels = new Label[5], warningLabels=new Label[5], progressTexts = new Label[5];
     static ProgressBar[] progressBars = new ProgressBar[5];
     static List<String> genderList, activityList;
+    static DecimalFormat percentageFormat = new DecimalFormat("0.0%");
 
     static void prepComboBox(ComboBox<String> c, List<String> strings) {//Sets a combobox to contain the labels
         ObservableList<String> list = FXCollections.observableList(strings);
@@ -55,6 +58,7 @@ public class Controller implements Observer {
             warningLabels[i].setVisible(false);
             progressBars[i].setStyle("-fx-accent: pink");
             trackNutrient[i]= (ComboBox)Main.root.lookup("#trackNutrient"+(i+1));
+            progressTexts[i] = (Label) Main.root.lookup("#progressText"+(i+1));
         }
 
         initComboBoxes();
@@ -145,7 +149,7 @@ public class Controller implements Observer {
         //warningLabels[i].setVisible(overGoal(i));
         nutrientLabels[i].setText(newLabel);
         progressBars[i].setProgress(.3*i);
-
+        progressTexts[i].setText(percentageFormat.format(progressBars[i].getProgress()));
     }
 
 
