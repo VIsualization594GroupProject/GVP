@@ -1,7 +1,6 @@
 package sample;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -18,8 +17,9 @@ public class Model extends Observable{
 
     NutrientCalculator nutrients = new NutrientCalculator(this);
     ArrayList<String> labels= new ArrayList<String>(),
-            headers = new ArrayList<String>(),
+            nutrientHeaders = new ArrayList<String>(),//These are the nutrient headers
             categories = new ArrayList<String>();
+    Hashtable<String, ArrayList<String>> categoryToItemsList = new Hashtable<String, ArrayList<String>>();
     String[] goalNames = {"Calories","Protein","Fats","Carbohydrates","Fiber","Sugar","Calcium","Iron","Potassium",
             "Sodium","Zinc","Vitamin C","Vitamin B6","Folic Acid","Vitamin B12","Vitamin A (IU)",
             "Vitamin E","Vitamin D","Vit_K","Saturated Fats","Monounsaturated Fats",
@@ -33,7 +33,9 @@ public class Model extends Observable{
             nameToRowIndex = new Hashtable<String, Integer>();//quickly looks up the row from the string name of the item
     ArrayList<Double> totalNutrients = new ArrayList<Double>();//Holds total nutrients from added items
     private ArrayList<Observer> observerList = new ArrayList<Observer>();
+        int SHORTDESC_INDEX = 1;
 
+        int CATEGORY_INDEX = 2;
     Model(String file){
       try{
           load(file);
@@ -48,7 +50,17 @@ public class Model extends Observable{
         for(int i = 0; i < table.get(0).size(); i++) { //Set totalNutrients size to table size
             totalNutrients.add(0.0);
         }
+        for(String x : categories){
+            ArrayList<String> temp = new ArrayList<String>();
 
+            for (int i = 0; i < stringTable.size(); ++i) {
+                if(stringTable.get(i).get(CATEGORY_INDEX).equals(x)){
+                    temp.add(stringTable.get(i).get(SHORTDESC_INDEX));
+                }
+
+            }
+            categoryToItemsList.put(x, temp);
+        }
 
 
     }
@@ -66,18 +78,20 @@ public class Model extends Observable{
 
     public void load(String file) throws IOException {
 
+
         Scanner line, in;
         in = new Scanner(new BufferedReader(new FileReader(file)));
         String firstLine = in.nextLine();
+        int lineNumber=-1;
         int stringColumns = 3;//Used as a constant, to selectively ignore the first (three) columns of the csv file
         String[] headerLabels = firstLine.split(", ");
         for (int i = stringColumns; i < headerLabels.length; i++) {
-            headers.add(headerLabels[i]);
+            nutrientHeaders.add(headerLabels[i]);
         }
-        labelToIndex = new Hashtable<String, Integer>(headers.size());
-        for (int i = 0; i < headers.size(); ++i)
-            labelToIndex.put(labels.get(i), i);
 
+        labelToIndex = new Hashtable<String, Integer>(nutrientHeaders.size());
+        for (int i = 0; i < nutrientHeaders.size(); ++i)
+            labelToIndex.put(labels.get(i), i);
         while (in.hasNextLine()) {
             ArrayList<Double> tempData = new ArrayList<Double>(labels.size());
             line = new Scanner(in.nextLine());
@@ -92,7 +106,8 @@ public class Model extends Observable{
 
             }//Now that strings are done, grab numbers:
 
-
+            nameToRowIndex.put(tempString.get(SHORTDESC_INDEX), ++lineNumber);
+            if(!categories.contains(tempString.get(CATEGORY_INDEX))) categories.add(tempString.get(CATEGORY_INDEX));//Add categories if they aren't already there
             stringTable.add(tempString);
             while (line.hasNext()){
                 if (line.hasNextDouble()) {
@@ -121,7 +136,7 @@ public class Model extends Observable{
     }
 
     public List<String> getNutrients() {
-        return labels;
+        return nutrientHeaders;
     }
 
     public void addSelectedItem(String selectedItem) {
@@ -133,5 +148,9 @@ public class Model extends Observable{
             totalNutrients.set(i, holds);
         }
         notifyObservers();
+    }
+
+    public ArrayList<ArrayList<String>> getStringTable(){
+        return stringTable;
     }
 }

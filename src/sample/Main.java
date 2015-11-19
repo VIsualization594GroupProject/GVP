@@ -24,12 +24,6 @@ public class Main extends Application {
     static Controller controller;
     static Parent root;
 
-    static void prepComboBox(ComboBox c, int selected) {//Sets a combobox to contain the labels
-        c.setVisibleRowCount(4);
-        ObservableList<String> list = FXCollections.observableList(model.getNutrients());
-        c.setItems(list);
-        c.setValue(list.get(selected));
-    }
     @Override
     public void start(Stage primaryStage) throws Exception{
         URL location = getClass().getResource("sample.fxml");

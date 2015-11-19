@@ -55,7 +55,7 @@ public class NutrientCalculator {
     }
 
     private void calculateBMR() {
-        if(female){
+        if(male){
             BMR = 88.362 + (13.397*weight) + (4.799 *height) - (5.677 *age); // Male BMR
         }
         else{
@@ -66,12 +66,11 @@ public class NutrientCalculator {
     private void calculateGoals() {
         // Calories
         double tempCalories = 0;
-        tempCalories = (double)Math.round(BMR * exc_factor);
+        tempCalories = (double)Math.round(BMR * exerciseFactor);
         goals.put(model.goalNames[0], tempCalories);
 
         //
-        double tempCalories = 0;
-        tempCalories = (double)Math.round(BMR * exc_factor);
+        tempCalories = (double)Math.round(BMR * exerciseFactor);
         goals.put(model.goalNames[0], tempCalories);
 
     }

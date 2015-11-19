@@ -1,9 +1,13 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -21,6 +25,16 @@ public class Controller implements Observer {
         model = m;
     }
 
+
+    static void prepComboBox(ComboBox c, List<String> strings) {//Sets a combobox to contain the labels
+        ObservableList<String> list = FXCollections.observableList(strings);
+        c.setItems(list);
+        c.setValue(list.get(0));
+    }
+
+    public void initComboBoxes(){
+
+    }
 
     public void makeBreakfastFocus(Event event) {//This is a change
         System.err.println("Breakfast is focus (really)");
