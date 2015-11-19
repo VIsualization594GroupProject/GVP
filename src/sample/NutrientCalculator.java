@@ -3,6 +3,7 @@ package sample;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.List;
 
 /**
  * Created by Isaac on 11/17/2015.
@@ -14,6 +15,7 @@ public class NutrientCalculator {
     Hashtable<String, Double> goals = new Hashtable<String, Double>();
 
     public enum ExerciseLevel{Sedentary, Low, Moderate, Active, Strenous}
+    public static List<ExerciseLevel> allLevels = new ArrayList<ExerciseLevel>(5);
     ExerciseLevel exerciseLevel = ExerciseLevel.Moderate;
     double exerciseFactor;
 
@@ -27,6 +29,11 @@ public class NutrientCalculator {
 
     NutrientCalculator(Model m){
         model = m;
+        allLevels.add(ExerciseLevel.Sedentary);
+        allLevels.add(ExerciseLevel.Low);
+        allLevels.add(ExerciseLevel.Moderate);
+        allLevels.add(ExerciseLevel.Active);
+        allLevels.add(ExerciseLevel.Strenous);
 
     }
 

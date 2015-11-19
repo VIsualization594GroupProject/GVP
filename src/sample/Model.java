@@ -66,13 +66,16 @@ public class Model extends Observable{
     }
 
 
+    public Hashtable<String, ArrayList<String>> getCategoryToItemsList(){
+        return categoryToItemsList;
+    }
     public void updateNutrientCalcBasedonPersonalDetails(){
         nutrients.GenerateNewGoalsUsingAgeEtc();
     }
 
 
     Model(){
-        this("USDAmodifiedFile.csv");
+        this("USDAmodifiedFile.txt");
         //Do stuff
     }
 
@@ -83,8 +86,8 @@ public class Model extends Observable{
         in = new Scanner(new BufferedReader(new FileReader(file)));
         String firstLine = in.nextLine();
         int lineNumber=-1;
-        int stringColumns = 3;//Used as a constant, to selectively ignore the first (three) columns of the csv file
-        String[] headerLabels = firstLine.split(", ");
+        int stringColumns = 4;//Used as a constant, to selectively ignore the first (three) columns of the csv file
+        String[] headerLabels = firstLine.split("\t");
         for (int i = stringColumns; i < headerLabels.length; i++) {
             nutrientHeaders.add(headerLabels[i]);
         }
@@ -95,7 +98,7 @@ public class Model extends Observable{
         while (in.hasNextLine()) {
             ArrayList<Double> tempData = new ArrayList<Double>(labels.size());
             line = new Scanner(in.nextLine());
-            line.useDelimiter(", ");
+            line.useDelimiter("\t");
             //Except for the first line, csv should have a couple of strings which go in stringTable, then the rest
             //go in table; if I missed other string descriptors, change i's bound for that case.
             ArrayList<String> tempString = new ArrayList<String>(stringColumns);
