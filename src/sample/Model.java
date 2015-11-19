@@ -94,7 +94,7 @@ public class Model extends Observable{
 
         labelToIndex = new Hashtable<String, Integer>(nutrientHeaders.size());
         for (int i = 0; i < nutrientHeaders.size(); ++i)
-            labelToIndex.put(labels.get(i), i);
+            labelToIndex.put(nutrientHeaders.get(i), i);
         while (in.hasNextLine()) {
             ArrayList<Double> tempData = new ArrayList<Double>(labels.size());
             line = new Scanner(in.nextLine());

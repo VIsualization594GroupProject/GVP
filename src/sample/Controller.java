@@ -4,8 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 
 import java.util.*;
 
@@ -21,52 +20,65 @@ public class Controller implements Observer {
     ListView focus;
     public void setModel(Model m){
         model = m;
+        init();
     }
+
+
     ArrayList<String> categoryList;
-    ComboBox category, food, gender, activity, trackNutrient1, trackNutrient2, trackNutrient3, trackNutrient4,
-        trackNutrient5;
+    static ComboBox category, food, gender, activity;
+    static ComboBox[] trackNutrient = new ComboBox[5];
+    static Label [] nutrientLabels = new Label[5], warningLabels=new Label[5];
+    static ProgressBar[] progressBars = new ProgressBar[5];
+    static List<String> genderList, activityList;
 
-
-    static void prepComboBox(ComboBox c, List<String> strings) {//Sets a combobox to contain the labels
+    static void prepComboBox(ComboBox<String> c, List<String> strings) {//Sets a combobox to contain the labels
         ObservableList<String> list = FXCollections.observableList(strings);
         c.setItems(list);
+        SelectionModel s = c.getSelectionModel();
         c.setValue(list.get(0));
+        //c.setPromptText(null);
     }
+    private void init() {
+//data structures
+        genderList = new ArrayList<String>(2);
+        genderList.add("Male");
+        genderList.add("Female");
+        activityList = new ArrayList<String>(5);
+        for(NutrientCalculator.ExerciseLevel x : NutrientCalculator.allLevels){
+            activityList.add(x.toString());
+        }
+
+        for (int i = 0; i < 5 ; ++i) {
+            nutrientLabels[i] = (Label) Main.root.lookup("#nutrientLabel"+(i+1));
+            warningLabels[i] = (Label) Main.root.lookup("#warningLabel" + (i+1));
+            progressBars[i] = (ProgressBar) Main.root.lookup("#nutrientProgress"+(i+1));
+            warningLabels[i].setVisible(false);
+            progressBars[i].setStyle("-fx-accent: pink");
+            trackNutrient[i]= (ComboBox)Main.root.lookup("#trackNutrient"+(i+1));
+        }
+
+        initComboBoxes();
+
+    }
+
 
     public void initComboBoxes(){
        Hashtable<String, ArrayList<String>> categories= model.getCategoryToItemsList();
-        category = (ComboBox) Main.root.lookup("#categoryCombo");
+        category = (ComboBox<String>) Main.root.lookup("#categoryCombo");
         food = (ComboBox)Main.root.lookup("#foodCombo");
         gender= (ComboBox)Main.root.lookup("#genderCombo");
         activity= (ComboBox)Main.root.lookup("#activityCombo");
-        trackNutrient1= (ComboBox)Main.root.lookup("#trackNutrient1");
-        trackNutrient2= (ComboBox)Main.root.lookup("#trackNutrient2");
-        trackNutrient3= (ComboBox)Main.root.lookup("#trackNutrient3");
-        trackNutrient4= (ComboBox)Main.root.lookup("#trackNutrient4");
-        trackNutrient5= (ComboBox)Main.root.lookup("#trackNutrient5");
+
         categoryList = new ArrayList<String>();
         for(String x : categories.keySet())categoryList.add(x);
         prepComboBox(category, categoryList);
         prepComboBox(food, categories.get(categoryList.get(0)));
-        List<String>tempList = new ArrayList();
-        tempList.add("Male");
-        tempList.add("Female");
-        prepComboBox(gender, tempList);
-        tempList.clear();
-        for(NutrientCalculator.ExerciseLevel x : NutrientCalculator.allLevels){
-            tempList.add(x.toString());
+        prepComboBox(gender, genderList);
+        prepComboBox(activity, activityList);
+        for (int i = 0; i < 5; i++) {
+            prepComboBox(trackNutrient[i], model.getNutrients());
+            trackNutrient[i].setValue(model.getNutrients().get(i));
         }
-        prepComboBox(activity, tempList);
-        tempList.clear();
-        prepComboBox(trackNutrient1, model.getNutrients());
-        prepComboBox(trackNutrient2, model.getNutrients());
-        prepComboBox(trackNutrient3, model.getNutrients());
-        prepComboBox(trackNutrient4, model.getNutrients());
-        prepComboBox(trackNutrient5, model.getNutrients());
-        trackNutrient2.setValue(model.getNutrients().get(1));
-        trackNutrient3.setValue(model.getNutrients().get(2));
-        trackNutrient4.setValue(model.getNutrients().get(3));
-        trackNutrient5.setValue(model.getNutrients().get(4));
 
     }
 
@@ -125,5 +137,33 @@ public class Controller implements Observer {
     public void calculateStuff(ActionEvent actionEvent) {
         model.updateNutrientCalcBasedonPersonalDetails();
         System.err.println("Calculating things on click");
+    }
+
+    private void changeBoxAndAssigns(int i) {
+        String newLabel = trackNutrient[i].getValue().toString();
+        //TODO: Implement goal logic
+        //warningLabels[i].setVisible(overGoal(i));
+        nutrientLabels[i].setText(newLabel);
+        progressBars[i].setProgress(.3*i);
+
+    }
+
+
+    public void updateBox1(ActionEvent actionEvent) {
+        changeBoxAndAssigns(0);
+    }
+
+
+    public void updateBox2(ActionEvent actionEvent) {
+        changeBoxAndAssigns(1);
+    }
+    public void updateBox3(ActionEvent actionEvent) {
+        changeBoxAndAssigns(2);
+    }
+    public void updateBox4(ActionEvent actionEvent) {
+     changeBoxAndAssigns(3);
+    }
+    public void updateBox5(ActionEvent actionEvent) {
+    changeBoxAndAssigns(4);
     }
 }

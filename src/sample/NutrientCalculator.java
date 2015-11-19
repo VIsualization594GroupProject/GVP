@@ -81,7 +81,7 @@ public class NutrientCalculator {
         goals.put(model.goalNames[1], tempTotalFat);
 
         // Total Fat
-        double tempTotalFat = 0;
+        tempTotalFat = 0;
         tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/4);
         goals.put(model.goalNames[1], tempTotalFat);
     }
