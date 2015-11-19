@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -65,6 +66,7 @@ public class NutrientCalculator {
             BMR = 447.593 + (9.247*weight) + (3.098 *height) - (4.330 *age); // Female BMR
         }
     }
+
 
     private void calculateGoals() {
         // 0 - Calories
@@ -170,13 +172,13 @@ public class NutrientCalculator {
             tempIron = 8;
         } else if (age > 13 &&  age <= 18 && male){
             tempIron = 11;
-        } else if (age > 13 &&  age <= 18 && ! male){
+        } else if (age > 13 &&  age <= 18 && !male){
             tempIron = 15;
         } else if (age > 18 && male){
             tempIron = 8;
-        } else if (age > 18 &&  age <= 50 && ! male){
+        } else if (age > 18 &&  age <= 50 && !male){
             tempIron = 18;
-        } else if (age > 50 && ! male){
+        } else if (age > 50 && !male){
             tempIron = 8;
         }
         goals.put(model.goalNames[11], tempIron);
@@ -191,9 +193,9 @@ public class NutrientCalculator {
             tempZinc = 8;
         } else if (age > 13 && male){
             tempZinc = 11;
-        } else if (age > 13 && age <= 18 && ! male){
+        } else if (age > 13 && age <= 18 && !male){
             tempZinc = 9;
-        } else if (age > 18 && ! male){
+        } else if (age > 18 && !male){
             tempZinc = 8;
         }
         goals.put(model.goalNames[12], tempZinc);
@@ -210,7 +212,7 @@ public class NutrientCalculator {
             tempVitaminA = 1000;
         } else if (age > 18 && male){
             tempVitaminA = 3000;
-        } else if (age > 18 && ! male){
+        } else if (age > 18 && !male){
             tempVitaminA = 2300;
         }
         goals.put(model.goalNames[13], tempVitaminA);
@@ -225,9 +227,9 @@ public class NutrientCalculator {
             tempVitaminB6 = 1.0;
         } else if (age > 13 && male){
             tempVitaminB6 = 1.3;
-        } else if (age > 13 && age <= 18 && ! male){
+        } else if (age > 13 && age <= 18 && !male){
             tempVitaminB6 = 1.2;
-        } else if (age > 18 && ! male){
+        } else if (age > 18 && !male){
             tempVitaminB6 = 1.7;
         }
         goals.put(model.goalNames[14], tempVitaminB6);

@@ -142,6 +142,7 @@ public class Model extends Observable{
         return nutrientHeaders;
     }
 
+    //Adds the selected item to the totalNutrients array
     public void addSelectedItem(String selectedItem) {
         double holds;
         int row = nameToRowIndex.get(selectedItem);
