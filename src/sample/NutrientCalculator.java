@@ -67,9 +67,6 @@ public class NutrientCalculator {
         }
     }
 
-    //String[] goalNames = {0"Calories,1Total Fat (g),2Saturated Fat (g),3Cholesterol (g),4Sodium (mg),5Carbohydrates (g),
-    // 6Sugar (g),7Dietary Fiber (g),8Protein (g),9Calcium (mg),10Potassium (mg),11Iron (mg),12Zinc (mg),13Vitamin A (IU),
-    // 14Vitamin B6 (mg),15Vitamin B12 (mcg),16Vitamin C (mg),17Vitamin D (IU),18Vitamin E (mg)
 
     private void calculateGoals() {
         // 0 - Calories
@@ -98,25 +95,85 @@ public class NutrientCalculator {
         double tempSodium = 0;
         if (age <= 3){
             tempSodium = 1000;
-        } else if
-                (age > 3 and  age <= 9 ){
+        } else if (age > 3 and  age <= 9 ){
             tempSodium = 12000;
-        } else if
-                (age > 9 and  age <= 50 ){
+        } else if (age > 9 and  age <= 50 ){
             tempSodium = 1500;
-        } else if
-                (age > 50 and  age <= 70 ){
+        } else if (age > 50 and  age <= 70 ){
             tempSodium = 1300;
-        } else if
-                (age > 70 ){
+        } else if (age > 70 ){
             tempSodium = 1200;
         }
         goals.put(model.goalNames[4], tempSodium);
 
         // 5 - Total Carbohydrates
         double tempCarbohydrates = 0;
-        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/9);
+        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.50/4);
         goals.put(model.goalNames[5], tempTotalFat);
+
+        // 6 - Sugars
+        double tempSugars = 0;
+        tempSugars = (double) Math.round(goals.get(model.goalNames[0])*0.10/4);
+        goals.put(model.goalNames[6], tempSugars);
+
+        // 7 - Dietary Fiber
+        double tempFiber = 0;
+        if (age <= 50 and male){
+            tempFiber = 38;
+        } else if (age <= 50 and not male){
+            tempFiber = 25;
+        } else if (age > 50 and male){
+            tempFiber = 30;
+        } else if (age > 50 and not male){
+            tempFiber = 21;
+        }
+        goals.put(model.goalNames[7], tempFiber);
+
+        // 8 - Protein
+        double tempProtein = 0;
+        tempProtein = (double) Math.round(goals.get(model.goalNames[0])*0.20/4);
+        goals.put(model.goalNames[8], tempProtein);
+
+        // 9 - Calcium
+        double tempCalcium = 0;
+        if (age > 0 and  age <= 3){
+            tempCalcium = 700;
+        } else if (age > 3 and  age <= 8){
+            tempCalcium = 1000;
+        } else if (age > 8 and  age <= 18){
+            tempCalcium = 1300;
+        } else if (age > 18 and  age <= 50){
+            tempCalcium = 1000;
+        } else if (age > 50) {
+            tempCalcium = 1200;
+        }
+        goals.put(model.goalNames[9], tempCalcium);
+
+        // 10 - Potassium
+        double tempPotassium = 0;
+        if (age > 0 and  age <= 3){
+            tempPotassium = 3;
+        } else if (age > 3 and  age <= 8){
+            tempPotassium = 3.8;
+        } else if (age > 8 and  age <= 13){
+            tempPotassium = 4.5;
+        } else if (age > 13){
+            tempPotassium = 4.7;
+        }
+        goals.put(model.goalNames[10], tempPotassium);
+
+        // 11 - Iron
+        double tempIron = 0;
+        if (age > 0 and  age <= 3){
+            tempIron = 3;
+        } else if (age > 3 and  age <= 8){
+            tempIron = 3.8;
+        } else if (age > 8 and  age <= 13){
+            tempIron = 4.5;
+        } else if (age > 13){
+            tempIron = 4.7;
+        }
+        goals.put(model.goalNames[10], tempIron);
 
 
 
@@ -125,7 +182,9 @@ public class NutrientCalculator {
 
 
 
-
+    //String[] goalNames = {0"Calories,1Total Fat (g),2Saturated Fat (g),3Cholesterol (g),4Sodium (mg),5Carbohydrates (g),
+    // 6Sugar (g),7Dietary Fiber (g),8Protein (g),9Calcium (mg),10Potassium (mg),11Iron (mg),12Zinc (mg),13Vitamin A (IU),
+    // 14Vitamin B6 (mg),15Vitamin B12 (mcg),16Vitamin C (mg),17Vitamin D (IU),18Vitamin E (mg)
 
 
     public void setGoal(String key, double newGoal){
