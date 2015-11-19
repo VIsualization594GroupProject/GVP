@@ -95,11 +95,11 @@ public class NutrientCalculator {
         double tempSodium = 0;
         if (age <= 3){
             tempSodium = 1000;
-        } else if (age > 3 and  age <= 9 ){
+        } else if (age > 3 &&  age <= 9 ){
             tempSodium = 12000;
-        } else if (age > 9 and  age <= 50 ){
+        } else if (age > 9 &&  age <= 50 ){
             tempSodium = 1500;
-        } else if (age > 50 and  age <= 70 ){
+        } else if (age > 50 &&  age <= 70 ){
             tempSodium = 1300;
         } else if (age > 70 ){
             tempSodium = 1200;
@@ -118,13 +118,13 @@ public class NutrientCalculator {
 
         // 7 - Dietary Fiber
         double tempFiber = 0;
-        if (age <= 50 and male){
+        if (age <= 50 && male){
             tempFiber = 38;
-        } else if (age <= 50 and not male){
+        } else if (age <= 50 && !male){
             tempFiber = 25;
-        } else if (age > 50 and male){
+        } else if (age > 50 && male){
             tempFiber = 30;
-        } else if (age > 50 and not male){
+        } else if (age > 50 && !male){
             tempFiber = 21;
         }
         goals.put(model.goalNames[7], tempFiber);
@@ -136,13 +136,13 @@ public class NutrientCalculator {
 
         // 9 - Calcium
         double tempCalcium = 0;
-        if (age > 0 and  age <= 3){
+        if (age > 0 &&  age <= 3){
             tempCalcium = 700;
-        } else if (age > 3 and  age <= 8){
+        } else if (age > 3 &&  age <= 8){
             tempCalcium = 1000;
-        } else if (age > 8 and  age <= 18){
+        } else if (age > 8 &&  age <= 18){
             tempCalcium = 1300;
-        } else if (age > 18 and  age <= 50){
+        } else if (age > 18 &&  age <= 50){
             tempCalcium = 1000;
         } else if (age > 50) {
             tempCalcium = 1200;
@@ -151,11 +151,11 @@ public class NutrientCalculator {
 
         // 10 - Potassium
         double tempPotassium = 0;
-        if (age > 0 and  age <= 3){
+        if (age > 0 &&  age <= 3){
             tempPotassium = 3;
-        } else if (age > 3 and  age <= 8){
+        } else if (age > 3 &&  age <= 8){
             tempPotassium = 3.8;
-        } else if (age > 8 and  age <= 13){
+        } else if (age > 8 &&  age <= 13){
             tempPotassium = 4.5;
         } else if (age > 13){
             tempPotassium = 4.7;
@@ -164,83 +164,83 @@ public class NutrientCalculator {
 
         // 11 - Iron
         double tempIron = 0;
-        if (age > 0 and  age <= 3){
+        if (age > 0 &&  age <= 3){
             tempIron = 7;
-        } else if (age > 3 and  age <= 8){
+        } else if (age > 3 &&  age <= 8){
             tempIron = 10;
-        } else if (age > 8 and  age <= 13){
+        } else if (age > 8 &&  age <= 13){
             tempIron = 8;
-        } else if (age > 13 and  age <= 18 and male){
+        } else if (age > 13 &&  age <= 18 && male){
             tempIron = 11;
-        } else if (age > 13 and  age <= 18 and not male){
+        } else if (age > 13 &&  age <= 18 && !male){
             tempIron = 15;
-        } else if (age > 18 and male){
+        } else if (age > 18 && male){
             tempIron = 8;
-        } else if (age > 18 and  age <= 50 and not male){
+        } else if (age > 18 &&  age <= 50 && !male){
             tempIron = 18;
-        } else if (age > 50 and not male){
+        } else if (age > 50 && !male){
             tempIron = 8;
         }
         goals.put(model.goalNames[11], tempIron);
 
         // 12 - Zinc
         double tempZinc = 0;
-        if (age > 0 and  age <= 3){
+        if (age > 0 &&  age <= 3){
             tempZinc = 3;
-        } else if (age > 3 and  age <= 8){
+        } else if (age > 3 &&  age <= 8){
             tempZinc = 5;
-        } else if (age > 8 and  age <= 13){
+        } else if (age > 8 &&  age <= 13){
             tempZinc = 8;
-        } else if (age > 13 and male){
+        } else if (age > 13 && male){
             tempZinc = 11;
-        } else if (age > 13 and age <= 18 and not male){
+        } else if (age > 13 && age <= 18 && !male){
             tempZinc = 9;
-        } else if (age > 18 and not male){
+        } else if (age > 18 && !male){
             tempZinc = 8;
         }
         goals.put(model.goalNames[12], tempZinc);
 
         // 13 - Vitamin A
         double tempVitaminA = 0;
-        if (age > 0 and  age <= 3){
+        if (age > 0 &&  age <= 3){
             tempVitaminA = 1000;
-        } else if (age > 3 and  age <= 8){
+        } else if (age > 3 &&  age <= 8){
             tempVitaminA = 1300;
-        } else if (age > 8 and  age <= 13){
+        } else if (age > 8 &&  age <= 13){
             tempVitaminA = 2000;
-        } else if (age > 13 and age <= 18){
+        } else if (age > 13 && age <= 18){
             tempVitaminA = 1000;
-        } else if (age > 18 and male){
+        } else if (age > 18 && male){
             tempVitaminA = 3000;
-        } else if (age > 18 and not male){
+        } else if (age > 18 && !male){
             tempVitaminA = 2300;
         }
         goals.put(model.goalNames[13], tempVitaminA);
 
         // 14 - Vitamin B6
         double tempVitaminB6 = 0;
-        if (age > 0 and  age <= 3){
+        if (age > 0 &&  age <= 3){
             tempVitaminB6 = 0.5;
-        } else if (age > 3 and  age <= 8){
+        } else if (age > 3 &&  age <= 8){
             tempVitaminB6 = 0.6;
-        } else if (age > 8 and  age <= 13){
+        } else if (age > 8 &&  age <= 13){
             tempVitaminB6 = 1.0;
-        } else if (age > 13 and male){
+        } else if (age > 13 && male){
             tempVitaminB6 = 1.3;
-        } else if (age > 13 and age <= 18 and not male){
+        } else if (age > 13 && age <= 18 && !male){
             tempVitaminB6 = 1.2;
-        } else if (age > 18 and not male){
+        } else if (age > 18 && !male){
             tempVitaminB6 = 1.7;
         }
         goals.put(model.goalNames[14], tempVitaminB6);
 
         // 15 - Vitamin B12
         double tempVitaminB12 = 0;
-        if (age > 0 and  age <= 3){
+        if (age > 0 &&  age <= 3){
             tempVitaminB12 = 0.9;
-        } else if (age > 3 and  age <= 8){
+        } else if (age > 3 &&  age <= 8){
             tempVitaminB12 = 1.2;
-        } else if (age > 8 and  age <= 13){
+        } else if (age > 8 &&  age <= 13){
             tempVitaminB12 = 1.8;
         } else if (age > 13){
             tempVitaminB12 = 2.4;
@@ -249,19 +249,19 @@ public class NutrientCalculator {
 
         // 16 - Vitamin C
         double tempVitaminC = 0;
-        if (age > 0 and  age <= 3){
+        if (age > 0 &&  age <= 3){
             tempVitaminC = 15;
-        } else if (age > 3 and  age <= 8){
+        } else if (age > 3 &&  age <= 8){
             tempVitaminC = 25;
-        } else if (age > 8 and  age <= 13){
+        } else if (age > 8 &&  age <= 13){
             tempVitaminC = 45;
-        } else if (age > 13 and  age <= 18 and male){
+        } else if (age > 13 &&  age <= 18 && male){
             tempVitaminC = 75;
-        } else if (age > 13 and  age <= 18 and male){
+        } else if (age > 13 &&  age <= 18 && male){
             tempVitaminC = 65;
-        } else if (age > 18 and male){
+        } else if (age > 18 && male){
             tempVitaminC = 90;
-        } else if (age > 18  and male){
+        } else if (age > 18  && male){
             tempVitaminC = 75;
         }
         goals.put(model.goalNames[16], tempVitaminC);
@@ -273,11 +273,11 @@ public class NutrientCalculator {
 
         // 18 - Vitamin E
         double tempVitaminE = 0;
-        if (age > 0 and  age <= 3){
+        if (age > 0 &&  age <= 3){
             tempVitaminE = 13;
-        } else if (age > 3 and  age <= 8){
+        } else if (age > 3 &&  age <= 8){
             tempVitaminE = 16;
-        } else if (age > 8 and  age <= 13){
+        } else if (age > 8 &&  age <= 13){
             tempVitaminE = 24;
         } else if (age > 13){
             tempVitaminE = 33;
