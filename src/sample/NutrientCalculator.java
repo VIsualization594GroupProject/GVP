@@ -21,9 +21,7 @@ public class NutrientCalculator {
 
     Model model;
 
-    //String[] goalNames = {0"Calories,1Total Fat (g),2Saturated Fat (g),3Cholesterol (g),4Sodium (mg),5Carbohydrates (g),
-    // 6Sugar (g),7Dietary Fiber (g),8Protein (g),9Calcium (mg),10Potassium (mg),11Iron (mg),12Zinc (mg),13Vitamin A (IU),
-    // 14Vitamin B6 (mg),15Vitamin B12 (mcg),16Vitamin C (mg),17Vitamin D (IU),18Vitamin E (mg)
+
 
 
     NutrientCalculator(Model m){
@@ -69,22 +67,66 @@ public class NutrientCalculator {
         }
     }
 
+    //String[] goalNames = {0"Calories,1Total Fat (g),2Saturated Fat (g),3Cholesterol (g),4Sodium (mg),5Carbohydrates (g),
+    // 6Sugar (g),7Dietary Fiber (g),8Protein (g),9Calcium (mg),10Potassium (mg),11Iron (mg),12Zinc (mg),13Vitamin A (IU),
+    // 14Vitamin B6 (mg),15Vitamin B12 (mcg),16Vitamin C (mg),17Vitamin D (IU),18Vitamin E (mg)
+
     private void calculateGoals() {
-        // Calories
+        // 0 - Calories
         double tempCalories = 0;
         tempCalories = (double) Math.round(BMR * exerciseFactor);
         goals.put(model.goalNames[0], tempCalories);
 
-        // Total Fat
+        // 1 - Total Fat
         double tempTotalFat = 0;
-        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/4);
+        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/9);
         goals.put(model.goalNames[1], tempTotalFat);
 
-        // Total Fat
-        double tempTotalFat = 0;
-        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/4);
-        goals.put(model.goalNames[1], tempTotalFat);
+        // 2 - Saturated Fat
+        double tempSaturatedFat = 0;
+        tempSaturatedFat = (double) Math.round(goals.get(model.goalNames[0])*0.07/9);
+        if (tempSaturatedFat > 26){
+            tempSaturatedFat = 26; // max recommended value for adults
+        }
+        goals.put(model.goalNames[2], tempSaturatedFat);
+
+        // 3 - Cholesterol
+        double tempCholesterol = 300; // max recommended value for everyone? except heart patients =200
+        goals.put(model.goalNames[3], tempCholesterol);
+
+        // 4 - Sodium
+        double tempSodium = 0;
+        if (age <= 3){
+            tempSodium = 1000;
+        } else if
+                (age > 3 and  age <= 9 ){
+            tempSodium = 12000;
+        } else if
+                (age > 9 and  age <= 50 ){
+            tempSodium = 1500;
+        } else if
+                (age > 50 and  age <= 70 ){
+            tempSodium = 1300;
+        } else if
+                (age > 70 ){
+            tempSodium = 1200;
+        }
+        goals.put(model.goalNames[4], tempSodium);
+
+        // 5 - Total Carbohydrates
+        double tempCarbohydrates = 0;
+        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/9);
+        goals.put(model.goalNames[5], tempTotalFat);
+
+
+
+
     }
+
+
+
+
+
 
     public void setGoal(String key, double newGoal){
         goals.put(key, newGoal);
