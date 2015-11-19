@@ -217,22 +217,72 @@ public class NutrientCalculator {
         }
         goals.put(model.goalNames[13], tempVitaminA);
 
-        // 13 - Vitamin B6
+        // 14 - Vitamin B6
         double tempVitaminB6 = 0;
         if (age > 0 and  age <= 3){
-            tempVitaminB6 = 1000;
+            tempVitaminB6 = 0.5;
         } else if (age > 3 and  age <= 8){
-            tempVitaminB6 = 1300;
+            tempVitaminB6 = 0.6;
         } else if (age > 8 and  age <= 13){
-            tempVitaminB6 = 2000;
-        } else if (age > 13 and age <= 18){
-            tempVitaminB6 = 1000;
-        } else if (age > 18 and male){
-            tempVitaminB6 = 3000;
+            tempVitaminB6 = 1.0;
+        } else if (age > 13 and male){
+            tempVitaminB6 = 1.3;
+        } else if (age > 13 and age <= 18 and not male){
+            tempVitaminB6 = 1.2;
         } else if (age > 18 and not male){
-            tempVitaminB6 = 2300;
+            tempVitaminB6 = 1.7;
         }
-        goals.put(model.goalNames[13], tempVitaminB6);
+        goals.put(model.goalNames[14], tempVitaminB6);
+
+        // 15 - Vitamin B12
+        double tempVitaminB12 = 0;
+        if (age > 0 and  age <= 3){
+            tempVitaminB12 = 0.9;
+        } else if (age > 3 and  age <= 8){
+            tempVitaminB12 = 1.2;
+        } else if (age > 8 and  age <= 13){
+            tempVitaminB12 = 1.8;
+        } else if (age > 13){
+            tempVitaminB12 = 2.4;
+        }
+        goals.put(model.goalNames[15], tempVitaminB12);
+
+        // 16 - Vitamin C
+        double tempVitaminC = 0;
+        if (age > 0 and  age <= 3){
+            tempVitaminC = 15;
+        } else if (age > 3 and  age <= 8){
+            tempVitaminC = 25;
+        } else if (age > 8 and  age <= 13){
+            tempVitaminC = 45;
+        } else if (age > 13 and  age <= 18 and male){
+            tempVitaminC = 75;
+        } else if (age > 13 and  age <= 18 and male){
+            tempVitaminC = 65;
+        } else if (age > 18 and male){
+            tempVitaminC = 90;
+        } else if (age > 18  and male){
+            tempVitaminC = 75;
+        }
+        goals.put(model.goalNames[16], tempVitaminC);
+
+        // 17 - Vitamin D
+        double tempVitaminD = 0;
+        tempVitaminD = 600; // for everyone!
+        goals.put(model.goalNames[17], tempVitaminD);
+
+        // 18 - Vitamin E
+        double tempVitaminE = 0;
+        if (age > 0 and  age <= 3){
+            tempVitaminE = 13;
+        } else if (age > 3 and  age <= 8){
+            tempVitaminE = 16;
+        } else if (age > 8 and  age <= 13){
+            tempVitaminE = 24;
+        } else if (age > 13){
+            tempVitaminE = 33;
+        }
+        goals.put(model.goalNames[18], tempVitaminE);
 
 
 
