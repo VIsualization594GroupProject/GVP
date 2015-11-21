@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.text.DecimalFormat;
 import java.text.Format;
@@ -68,10 +71,11 @@ public class Controller implements Observer {
 
     public void initComboBoxes(){
        Hashtable<String, ArrayList<String>> categories= model.getCategoryToItemsList();
-        category = (ComboBox<String>) Main.root.lookup("#categoryCombo");
+        category = (ComboBox) Main.root.lookup("#categoryCombo");
         food = (ComboBox)Main.root.lookup("#foodCombo");
         gender= (ComboBox)Main.root.lookup("#genderCombo");
         activity= (ComboBox)Main.root.lookup("#activityCombo");
+
 
         categoryList = new ArrayList<String>();
         for(String x : categories.keySet())categoryList.add(x);
@@ -80,11 +84,35 @@ public class Controller implements Observer {
         prepComboBox(category, categoryList);
         prepComboBox(gender, genderList);
         prepComboBox(activity, activityList);
+        addListenerForCompletion(food, model.getCategoryToItemsList().get(categoryList.get(0)));
+        food.setOnKeyReleased(boxHandler);
         for (int i = 0; i < 5; i++) {
             prepComboBox(trackNutrient[i], model.getNutrients());
             trackNutrient[i].setValue(model.getNutrients().get(i));
         }
 
+    }
+
+
+    EventHandler<KeyEvent> boxHandler;
+    public void addListenerForCompletion(final ComboBox<String> box, final ArrayList<String> original){
+        boxHandler = new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                //Ignore system/nav strokes
+                if (event.isControlDown() || event.getCode() == KeyCode.BACK_SPACE ||
+                        event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.LEFT ||
+                        event.getCode() == KeyCode.DELETE || event.getCode() == KeyCode.HOME ||
+                        event.getCode() == KeyCode.END || event.getCode() == KeyCode.TAB
+                        )
+                    return;
+                if (event.getCode() == KeyCode.ENTER) prepComboBox(box, original);
+                String partial = box.getEditor().getText();
+                ArrayList<String> reduced = reduceArrayListFromPartialString(original, partial);
+                box.setItems(FXCollections.<String>observableArrayList(reduced));
+            }
+        };
+        box.setOnKeyReleased(boxHandler);
     }
 
     public void makeBreakfastFocus(Event event) {//This is a change
@@ -104,7 +132,22 @@ public class Controller implements Observer {
 
     }
 
+    public ArrayList<String> reduceArrayListFromPartialString(ArrayList<String> a, String partial) {
+        ArrayList<String> ret = new ArrayList<String>();
+        for (String x : a) {
+            if (x.contains(partial)) {
+                ret.add(x);
+            }
+        }
+        //return the original in case of 0 matches
+        if(ret.size() == 0) return a;
 
+        return ret;
+    }
+
+    public void reduceComboBox(ComboBox<String> c, ArrayList<String> master){
+
+    }
 
     public void addToDinner(ActionEvent actionEvent) {
         System.err.println("Dinner Stuff");
@@ -176,6 +219,16 @@ public class Controller implements Observer {
     }
 
     public void changeCategory(ActionEvent actionEvent) {
-        prepComboBox(food, model.getCategoryToItemsList().get(category.getValue().toString()));
+        ArrayList<String> list = model.getCategoryToItemsList().get(category.getValue().toString());
+        prepComboBox(food, list);
+        food.setOnKeyReleased(null);
+        addListenerForCompletion(food, list);
+        food.setOnKeyReleased(boxHandler);
+    }
+
+    public void selectText(Event event) {
+        ComboBox<String> box = (ComboBox<String>)event.getTarget();
+        box.getSelectionModel().select(0);
+
     }
 }
