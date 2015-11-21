@@ -154,6 +154,17 @@ public class Model extends Observable{
         notifyObservers();
     }
 
+    public void deleteSelectedItem(String selectedItem) {
+        double holds;
+        int row = nameToRowIndex.get(selectedItem);
+        for(int i = 0; i < table.get(row).size(); i++) {
+            holds = totalNutrients.get(i);
+            holds -= table.get(row).get(i);
+            totalNutrients.set(i, holds);
+        }
+        notifyObservers();
+    }
+
     public ArrayList<ArrayList<String>> getStringTable(){
         return stringTable;
     }
