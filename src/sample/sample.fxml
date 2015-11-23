@@ -14,7 +14,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<VBox prefHeight="644.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox prefHeight="644.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <Pane prefHeight="32.0" prefWidth="866.0">
             <children>
@@ -232,7 +232,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="763.0" layoutY="42.0" prefHeight="27.0" prefWidth="41.0" text="[string]">
+                  <Label id="ServingSizeLabel" layoutX="763.0" layoutY="42.0" prefHeight="27.0" prefWidth="41.0" text="[string]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -248,7 +248,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="736.0" layoutY="101.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="CaloriesNumberLabel" layoutX="736.0" layoutY="101.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -259,7 +259,7 @@
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="736.0" layoutY="121.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="TotalFatGramsLabel" layoutX="736.0" layoutY="121.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -274,7 +274,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="777.0" layoutY="142.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="SaturatedFatGramsLabel" layoutX="777.0" layoutY="142.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -292,12 +292,12 @@
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="754.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="CholesterolMilligramsLabel" layoutX="754.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="777.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                  <Label layoutX="777.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="mg">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -308,12 +308,12 @@
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="736.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="SodiumMilligramsLabel" layoutX="736.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="759.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                  <Label layoutX="759.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="mg">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -324,7 +324,7 @@
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="806.0" layoutY="206.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="TotalCarbohydratesGramsLabel" layoutX="806.0" layoutY="206.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -340,7 +340,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="741.0" layoutY="227.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="SugarsGramsLabel" layoutX="741.0" layoutY="227.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -356,7 +356,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="773.0" layoutY="248.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="DietaryFiberGramsLabel" layoutX="773.0" layoutY="248.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -372,7 +372,7 @@
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="736.0" layoutY="270.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="ProteinGramsLabel" layoutX="736.0" layoutY="270.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -383,22 +383,12 @@
                      </font>
                   </Label>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="6.0" layoutX="683.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="217.0" />
-                  <Label layoutX="788.0" layoutY="101.0" prefHeight="21.0" prefWidth="98.0" text="Calories from fat">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="880.0" layoutY="101.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="823.0" layoutY="122.0" prefHeight="21.0" prefWidth="77.0" text="\% Daily Value*">
+                  <Label alignment="CENTER_RIGHT" layoutX="823.0" layoutY="79.0" prefHeight="21.0" prefWidth="77.0" text="\% Daily Value*">
                      <font>
                         <Font name="Arial" size="10.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="142.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="SaturatedFatPercentLabel" layoutX="864.0" layoutY="142.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -408,7 +398,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="CholesterolPercentLabel" layoutX="864.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -418,7 +408,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="SodiumPercentLabel" layoutX="864.0" layoutY="184.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -428,7 +418,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="206.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="TotalCarbohydratesPercentLabel" layoutX="864.0" layoutY="206.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -438,7 +428,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="227.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="SugarsPercentLabel" layoutX="864.0" layoutY="227.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -448,7 +438,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="248.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="DietaryFiberPercentLabel" layoutX="864.0" layoutY="248.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -458,7 +448,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="270.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="ProteinPercentLabel" layoutX="864.0" layoutY="270.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -473,7 +463,7 @@
                   <Line endX="108.0" layoutX="791.0" layoutY="358.0" startX="-108.0" />
                   <Line endX="108.0" layoutX="791.0" layoutY="379.0" startX="-108.0" />
                   <Line endX="108.0" layoutX="791.0" layoutY="400.0" startX="-108.0" />
-                  <Label layoutX="864.0" layoutY="294.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="PotassiumPercentLabel" layoutX="864.0" layoutY="294.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -483,7 +473,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="315.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="ZincPercentLabel" layoutX="864.0" layoutY="315.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -493,7 +483,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="337.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="VitaminCPercentLabel" layoutX="864.0" layoutY="337.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -503,7 +493,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="358.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="VitaminB12PercentLabel" layoutX="864.0" layoutY="358.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -513,7 +503,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="864.0" layoutY="379.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="VitaminEPercentLabel" layoutX="864.0" layoutY="379.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -523,7 +513,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="748.0" layoutY="295.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="CalciumPercentLabel" layoutX="748.0" layoutY="295.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -533,7 +523,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="748.0" layoutY="316.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="IronPercentLabel" layoutX="748.0" layoutY="316.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -543,7 +533,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="748.0" layoutY="338.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="VitaminAPercentLabel" layoutX="748.0" layoutY="338.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -553,7 +543,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="748.0" layoutY="359.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="VitaminB6PercentLabel" layoutX="748.0" layoutY="359.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -563,7 +553,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="748.0" layoutY="380.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="VitaminDPercentLabel" layoutX="748.0" layoutY="380.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -573,40 +563,32 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="684.0" layoutY="295.0" prefHeight="21.0" prefWidth="98.0" text="Calcium">
+                  <Label layoutX="684.0" layoutY="295.0" prefHeight="21.0" prefWidth="56.0" text="Calcium">
                      <font>
                         <Font name="Arial" size="11.0" />
                      </font>
                   </Label>
-                  <Label layoutX="684.0" layoutY="316.0" prefHeight="21.0" prefWidth="98.0" text="Iron">
+                  <Label layoutX="684.0" layoutY="316.0" prefHeight="21.0" prefWidth="56.0" text="Iron">
                      <font>
                         <Font name="Arial" size="11.0" />
                      </font>
                   </Label>
-                  <Label layoutX="684.0" layoutY="337.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin A">
+                  <Label layoutX="684.0" layoutY="337.0" prefHeight="21.0" prefWidth="56.0" text="Vitamin A">
                      <font>
                         <Font name="Arial" size="11.0" />
                      </font>
                   </Label>
-                  <Label layoutX="684.0" layoutY="359.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin B6">
+                  <Label layoutX="684.0" layoutY="359.0" prefHeight="21.0" prefWidth="56.0" text="Vitamin B6">
                      <font>
                         <Font name="Arial" size="11.0" />
                      </font>
                   </Label>
-                  <Label layoutX="684.0" layoutY="379.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin D">
+                  <Label layoutX="684.0" layoutY="379.0" prefHeight="21.0" prefWidth="56.0" text="Vitamin D">
                      <font>
                         <Font name="Arial" size="11.0" />
                      </font>
                   </Label>
-                  <Label layoutX="791.0" layoutY="338.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin C">
-                     <font>
-                        <Font name="Arial" size="11.0" />
-                     </font>
-                     <graphic>
-                        <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
-                     </graphic>
-                  </Label>
-                  <Label layoutX="791.0" layoutY="359.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin B12">
+                  <Label layoutX="791.0" layoutY="338.0" prefHeight="21.0" prefWidth="63.0" text="Vitamin C">
                      <font>
                         <Font name="Arial" size="11.0" />
                      </font>
@@ -614,7 +596,7 @@
                         <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
                      </graphic>
                   </Label>
-                  <Label layoutX="791.0" layoutY="379.0" prefHeight="21.0" prefWidth="98.0" text="Vitamin E">
+                  <Label layoutX="791.0" layoutY="359.0" prefHeight="21.0" prefWidth="74.0" text="Vitamin B12">
                      <font>
                         <Font name="Arial" size="11.0" />
                      </font>
@@ -622,7 +604,7 @@
                         <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
                      </graphic>
                   </Label>
-                  <Label layoutX="791.0" layoutY="316.0" prefHeight="21.0" prefWidth="98.0" text="Zinc">
+                  <Label layoutX="791.0" layoutY="379.0" prefHeight="21.0" prefWidth="63.0" text="Vitamin E">
                      <font>
                         <Font name="Arial" size="11.0" />
                      </font>
@@ -630,7 +612,15 @@
                         <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
                      </graphic>
                   </Label>
-                  <Label layoutX="791.0" layoutY="295.0" prefHeight="21.0" prefWidth="98.0" text="Potassium">
+                  <Label layoutX="791.0" layoutY="316.0" prefHeight="21.0" prefWidth="63.0" text="Zinc">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                     <graphic>
+                        <Circle radius="2.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Label>
+                  <Label layoutX="791.0" layoutY="295.0" prefHeight="21.0" prefWidth="63.0" text="Potassium">
                      <font>
                         <Font name="Arial" size="11.0" />
                      </font>
@@ -641,6 +631,26 @@
                   <Label layoutX="684.0" layoutY="400.0" prefHeight="21.0" prefWidth="217.0" text="* Percent daily values based on your current daily goals">
                      <font>
                         <Font name="Arial" size="8.0" />
+                     </font>
+                  </Label>
+                  <Label id="TotalFatPercentLabel" layoutX="864.0" layoutY="120.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="120.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label id="CaloriesPercentLabel" layoutX="864.0" layoutY="99.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="887.0" layoutY="99.0" prefHeight="21.0" prefWidth="22.0" text="\%">
+                     <font>
+                        <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
                     </children>
