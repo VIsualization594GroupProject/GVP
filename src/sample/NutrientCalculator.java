@@ -21,9 +21,6 @@ public class NutrientCalculator {
 
     Model model;
 
-
-
-
     NutrientCalculator(Model m){
         model = m;
         allLevels.add(ExerciseLevel.Sedentary);
@@ -66,7 +63,6 @@ public class NutrientCalculator {
             BMR = 447.593 + (9.247*weight) + (3.098 *height) - (4.330 *age); // Female BMR
         }
     }
-
 
     private void calculateGoals() {
         // 0 - Calories
@@ -284,11 +280,7 @@ public class NutrientCalculator {
         }
         goals.put(model.goalNames[18], tempVitaminE);
 
-
-
-
     }
-
 
 
     //String[] goalNames = {0"Calories,1Total Fat (g),2Saturated Fat (g),3Cholesterol (g),4Sodium (mg),5Carbohydrates (g),
