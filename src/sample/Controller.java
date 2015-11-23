@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +20,8 @@ import java.util.*;
  */
 public class Controller implements Observer {
     static Model model;
-    ListView focus;
+    static ListView<String> focus, breakfastList, lunchList, dinnerList;
+    static String selectedItem = "none";
     public void setModel(Model m){
         model = m;
         init();
@@ -26,12 +29,13 @@ public class Controller implements Observer {
 
 
     ArrayList<String> categoryList;
-    static ComboBox category, food, gender, activity;
+    static ComboBox<String> category, food, gender, activity;
     static ComboBox[] trackNutrient = new ComboBox[5];
     static Label [] nutrientLabels = new Label[5], warningLabels=new Label[5], progressTexts = new Label[5];
     static ProgressBar[] progressBars = new ProgressBar[5];
     static List<String> genderList, activityList;
     static DecimalFormat percentageFormat = new DecimalFormat("0.0%");
+    static TextField ageBox, heightBox, weightBox;
 
     static void prepComboBox(ComboBox<String> c, List<String> strings) {//Sets a combobox to contain the labels
         ObservableList<String> list = FXCollections.observableList(strings);
@@ -59,6 +63,12 @@ public class Controller implements Observer {
             trackNutrient[i]= (ComboBox)Main.root.lookup("#trackNutrient"+(i+1));
             progressTexts[i] = (Label) Main.root.lookup("#progressText"+(i+1));
         }
+        breakfastList = (ListView<String>) Main.root.lookup("#breakfastList");
+        lunchList = (ListView<String>) Main.root.lookup("#lunchList");
+        dinnerList = (ListView<String>) Main.root.lookup("#dinnerList");
+        ageBox = (TextField) Main.root.lookup("#ageBox");
+        weightBox = (TextField) Main.root.lookup("#heightBox");
+        heightBox = (TextField) Main.root.lookup("#weightBox");
 
         initComboBoxes();
 
@@ -67,11 +77,14 @@ public class Controller implements Observer {
 
     public void initComboBoxes(){
        Hashtable<String, ArrayList<String>> categories= model.getCategoryToItemsList();
-        category = (ComboBox) Main.root.lookup("#categoryCombo");
-        food = (ComboBox)Main.root.lookup("#foodCombo");
-        gender= (ComboBox)Main.root.lookup("#genderCombo");
-        activity= (ComboBox)Main.root.lookup("#activityCombo");
-
+        category = (ComboBox<String>) Main.root.lookup("#categoryCombo");
+        food = (ComboBox<String>)Main.root.lookup("#foodCombo");
+        gender= (ComboBox<String>)Main.root.lookup("#genderCombo");
+        activity= (ComboBox<String>)Main.root.lookup("#activityCombo");
+if (category == null || food == null || gender == null || activity == null){
+    System.err.println("Error building scene.");
+    System.exit(-1);
+}
 
         categoryList = new ArrayList<String>();
         for(String x : categories.keySet())categoryList.add(x);
@@ -86,24 +99,25 @@ public class Controller implements Observer {
             prepComboBox(trackNutrient[i], model.getNutrients());
             trackNutrient[i].setValue(model.getNutrients().get(i));
         }
-
+        food.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.err.println("SelectedItemChanged from " +oldValue + " to " + newValue);
+                selectedItem = newValue;
+            }
+        });
     }
 
     public void makeBreakfastFocus(Event event) {//This is a change
-        System.err.println("Breakfast is focus (really)");
-        focus = (ListView) Main.root.lookup("#BreakfastView");
-        String SelectedItem = "Temp";
-        model.addSelectedItem(SelectedItem);
+        focus = breakfastList;
     }
 
     public void makeLunchFocus(Event event) {
-        System.err.println("Lunch is focus (not really)");
-
+        focus = lunchList;
     }
 
     public void makeDinnerFocus(Event e) {
-        System.err.println("Dinner is focus (not really)");
-
+        focus = dinnerList;
     }
 
 
@@ -111,39 +125,75 @@ public class Controller implements Observer {
 
     public void addToDinner(ActionEvent actionEvent) {
         System.err.println("Dinner Stuff");
+
+        if(selectedItem.compareTo("none")!=0) {
+            dinnerList.getItems().add(selectedItem);
+            model.addSelectedItem(selectedItem);
+        }
     }
 
     public void addToLunch(ActionEvent actionEvent) {
         System.err.println("Lunch Stuff");
+        if(selectedItem.compareTo("none")!=0) {
+            lunchList.getItems().add(selectedItem);
+            model.addSelectedItem(selectedItem);
+        }
     }
 
     public void addToBreakfast(ActionEvent actionEvent) {//Official change by Anthony
         System.err.println("BreakfastStuff");
+
+        if(selectedItem.compareTo("none")!=0) {
+            breakfastList.getItems().add(selectedItem);
+            model.addSelectedItem(selectedItem);
+        }
     }
 
     public void printLabels(ActionEvent actionEvent) {//Now Sofy added this change
         System.err.println("Print Stuff");
     }
 
-    public void removeAllItems(ActionEvent actionEvent) {//This is another change
+    public void removeAllItems(ActionEvent actionEvent) {
+        //Take the items out of the model:
+        for (String x: breakfastList.getItems())
+            model.deleteSelectedItem(x);
+        for(String x: lunchList.getItems()) model.deleteSelectedItem(x);
+        for(String x: dinnerList.getItems()) model.deleteSelectedItem(x);
+        //Take the items out of the controller
+        breakfastList.getItems().clear();
+        lunchList.getItems().clear();
+        dinnerList.getItems().clear();
+
+
     }
 
 
     public void removeFocusedItem(ActionEvent actionEvent) {
+        String itemToRemove = focus.getSelectionModel().getSelectedItem();
+        model.deleteSelectedItem(itemToRemove);
+        focus.getItems().remove(itemToRemove);
+
     }
 
     @Override
-    ///This is the method that updates the
+    ///This is the method that updates info based on the model
     public void update(Observable o, Object arg) {
 
     }
-
-    public void runAlgorithm(ActionEvent actionEvent) {
-
-    }
-
+    ///This is the method that runs the nutrientCalculator in the model
     public void calculateStuff(ActionEvent actionEvent) {
-        model.updateNutrientCalcBasedonPersonalDetails();
+
+        int age=0, height=0, weight=0;
+        try {
+            age = Integer.parseInt(ageBox.getText());
+            height = Integer.parseInt(heightBox.getText());
+            weight = Integer.parseInt(weightBox.getText());
+        }
+        catch(Exception ignored){}  String genderString, activityLevel;
+        genderString = gender.getSelectionModel().getSelectedItem();
+        activityLevel = activity.getSelectionModel().getSelectedItem();
+
+        model.updateNutrientCalcBasedonPersonalDetails(age, height, weight, genderString, activityLevel);
         System.err.println("Calculating things on click");
     }
 

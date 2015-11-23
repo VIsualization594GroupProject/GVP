@@ -14,7 +14,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<VBox prefHeight="644.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox prefHeight="644.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <Pane prefHeight="32.0" prefWidth="866.0">
             <children>
@@ -38,9 +38,9 @@
                                  <font>
                                     <Font size="16.0" />
                                  </font></Label>
-                                        <TextField layoutX="141.0" layoutY="56.0" prefHeight="31.0" prefWidth="108.0" />
-                                        <TextField layoutX="141.0" layoutY="96.0" prefHeight="31.0" prefWidth="108.0" />
-                                        <TextField layoutX="141.0" layoutY="136.0" prefHeight="31.0" prefWidth="108.0" />
+                                        <TextField id="ageBox" layoutX="141.0" layoutY="56.0" prefHeight="31.0" prefWidth="108.0" />
+                                        <TextField id="weightBox" layoutX="141.0" layoutY="96.0" prefHeight="31.0" prefWidth="108.0" />
+                                        <TextField id="heightBox" layoutX="141.0" layoutY="136.0" prefHeight="31.0" prefWidth="108.0" />
                                         <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="32.0" layoutY="61.0" prefHeight="21.0" prefWidth="93.0" text="Age (Years):" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
@@ -78,11 +78,11 @@
                                     <Font size="16.0" />
                                  </font></Label>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="242.0" layoutX="15.0" layoutY="41.0" stroke="#838383a3" strokeType="INSIDE" width="254.0" />
-                              <ComboBox id="trackNutrient1" layoutX="33.0" layoutY="55.0" prefHeight="30.0" prefWidth="134.0" promptText="Calories" onAction="#updateBox1"/>
-                              <ComboBox id="trackNutrient2" layoutX="33.0" layoutY="102.0" prefHeight="30.0" prefWidth="134.0" promptText="Proteins (g)" onAction="#updateBox2"/>
-                              <ComboBox id="trackNutrient3" layoutX="33.0" layoutY="150.0" prefHeight="30.0" prefWidth="134.0" promptText="Carbohydrates (g)" onAction="#updateBox3" />
-                              <ComboBox id="trackNutrient4" layoutX="33.0" layoutY="197.0" prefHeight="30.0" prefWidth="134.0" promptText="Fats (g)" onAction="#updateBox4"/>
-                              <ComboBox id="trackNutrient5" layoutX="33.0" layoutY="243.0" prefHeight="30.0" prefWidth="134.0" promptText="Sodium (mg)" onAction="#updateBox5" />
+                              <ComboBox id="trackNutrient1" layoutX="33.0" layoutY="55.0" onAction="#updateBox1" prefHeight="30.0" prefWidth="134.0" promptText="Calories" />
+                              <ComboBox id="trackNutrient2" layoutX="33.0" layoutY="102.0" onAction="#updateBox2" prefHeight="30.0" prefWidth="134.0" promptText="Proteins (g)" />
+                              <ComboBox id="trackNutrient3" layoutX="33.0" layoutY="150.0" onAction="#updateBox3" prefHeight="30.0" prefWidth="134.0" promptText="Carbohydrates (g)" />
+                              <ComboBox id="trackNutrient4" layoutX="33.0" layoutY="197.0" onAction="#updateBox4" prefHeight="30.0" prefWidth="134.0" promptText="Fats (g)" />
+                              <ComboBox id="trackNutrient5" layoutX="33.0" layoutY="243.0" onAction="#updateBox5" prefHeight="30.0" prefWidth="134.0" promptText="Sodium (mg)" />
                               <TextField layoutX="177.0" layoutY="55.0" prefHeight="31.0" prefWidth="81.0" />
                               <TextField layoutX="177.0" layoutY="102.0" prefHeight="31.0" prefWidth="81.0" />
                               <TextField layoutX="177.0" layoutY="150.0" prefHeight="31.0" prefWidth="81.0" />
@@ -103,11 +103,11 @@
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9dada26" height="182.0" layoutX="5.0" layoutY="67.0" stroke="#838383a3" strokeType="INSIDE" width="644.0" />
                                         <Label alignment="CENTER_RIGHT" layoutX="5.0" layoutY="14.0" prefHeight="21.0" prefWidth="101.0" text="Select a category:" textAlignment="CENTER" />
                                         <Label alignment="CENTER_RIGHT" layoutX="306.0" layoutY="14.0" prefHeight="21.0" prefWidth="74.0" text="Select a food:" textAlignment="CENTER" />
-                                        <ComboBox id="categoryCombo" editable="true" layoutX="111.0" layoutY="12.0" prefHeight="25.0" prefWidth="180.0" promptText="Category" onAction="#changeCategory" />
-                                        <ComboBox id="foodCombo" editable="true" layoutX="382.0" layoutY="12.0" prefHeight="25.0" prefWidth="263.0" onMouseClicked="#selectText" promptText="Food" onAction="#selectItemFromFood" />
+                                        <ComboBox id="categoryCombo" editable="true" layoutX="111.0" layoutY="12.0" onAction="#changeCategory" prefHeight="25.0" prefWidth="180.0" promptText="Category" />
+                                        <ComboBox id="foodCombo" editable="true" layoutX="382.0" layoutY="12.0" onAction="#selectItemFromFood" onMouseClicked="#selectText" prefHeight="25.0" prefWidth="263.0" promptText="Food" />
                                         <Label alignment="CENTER" layoutX="177.0" layoutY="45.0" prefHeight="21.0" prefWidth="300.0" text="Add food to:" textAlignment="CENTER" />
                                         <Button id="removeButton" disable="true" layoutX="84.0" layoutY="261.0" mnemonicParsing="false" text="Remove Item" />
-                                        <ListView layoutX="24.0" layoutY="116.0" onDragDropped="#addToBreakfast" onMouseClicked="#makeBreakfastFocus" prefHeight="123.0" prefWidth="190.0" />
+                                        <ListView id="breakfastList" layoutX="24.0" layoutY="116.0" onDragDropped="#addToBreakfast" onMouseClicked="#makeBreakfastFocus" prefHeight="123.0" prefWidth="190.0" />
                                         <Button id="clearAllButton" disable="true" layoutX="272.0" layoutY="261.0" mnemonicParsing="false" text="Clear All Selections" />
                                         <Button layoutX="487.0" layoutY="261.0" mnemonicParsing="false" text="Print Your Plan!" />
                                         <Button layoutX="87.0" layoutY="77.0" mnemonicParsing="false" onAction="#addToBreakfast" prefHeight="32.0" prefWidth="81.0" text="Breakfast">
@@ -122,8 +122,8 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></Button>
-                                        <ListView layoutX="231.0" layoutY="116.0" onMouseClicked="#makeLunchFocus" prefHeight="123.0" prefWidth="190.0" />
-                                        <ListView layoutX="439.0" layoutY="116.0" onMouseClicked="#makeDinnerFocus" prefHeight="123.0" prefWidth="190.0" />
+                                        <ListView id="lunchList" layoutX="231.0" layoutY="116.0" onMouseClicked="#makeLunchFocus" prefHeight="123.0" prefWidth="190.0" />
+                                        <ListView id="dinnerList" layoutX="439.0" layoutY="116.0" onMouseClicked="#makeDinnerFocus" prefHeight="123.0" prefWidth="190.0" />
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="611.0">
@@ -133,78 +133,78 @@
                                  <font>
                                     <Font size="16.0" />
                                  </font></Label>
-                                        <Label id = "nutrientLabel1" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="61.0" prefHeight="21.0" prefWidth="125.0" text="Calories:" textAlignment="RIGHT">
+                                        <Label id="nutrientLabel1" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="61.0" prefHeight="21.0" prefWidth="125.0" text="Calories:" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                                        <Label id = "nutrientLabel2" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="108.0" prefHeight="21.0" prefWidth="125.0" text="Carbohydrates (g):" textAlignment="RIGHT">
+                                        <Label id="nutrientLabel2" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="108.0" prefHeight="21.0" prefWidth="125.0" text="Carbohydrates (g):" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                                        <Label id = "nutrientLabel3" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="155.0" prefHeight="21.0" prefWidth="125.0" text="Proteins (g):" textAlignment="RIGHT">
+                                        <Label id="nutrientLabel3" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="155.0" prefHeight="21.0" prefWidth="125.0" text="Proteins (g):" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                                        <Label id = "nutrientLabel4" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="206.0" prefHeight="21.0" prefWidth="125.0" text="Fats (g):" textAlignment="RIGHT">
+                                        <Label id="nutrientLabel4" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="206.0" prefHeight="21.0" prefWidth="125.0" text="Fats (g):" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                                        <Label id = "nutrientLabel5" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="251.0" prefHeight="21.0" prefWidth="125.0" text="Sodium (mg):" textAlignment="RIGHT">
+                                        <Label id="nutrientLabel5" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="251.0" prefHeight="21.0" prefWidth="125.0" text="Sodium (mg):" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                                        <ProgressBar id = "nutrientProgress1" layoutX="175.0" layoutY="58.0" prefHeight="27.0" prefWidth="403.0" progress="0.76"/>
-                                        <ProgressBar id = "nutrientProgress2" layoutX="175.0" layoutY="105.0" prefHeight="27.0" prefWidth="403.0" progress="0.35"/>
-                                        <ProgressBar id = "nutrientProgress3" layoutX="175.0" layoutY="152.0" prefHeight="27.0" prefWidth="403.0" progress="1.0"/>
-                                        <ProgressBar id = "nutrientProgress4" layoutX="175.0" layoutY="203.0" prefHeight="27.0" prefWidth="403.0" progress="0.5"/>
-                                        <ProgressBar id = "nutrientProgress5" layoutX="175.0" layoutY="248.0" prefHeight="27.0" prefWidth="403.0" progress="0.2"/>
+                                        <ProgressBar id="nutrientProgress1" layoutX="175.0" layoutY="58.0" prefHeight="27.0" prefWidth="403.0" progress="0.76" />
+                                        <ProgressBar id="nutrientProgress2" layoutX="175.0" layoutY="105.0" prefHeight="27.0" prefWidth="403.0" progress="0.35" />
+                                        <ProgressBar id="nutrientProgress3" layoutX="175.0" layoutY="152.0" prefHeight="27.0" prefWidth="403.0" progress="1.0" />
+                                        <ProgressBar id="nutrientProgress4" layoutX="175.0" layoutY="203.0" prefHeight="27.0" prefWidth="403.0" progress="0.5" />
+                                        <ProgressBar id="nutrientProgress5" layoutX="175.0" layoutY="248.0" prefHeight="27.0" prefWidth="403.0" progress="0.2" />
 
                               <Label id="progressText1" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="61.0" prefHeight="21.0" prefWidth="45.0" text="70%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label  id="progressText2"  alignment="CENTER_RIGHT" layoutX="588.0" layoutY="108.0" prefHeight="21.0" prefWidth="45.0" text="120%" textAlignment="RIGHT">
+                              <Label id="progressText2" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="108.0" prefHeight="21.0" prefWidth="45.0" text="120%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label  id="progressText3" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="155.0" prefHeight="21.0" prefWidth="45.0" text="35%" textAlignment="RIGHT">
+                              <Label id="progressText3" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="155.0" prefHeight="21.0" prefWidth="45.0" text="35%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label  id="progressText4" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="206.0" prefHeight="21.0" prefWidth="45.0" text="50%" textAlignment="RIGHT">
+                              <Label id="progressText4" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="206.0" prefHeight="21.0" prefWidth="45.0" text="50%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label  id="progressText5" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="251.0" prefHeight="21.0" prefWidth="45.0" text="20%" textAlignment="RIGHT">
+                              <Label id="progressText5" alignment="CENTER_RIGHT" layoutX="588.0" layoutY="251.0" prefHeight="21.0" prefWidth="45.0" text="20%" textAlignment="RIGHT">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label id = "warningLabel1" alignment="CENTER" layoutX="314.0" layoutY="61.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                              <Label id="warningLabel1" alignment="CENTER" layoutX="314.0" layoutY="61.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label id = "warningLabel2" alignment="CENTER" layoutX="314.0" layoutY="108.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                              <Label id="warningLabel2" alignment="CENTER" layoutX="314.0" layoutY="108.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label id = "warningLabel3" alignment="CENTER" layoutX="314.0" layoutY="155.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                              <Label id="warningLabel3" alignment="CENTER" layoutX="314.0" layoutY="155.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label id = "warningLabel4" alignment="CENTER" layoutX="314.0" layoutY="206.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                              <Label id="warningLabel4" alignment="CENTER" layoutX="314.0" layoutY="206.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label id = "warningLabel5" alignment="CENTER" layoutX="314.0" layoutY="251.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
+                              <Label id="warningLabel5" alignment="CENTER" layoutX="314.0" layoutY="251.0" prefHeight="21.0" prefWidth="125.0" text="Over the target!" textAlignment="RIGHT" textFill="RED">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

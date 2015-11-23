@@ -20,10 +20,11 @@ public class Model extends Observable{
             nutrientHeaders = new ArrayList<String>(),//These are the nutrient headers
             categories = new ArrayList<String>();
     Hashtable<String, ArrayList<String>> categoryToItemsList = new Hashtable<String, ArrayList<String>>();
-    String[] goalNames = {"Calories","Protein","Fats","Carbohydrates","Fiber","Sugar","Calcium","Iron","Potassium",
-            "Sodium","Zinc","Vitamin C","Vitamin B6","Folic Acid","Vitamin B12","Vitamin A (IU)",
-            "Vitamin E","Vitamin D","Vit_K","Saturated Fats","Monounsaturated Fats",
-            "Polyunsaturated Fats","Cholesterol"};
+
+    String[] goalNames = {"Calories","Protein (g)","Total Fat (g)","Carbohydrates (g)","Dietary Fiber (g)","Sugar (g)",
+            "Calcium (mg)","Iron (mg)","Potassium (mg)",
+            "Sodium (mg)","Zinc (mg)","Vitamin C (mg)","Vitamin B6 (mg)","Vitamin B12 (mcg)","Vitamin A (IU)",
+            "Vitamin E (mg)","Vitamin D (IU)","Saturated Fat (g)", "Cholesterol (g)"};
 
 
     ArrayList<Integer> nutrientsToTrack = new ArrayList<Integer>(5);//Correspond to the columns we'll be using to index into table
@@ -66,11 +67,14 @@ public class Model extends Observable{
     }
 
 
+
+
+
     public Hashtable<String, ArrayList<String>> getCategoryToItemsList(){
         return categoryToItemsList;
     }
-    public void updateNutrientCalcBasedonPersonalDetails(){
-        nutrients.GenerateNewGoalsUsingAgeEtc();
+    public void updateNutrientCalcBasedonPersonalDetails(int age, int height, int weight, String gender, String activityLevel){
+        nutrients.GenerateNewGoalsUsingAgeEtc(age, height, weight, gender, activityLevel);
     }
 
 
