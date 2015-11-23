@@ -310,12 +310,12 @@
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="CholesterolGramsLabel" layoutX="754.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
+                  <Label id="CholesterolMilligramsLabel" layoutX="754.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="[int]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="777.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="g">
+                  <Label layoutX="777.0" layoutY="163.0" prefHeight="21.0" prefWidth="22.0" text="mg">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
