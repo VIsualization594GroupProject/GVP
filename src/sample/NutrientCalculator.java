@@ -164,13 +164,13 @@ public class NutrientCalculator {
         // 10 - Potassium (mg)
         double tempPotassium = 0;
         if (age > 0 &&  age <= 3){
-            tempPotassium = 3;
+            tempPotassium = 3000;
         } else if (age > 3 &&  age <= 8){
-            tempPotassium = 3.8;
+            tempPotassium = 3800;
         } else if (age > 8 &&  age <= 13){
-            tempPotassium = 4.5;
+            tempPotassium = 4500;
         } else if (age > 13){
-            tempPotassium = 4.7;
+            tempPotassium = 4700;
         }
         goals.put("Potassium (mg)", tempPotassium);
 
