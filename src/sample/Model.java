@@ -334,7 +334,7 @@ public class Model extends Observable{
 
     public void print()
     {
-        String desc, servSize;
+        String desc, servSize, print;
         int row, col;
         String nutrient;
         double goal, reached;
@@ -379,5 +379,7 @@ public class Model extends Observable{
             sb.append(String.format("%s          %s            %s%n", nutrient, goal, reached));
             sb.append(String.format("----------------------------------------------------------%n"));
         }
+        print = sb.toString();
+        System.out.print(print);
     }
 }
