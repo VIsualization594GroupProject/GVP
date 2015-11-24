@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="644.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox prefHeight="644.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <Pane prefHeight="32.0" prefWidth="866.0">
             <children>
@@ -78,11 +78,11 @@
                               <ComboBox id="trackNutrient3" layoutX="33.0" layoutY="150.0" onAction="#updateBox3" prefHeight="30.0" prefWidth="134.0" promptText="Carbohydrates (g)" />
                               <ComboBox id="trackNutrient4" layoutX="33.0" layoutY="197.0" onAction="#updateBox4" prefHeight="30.0" prefWidth="134.0" promptText="Fats (g)" />
                               <ComboBox id="trackNutrient5" layoutX="33.0" layoutY="243.0" onAction="#updateBox5" prefHeight="30.0" prefWidth="134.0" promptText="Sodium (mg)" />
-                              <TextField id="goalBox1" layoutX="177.0" layoutY="55.0" prefHeight="31.0" prefWidth="81.0" />
-                              <TextField id="goalBox2" layoutX="177.0" layoutY="102.0" prefHeight="31.0" prefWidth="81.0" />
-                              <TextField id="goalBox3" layoutX="177.0" layoutY="150.0" prefHeight="31.0" prefWidth="81.0" />
-                              <TextField id="goalBox4" layoutX="177.0" layoutY="197.0" prefHeight="31.0" prefWidth="81.0" />
-                              <TextField id="goalBox5" layoutX="177.0" layoutY="243.0" prefHeight="31.0" prefWidth="81.0" />
+                              <TextField id="goalBox1" layoutX="177.0" layoutY="55.0" onAction="#updateGoal1" prefHeight="31.0" prefWidth="81.0" />
+                              <TextField id="goalBox2" layoutX="177.0" layoutY="102.0" onAction="#updateGoal2" prefHeight="31.0" prefWidth="81.0" />
+                              <TextField id="goalBox3" layoutX="177.0" layoutY="150.0" onAction="#updateGoal3" prefHeight="31.0" prefWidth="81.0" />
+                              <TextField id="goalBox4" layoutX="177.0" layoutY="197.0" onAction="#updateGoal4" prefHeight="31.0" prefWidth="81.0" />
+                              <TextField id="goalBox5" layoutX="177.0" layoutY="243.0" onAction="#updateGoal5" prefHeight="31.0" prefWidth="81.0" />
                                     </children>
                                 </AnchorPane>
                             </items>
@@ -227,7 +227,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="ServingSizeLabel" layoutX="763.0" layoutY="42.0" prefHeight="27.0" prefWidth="41.0" text="[string]">
+                  <Label id="ServingSizeLabel" layoutX="763.0" layoutY="42.0" prefHeight="27.0" prefWidth="134.0" text="[string]" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -383,37 +383,37 @@
                         <Font name="Arial" size="10.0" />
                      </font>
                   </Label>
-                  <Label id="SaturatedFatPercentLabel" layoutX="865.0" layoutY="142.0" prefHeight="21.0" prefWidth="30.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP">
+                  <Label id="SaturatedFatPercentLabel" alignment="CENTER_RIGHT" layoutX="857.0" layoutY="142.0" prefHeight="21.0" prefWidth="45.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="CholesterolPercentLabel" layoutX="865.0" layoutY="163.0" prefHeight="21.0" prefWidth="30.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP">
+                  <Label id="CholesterolPercentLabel" alignment="CENTER_RIGHT" layoutX="857.0" layoutY="163.0" prefHeight="21.0" prefWidth="45.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="SodiumPercentLabel" layoutX="865.0" layoutY="184.0" prefHeight="21.0" prefWidth="30.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP">
+                  <Label id="SodiumPercentLabel" alignment="CENTER_RIGHT" layoutX="857.0" layoutY="184.0" prefHeight="21.0" prefWidth="45.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="TotalCarbohydratesPercentLabel" layoutX="865.0" layoutY="206.0" prefHeight="21.0" prefWidth="30.0" text="[int]" textOverrun="CLIP">
+                  <Label id="TotalCarbohydratesPercentLabel" alignment="CENTER_RIGHT" layoutX="857.0" layoutY="206.0" prefHeight="21.0" prefWidth="45.0" text="[int]" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="SugarsPercentLabel" layoutX="865.0" layoutY="227.0" prefHeight="21.0" prefWidth="30.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP">
+                  <Label id="SugarsPercentLabel" alignment="CENTER_RIGHT" layoutX="857.0" layoutY="227.0" prefHeight="21.0" prefWidth="45.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="DietaryFiberPercentLabel" layoutX="865.0" layoutY="248.0" prefHeight="21.0" prefWidth="30.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP">
+                  <Label id="DietaryFiberPercentLabel" alignment="CENTER_RIGHT" layoutX="857.0" layoutY="248.0" prefHeight="21.0" prefWidth="45.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="ProteinPercentLabel" layoutX="865.0" layoutY="270.0" prefHeight="21.0" prefWidth="30.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP">
+                  <Label id="ProteinPercentLabel" alignment="CENTER_RIGHT" layoutX="857.0" layoutY="270.0" prefHeight="21.0" prefWidth="45.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -543,12 +543,12 @@
                         <Font name="Arial" size="8.0" />
                      </font>
                   </Label>
-                  <Label id="TotalFatPercentLabel" layoutX="865.0" layoutY="120.0" prefHeight="21.0" prefWidth="30.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP">
+                  <Label id="TotalFatPercentLabel" alignment="CENTER_RIGHT" layoutX="857.0" layoutY="120.0" prefHeight="21.0" prefWidth="45.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="CaloriesPercentLabel" layoutX="865.0" layoutY="99.0" prefHeight="21.0" prefWidth="30.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP">
+                  <Label id="CaloriesPercentLabel" alignment="CENTER_RIGHT" layoutX="857.0" layoutY="99.0" prefHeight="21.0" prefWidth="45.0" text="[int]" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>

@@ -15,8 +15,7 @@ import java.util.*;
 public class Model extends Observable{
 
 
-    NutrientCalculator nutrients = new NutrientCalculator(this);
-    ArrayList<String> labels= new ArrayList<String>(),
+    NutrientCalculator nutrients;    ArrayList<String> labels= new ArrayList<String>(),
             nutrientHeaders = new ArrayList<String>(),//These are the nutrient headers
             categories = new ArrayList<String>();
     Hashtable<String, ArrayList<String>> categoryToItemsList = new Hashtable<String, ArrayList<String>>();
@@ -45,6 +44,7 @@ public class Model extends Observable{
           System.err.println("IO failed, "+ e.getMessage());
           //System.exit(-1);
       }
+        nutrients = new NutrientCalculator(this);
         for (int i = 0; i < 5; i++) {
             nutrientsToTrack.add(i);
         }
@@ -144,7 +144,7 @@ public class Model extends Observable{
     }
 
     //Adds the selected item to the totalNutrients array
-    public void addSelectedItem(String selectedItem) {
+    public void addSelectedItem(String selectedItem, int meal) {
         double holds;
         int row = nameToRowIndex.get(selectedItem);
         for(int i = 0; i < table.get(row).size(); i++) {
@@ -155,7 +155,7 @@ public class Model extends Observable{
         notifyObservers();
     }
 
-    public void deleteSelectedItem(String selectedItem) {
+    public void deleteSelectedItem(String selectedItem, int meal) {
         double holds;
         int row = nameToRowIndex.get(selectedItem);
         for(int i = 0; i < table.get(row).size(); i++) {
@@ -182,7 +182,7 @@ public class Model extends Observable{
 
     // 1 - Total Fat (g)
     public double getTotalFatGoal()
-    { return nutrients.getGoal("Calories");}
+    { return nutrients.getGoal("Total Fat (g)");}
     public double getTotalFatTotal()
     { return totalNutrients.get(1);
     }

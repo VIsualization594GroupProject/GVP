@@ -27,7 +27,7 @@ public class NutrientCalculator {
         allLevels.add(ExerciseLevel.Moderate);
         allLevels.add(ExerciseLevel.Active);
         allLevels.add(ExerciseLevel.Strenuous);
-
+        GenerateNewGoalsUsingAgeEtc(0,0,0, "Male", "Sedentary");
     }
 
     public void GenerateNewGoalsUsingAgeEtc(int age, int weight, int height, String gender, String activityLevel)

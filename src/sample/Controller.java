@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 
 import java.text.DecimalFormat;
@@ -36,7 +37,7 @@ public class Controller implements Observer {
     static ProgressBar[] progressBars = new ProgressBar[5];
 
     static List<String> genderList, activityList;
-    static DecimalFormat percentageFormat = new DecimalFormat("0.0 %"), unitFormat = new DecimalFormat("0.0");
+    static DecimalFormat percentageFormat = new DecimalFormat("##.#%"), unitFormat = new DecimalFormat("0.0");
     static TextField ageBox, heightBox, weightBox;
 
     static Label servingSize, caloriesTot, caloriesGoal, totalFatTot, totalFatGoal,
@@ -44,7 +45,12 @@ public class Controller implements Observer {
             sodiumGoal, carbsTot, carbsGoal, sugarsGoal, sugarsTot, fiberTot, fiberGoal,
             proteinTot, proteinGoal, calciumGoal, potassiumGoal, ironGoal, zincGoal,
             vitAGoal, vitCGoal,vitB6Goal, vitB12Goal, vitDGoal, vitEGoal;
-
+    static Label[] labelCollection = {servingSize, caloriesTot, caloriesGoal, totalFatTot, totalFatGoal,
+            saturatedFatTot, saturatedFatGoal, cholesterolTot, cholesterolGoal, sodiumTot,
+            sodiumGoal, carbsTot, carbsGoal, sugarsGoal, sugarsTot, fiberTot, fiberGoal,
+            proteinTot, proteinGoal, calciumGoal, potassiumGoal, ironGoal, zincGoal,
+            vitAGoal, vitCGoal,vitB6Goal, vitB12Goal, vitDGoal, vitEGoal};
+    static Button removeItemButton, clearAllButton;
 
     static String[] styles = {"-fx-accent: pink","-fx-accent: cyan",
             "-fx-accent: gold","-fx-accent: sienna","-fx-accent: orange" };
@@ -57,6 +63,7 @@ public class Controller implements Observer {
     }
     private void init() {
 //data structures
+
         genderList = new ArrayList<String>(2);
         genderList.add("Male");
         genderList.add("Female");
@@ -65,7 +72,8 @@ public class Controller implements Observer {
             activityList.add(x.toString());
         }
         initLabels();
-
+        removeItemButton = (Button)Main.root.lookup("#removeButton");
+        clearAllButton = (Button) Main.root.lookup("#clearAllButton");
         for (int i = 0; i < 5 ; ++i) {
             nutrientLabels[i] = (Label) Main.root.lookup("#nutrientLabel"+(i+1));
             warningLabels[i] = (Label) Main.root.lookup("#warningLabel" + (i+1));
@@ -108,9 +116,9 @@ public class Controller implements Observer {
         });
         ageBox = (TextField) Main.root.lookup("#ageBox");
         ageBox.setText("25");
-        weightBox = (TextField) Main.root.lookup("#heightBox");
+        weightBox = (TextField) Main.root.lookup("#weightBox");
         weightBox.setText("175");
-        heightBox = (TextField) Main.root.lookup("#weightBox");
+        heightBox = (TextField) Main.root.lookup("#heightBox");
         heightBox.setText("70");
         initComboBoxes();
         calculateStuff(null);
@@ -172,6 +180,9 @@ public class Controller implements Observer {
                 vitE = values.get(18);
 
         caloriesTot.setText(unitFormat.format(calories));
+        double calPercent = calories/model.getCalorieGoal();
+        double tfPercent = totalFat/model.getTotalFatGoal();
+        double tfGoal = model.getTotalFatGoal();
         caloriesGoal.setText(percentageFormat.format(calories/model.getCalorieGoal()));
         totalFatTot.setText(unitFormat.format(totalFat));
         totalFatGoal.setText(percentageFormat.format(totalFat/model.getTotalFatGoal()));
@@ -199,6 +210,18 @@ public class Controller implements Observer {
         vitCGoal.setText(percentageFormat.format(vitC/model.getVitaminCGoal()));
         vitDGoal.setText(percentageFormat.format(vitD/model.getVitaminDGoal()));
         vitEGoal.setText(percentageFormat.format(vitE/model.getVitaminEGoal()));
+        for (Label x:
+                labelCollection) {
+            String text = x.getText();
+            if (text.length() < 3) {
+                while (text.length() < 3) {
+                    text = " " + text;
+                }
+            }
+        }
+
+
+
     }
 
 
@@ -231,6 +254,7 @@ public class Controller implements Observer {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 System.err.println("SelectedItemChanged from " +oldValue + " to " + newValue);
                 selectedItem = newValue;
+                updateNutritionLabel(selectedItem);
             }
         });
     }
@@ -252,8 +276,15 @@ public class Controller implements Observer {
     }
 
         private void updateFocusedItem() {
-            if(focus.getSelectionModel().getSelectedItem() != null) focusedItem = focus.getSelectionModel().getSelectedItem();
+            String tempItem = focus.getSelectionModel().getSelectedItem();
+            if(tempItem != null){
+                focusedItem = tempItem;
+                clearAllButton.setDisable(false);
+            }
             updateNutritionLabel(focusedItem);
+
+            removeItemButton.setDisable(tempItem == null);
+
         }
 
 
@@ -266,7 +297,7 @@ public class Controller implements Observer {
 
         if(selectedItem.compareTo("none")!=0) {
             dinnerList.getItems().add(selectedItem);
-            model.addSelectedItem(selectedItem);
+            model.addSelectedItem(selectedItem, 2);
         }
     }
 
@@ -274,7 +305,7 @@ public class Controller implements Observer {
         System.err.println("Lunch Stuff");
         if(selectedItem.compareTo("none")!=0) {
             lunchList.getItems().add(selectedItem);
-            model.addSelectedItem(selectedItem);
+            model.addSelectedItem(selectedItem, 1);
         }
     }
 
@@ -283,7 +314,7 @@ public class Controller implements Observer {
 
         if(selectedItem.compareTo("none")!=0) {
             breakfastList.getItems().add(selectedItem);
-            model.addSelectedItem(selectedItem);
+            model.addSelectedItem(selectedItem, 0);
         }
     }
 
@@ -294,9 +325,9 @@ public class Controller implements Observer {
     public void removeAllItems(ActionEvent actionEvent) {
         //Take the items out of the model:
         for (String x: breakfastList.getItems())
-            model.deleteSelectedItem(x);
-        for(String x: lunchList.getItems()) model.deleteSelectedItem(x);
-        for(String x: dinnerList.getItems()) model.deleteSelectedItem(x);
+            model.deleteSelectedItem(x, 0);
+        for(String x: lunchList.getItems()) model.deleteSelectedItem(x, 1);
+        for(String x: dinnerList.getItems()) model.deleteSelectedItem(x, 2);
         //Take the items out of the controller
         breakfastList.getItems().clear();
         lunchList.getItems().clear();
@@ -308,8 +339,13 @@ public class Controller implements Observer {
 
     public void removeFocusedItem(ActionEvent actionEvent) {
         String itemToRemove = focus.getSelectionModel().getSelectedItem();
-        model.deleteSelectedItem(itemToRemove);
+        int meal = 2;
+        if(focus == breakfastList) meal = 0;
+        else if(focus == lunchList) meal = 1;
+        //else meal = 2)
+        model.deleteSelectedItem(itemToRemove, meal);
         focus.getItems().remove(itemToRemove);
+
 
     }
 
@@ -361,7 +397,7 @@ public class Controller implements Observer {
         nutrientLabels[i].setText(nutrient);
         progressBars[i].setProgress(percent);
         progressTexts[i].setText(percentageFormat.format(percent));
-
+        goalBox[i].setText(unitFormat.format(goal));
     }
 
     public void updateBox1(ActionEvent actionEvent) {
@@ -394,5 +430,28 @@ public class Controller implements Observer {
         ComboBox<String> box = (ComboBox<String>)event.getTarget();
         box.getSelectionModel().select(0);
 
+    }
+
+    public void updateGoalFromBox(int i){
+        double newGoal = Double.parseDouble(goalBox[i].getText());
+        String nutrient = trackNutrient[i].getValue().toString();
+        model.nutrients.setGoal(nutrient, newGoal);
+        changeBoxAndAssigns(i);
+
+    }
+    public void updateGoal1(ActionEvent actionEvent) {
+        updateGoalFromBox(0);
+    }
+    public void updateGoal2(ActionEvent actionEvent) {
+        updateGoalFromBox(1);
+    }
+    public void updateGoal3(ActionEvent actionEvent) {
+        updateGoalFromBox(2);
+    }
+    public void updateGoal4(ActionEvent actionEvent) {
+        updateGoalFromBox(3);
+    }
+    public void updateGoal5(ActionEvent actionEvent) {
+        updateGoalFromBox(4);
     }
 }
