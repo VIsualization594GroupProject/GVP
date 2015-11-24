@@ -395,4 +395,5 @@ public class Controller implements Observer {
         box.getSelectionModel().select(0);
 
     }
+    public void print() { model.print();}
 }
