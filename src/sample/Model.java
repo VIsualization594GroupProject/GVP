@@ -194,7 +194,7 @@ public class Model extends Observable{
                 if(index != -1)
                 {
                     Lunch.remove(index);
-                    removed = 1;
+                    removed = 1; //comment
                 }
             }
         }
