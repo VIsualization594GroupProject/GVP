@@ -375,7 +375,7 @@ public class Model extends Observable{
             goal = nutrients.getGoal(nutrient);
             reached = totalNutrients.get(col)/goal;
 
-            sb.append(String.format("%s          %s            %.2s%n", nutrient, goal, reached * 100));
+            sb.append(String.format("%s          %f            %.2f%n", nutrient, goal, reached * 100));
             sb.append(String.format("----------------------------------------------------------%n"));
         }
         print = sb.toString();
