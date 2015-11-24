@@ -179,6 +179,7 @@ if (category == null || food == null || gender == null || activity == null){
     ///This is the method that updates info based on the model
     public void update(Observable o, Object arg) {
 
+
     }
     ///This is the method that runs the nutrientCalculator in the model
     public void calculateStuff(ActionEvent actionEvent) {
