@@ -227,7 +227,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="ServingSizeLabel" layoutX="763.0" layoutY="42.0" prefHeight="27.0" prefWidth="41.0" text="[string]">
+                  <Label id="ServingSizeLabel" layoutX="763.0" layoutY="42.0" prefHeight="27.0" prefWidth="143.0" text="[string]">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
