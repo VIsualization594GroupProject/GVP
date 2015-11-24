@@ -86,7 +86,7 @@ public class NutrientCalculator {
         tempCalories = (double) Math.round(BMR * exerciseFactor);
         goals.put("Calories", tempCalories);
 
-        // 1 - Saturated Fat (g)
+        // 1 - Total Fat (g)
         double tempTotalFat = 0;
         tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/9);
         goals.put("Total Fat (g)", tempTotalFat);

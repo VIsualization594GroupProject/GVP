@@ -21,10 +21,10 @@ public class Model extends Observable{
             categories = new ArrayList<String>();
     Hashtable<String, ArrayList<String>> categoryToItemsList = new Hashtable<String, ArrayList<String>>();
 
-    String[] goalNames = {"Calories","Protein (g)","Total Fat (g)","Carbohydrates (g)","Dietary Fiber (g)","Sugar (g)",
-            "Calcium (mg)","Iron (mg)","Potassium (mg)",
-            "Sodium (mg)","Zinc (mg)","Vitamin C (mg)","Vitamin B6 (mg)","Vitamin B12 (mcg)","Vitamin A (IU)",
-            "Vitamin E (mg)","Vitamin D (IU)","Saturated Fat (g)", "Cholesterol (g)"};
+    String[] goalNames = {"Calories","Total Fat (g)","Saturated Fat (g)","Cholesterol (mg)","Sodium (mg)",
+            "Carbohydrates (g)", "Sugar (g)","Dietary Fiber (g)","Protein (g)", "Calcium (mg)","Potassium (mg)",
+            "Iron (mg)","Zinc (mg)","Vitamin A (IU)","Vitamin B6 (mg)", "Vitamin B12 (mcg)","Vitamin C (mg)",
+            "Vitamin D (IU)", "Vitamin E (mg)"};
 
 
     ArrayList<Integer> nutrientsToTrack = new ArrayList<Integer>(5);//Correspond to the columns we'll be using to index into table
@@ -65,9 +65,6 @@ public class Model extends Observable{
 
 
     }
-
-
-
 
 
     public Hashtable<String, ArrayList<String>> getCategoryToItemsList(){
@@ -174,18 +171,138 @@ public class Model extends Observable{
     }
 
 
+//Getting Goals and running Totals for each nutrient
 
+    // 0 - Calories
     public double getCalorieGoal()
     { return nutrients.getGoal("Calories");}
     public double getCalorieTotal()
-    {return totalNutrients.get(0);
+    { return totalNutrients.get(0);
     }
+
+    // 1 - Total Fat (g)
+    public double getTotalFatGoal()
+    { return nutrients.getGoal("Calories");}
+    public double getTotalFatTotal()
+    { return totalNutrients.get(1);
+    }
+
+    // 2 - Saturated Fat (g)
+    public double getSaturatedFatGoal()
+    { return nutrients.getGoal("Saturated Fat (g)");}
+    public double getSaturatedFatTotal()
+    { return totalNutrients.get(2);
+    }
+
+    // 3 - Cholesterol (mg)
+    public double getCholesterolGoal()
+    { return nutrients.getGoal("Cholesterol (mg)");}
+    public double getCholesterolTotal()
+    { return totalNutrients.get(3);
+    }
+
+    // 4 - Sodium (mg)
+    public double getSodiumGoal()
+    { return nutrients.getGoal("Sodium (mg)");}
+    public double getSodiumTotal()
+    { return totalNutrients.get(4);
+    }
+
+    // 5 - Carbohydrates (g)
+    public double getCarbohydratesGoal()
+    { return nutrients.getGoal("Carbohydrates (g)");}
+    public double getCarbohydratesTotal()
+    { return totalNutrients.get(5);
+    }
+
+    // 6 - Sugar (g)
+    public double getSugarGoal()
+    { return nutrients.getGoal("Sugar (g)");}
+    public double getSugarTotal()
+    { return totalNutrients.get(6);
+    }
+
+    // 7 - Dietary Fiber (g)
+    public double getDietaryFiberGoal()
+    { return nutrients.getGoal("Dietary Fiber (g)");}
+    public double getDietaryFiberTotal()
+    { return totalNutrients.get(7);
+    }
+
+    // 8 - Protein (g)
     public double getProteinGoal()
-    { return 0;}
+    { return nutrients.getGoal("Protein (g)");}
     public double getProteinTotal()
-    {return 0;
+    { return totalNutrients.get(8);
     }
 
+    // 9 - Calcium (mg)
+    public double getCalciumGoal()
+    { return nutrients.getGoal("Calcium (mg)");}
+    public double getCalciumTotal()
+    { return totalNutrients.get(9);
+    }
 
+    // 10 - Potassium (mg)
+    public double getPotassiumGoal()
+    { return nutrients.getGoal("Potassium (mg)");}
+    public double getPotassiumTotal()
+    { return totalNutrients.get(10);
+    }
 
+    // 11 - Iron (mg)
+    public double getIronGoal()
+    { return nutrients.getGoal("Iron (mg)");}
+    public double getIronTotal()
+    { return totalNutrients.get(11);
+    }
+
+    // 12 - Zinc (mg)
+    public double getZincGoal()
+    { return nutrients.getGoal("Zinc (mg)");}
+    public double getZincTotal()
+    { return totalNutrients.get(12);
+    }
+
+    // 13 - Vitamin A (IU)
+    public double getVitaminAGoal()
+    { return nutrients.getGoal("Vitamin A (IU)");}
+    public double geVitaminATotal()
+    { return totalNutrients.get(13);
+    }
+
+    // 14 - Vitamin B6 (mg)
+    public double getVitaminB6Goal()
+    { return nutrients.getGoal("Vitamin B6 (mg)");}
+    public double getVitaminB6Total()
+    { return totalNutrients.get(14);
+    }
+
+    // 15 - Vitamin B12 (mcg)
+    public double getVitaminB12Goal()
+    { return nutrients.getGoal("Vitamin B12 (mcg)");}
+    public double getVitaminB12Total()
+    { return totalNutrients.get(15);
+    }
+
+    // 16 - Vitamin C (mg)
+    public double getVitaminCGoal()
+    { return nutrients.getGoal("Vitamin C (mg)");}
+    public double getVitaminCTotal()
+    { return totalNutrients.get(16);
+    }
+
+    // 17 - Vitamin D (IU)
+    public double getVitaminDGoal()
+    { return nutrients.getGoal("Vitamin D (IU)");}
+    public double getVitaminDTotal()
+    { return totalNutrients.get(17);
+    }
+
+    // 18 - Vitamin E (mg)
+    public double getVitaminEGoal()
+    { return nutrients.getGoal("Vitamin E (mg)");}
+    public double getVitaminETotal()
+    { return totalNutrients.get(18);
+    }
 }
