@@ -21,11 +21,11 @@ public class Model extends Observable{
             categories = new ArrayList<String>();
     Hashtable<String, ArrayList<String>> categoryToItemsList = new Hashtable<String, ArrayList<String>>();
 
-    String[] goalNames = {"Calories","Total Fat (g)","Saturated Fat (g)","Cholesterol (mg)","Sodium (mg)",
+    /*String[] goalNames = {"Calories","Total Fat (g)","Saturated Fat (g)","Cholesterol (mg)","Sodium (mg)",
             "Carbohydrates (g)", "Sugar (g)","Dietary Fiber (g)","Protein (g)", "Calcium (mg)","Potassium (mg)",
             "Iron (mg)","Zinc (mg)","Vitamin A (IU)","Vitamin B6 (mg)", "Vitamin B12 (mcg)","Vitamin C (mg)",
             "Vitamin D (IU)", "Vitamin E (mg)"};
-
+    */
 
     ArrayList<Integer> nutrientsToTrack = new ArrayList<Integer>(5);//Correspond to the columns we'll be using to index into table
     ArrayList<ArrayList<String>> stringTable= new ArrayList<ArrayList<String>>();//holds the strings for categories and foods
