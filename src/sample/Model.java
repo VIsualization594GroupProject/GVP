@@ -32,6 +32,10 @@ public class Model extends Observable{
     Hashtable<String, Integer> labelToIndex = new Hashtable<String, Integer>(),//quickly looks up the column from the string label
             nameToRowIndex = new Hashtable<String, Integer>();//quickly looks up the row from the string name of the item
     ArrayList<Double> totalNutrients = new ArrayList<Double>();//Holds total nutrients from added items
+    ArrayList<String> Breakfast = new ArrayList<String>();
+    ArrayList<String> Lunch = new ArrayList<String>();
+    ArrayList<String> Dinner = new ArrayList<String>();
+
     private ArrayList<Observer> observerList = new ArrayList<Observer>();
         int SHORTDESC_INDEX = 1;
 
@@ -152,16 +156,38 @@ public class Model extends Observable{
             holds += table.get(row).get(i);
             totalNutrients.set(i, holds);
         }
+        switch(meal)
+        {
+            case 0: Breakfast.add(selectedItem);
+                break;
+            case 1: Lunch.add(selectedItem);
+                break;
+            case 2: Dinner.add(selectedItem);
+        }
         notifyObservers();
     }
 
     public void deleteSelectedItem(String selectedItem, int meal) {
         double holds;
+        int index;
         int row = nameToRowIndex.get(selectedItem);
         for(int i = 0; i < table.get(row).size(); i++) {
             holds = totalNutrients.get(i);
             holds -= table.get(row).get(i);
             totalNutrients.set(i, holds);
+        }
+
+        switch(meal)
+        {
+            case 0: index = Breakfast.indexOf(selectedItem);
+                Breakfast.remove(index);
+                break;
+            case 1: index = Lunch.indexOf(selectedItem);
+                Lunch.remove(index);
+                break;
+            case 2: index = Dinner.indexOf(selectedItem);
+                Dinner.remove(index);
+                break;
         }
         notifyObservers();
     }
@@ -304,5 +330,56 @@ public class Model extends Observable{
     { return nutrients.getGoal("Vitamin E (mg)");}
     public double getVitaminETotal()
     { return totalNutrients.get(18);
+    }
+
+    public void print()
+    {
+        String desc, servSize, print;
+        int row, col;
+        String nutrient;
+        double goal, reached;
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Let's Create a Meal Plan!%n"));
+        sb.append(String.format("Daily Meal Plan Summary%n"));
+        sb.append("-----------------------------");
+        sb.append(String.format("%n%n%n"));
+        sb.append(String.format("Meal         Food Description          Serving Size%n"));
+        sb.append(String.format("-----        ----------------          ------------%n%n"));
+        for(int i = 0; i < Breakfast.size(); i++)
+        {
+            row = nameToRowIndex.get(Breakfast.get(i));
+            servSize = stringTable.get(row).get(3);
+            sb.append(String.format("Breakfast            %s            %s%n", Breakfast.get(i), servSize));
+        }
+        for(int i = 0; i < Lunch.size(); i++)
+        {
+            row = nameToRowIndex.get(Lunch.get(i));
+            servSize = stringTable.get(row).get(3);
+            sb.append(String.format("Lunch            %s            %s%n", Lunch.get(i), servSize));
+        }
+        for(int i = 0; i < Dinner.size(); i++)
+        {
+            row = nameToRowIndex.get(Dinner.get(i));
+            servSize = stringTable.get(row).get(3);
+            sb.append(String.format("Dinner            %s            %s%n", Dinner.get(i), servSize));
+        }
+        sb.append(String.format("%n%n"));
+        sb.append(String.format("Nutrient             Today's Goals           Percent Reached%n"));
+        sb.append(String.format("--------             -------------           ---------------%n"));
+        for(int i = 0; i < nutrientHeaders.size(); i++)
+        {
+
+
+            col = labelToIndex.get(nutrientHeaders.get(i));
+            nutrient = nutrientHeaders.get(i);
+            goal = nutrients.getGoal(nutrient);
+            reached = totalNutrients.get(col)/goal;
+
+            sb.append(String.format("%s          %s            %s%n", nutrient, goal, reached));
+            sb.append(String.format("----------------------------------------------------------%n"));
+        }
+        print = sb.toString();
+        System.out.print(print);
     }
 }
