@@ -21,7 +21,7 @@ import java.util.*;
 public class Controller implements Observer {
     static Model model;
     static ListView<String> focus, breakfastList, lunchList, dinnerList;
-    static String selectedItem = "none";
+    static String selectedItem = "none", focusedItem = null;
     public void setModel(Model m){
         model = m;
         init();
@@ -31,12 +31,23 @@ public class Controller implements Observer {
     ArrayList<String> categoryList;
     static ComboBox<String> category, food, gender, activity;
     static ComboBox[] trackNutrient = new ComboBox[5];
+    static TextField [] goalBox = new TextField[5];
     static Label [] nutrientLabels = new Label[5], warningLabels=new Label[5], progressTexts = new Label[5];
     static ProgressBar[] progressBars = new ProgressBar[5];
+
     static List<String> genderList, activityList;
-    static DecimalFormat percentageFormat = new DecimalFormat("0.0%");
+    static DecimalFormat percentageFormat = new DecimalFormat("0.0 %"), unitFormat = new DecimalFormat("0.0");
     static TextField ageBox, heightBox, weightBox;
 
+    static Label servingSize, caloriesTot, caloriesGoal, totalFatTot, totalFatGoal,
+            saturatedFatTot, saturatedFatGoal, cholesterolTot, cholesterolGoal, sodiumTot,
+            sodiumGoal, carbsTot, carbsGoal, sugarsGoal, sugarsTot, fiberTot, fiberGoal,
+            proteinTot, proteinGoal, calciumGoal, potassiumGoal, ironGoal, zincGoal,
+            vitAGoal, vitCGoal,vitB6Goal, vitB12Goal, vitDGoal, vitEGoal;
+
+
+    static String[] styles = {"-fx-accent: pink","-fx-accent: cyan",
+            "-fx-accent: gold","-fx-accent: sienna","-fx-accent: orange" };
     static void prepComboBox(ComboBox<String> c, List<String> strings) {//Sets a combobox to contain the labels
         ObservableList<String> list = FXCollections.observableList(strings);
         c.setItems(list);
@@ -53,25 +64,141 @@ public class Controller implements Observer {
         for(NutrientCalculator.ExerciseLevel x : NutrientCalculator.allLevels){
             activityList.add(x.toString());
         }
+        initLabels();
 
         for (int i = 0; i < 5 ; ++i) {
             nutrientLabels[i] = (Label) Main.root.lookup("#nutrientLabel"+(i+1));
             warningLabels[i] = (Label) Main.root.lookup("#warningLabel" + (i+1));
             progressBars[i] = (ProgressBar) Main.root.lookup("#nutrientProgress"+(i+1));
             warningLabels[i].setVisible(false);
-            progressBars[i].setStyle("-fx-accent: pink");
+            progressBars[i].setStyle(styles[i]);
             trackNutrient[i]= (ComboBox)Main.root.lookup("#trackNutrient"+(i+1));
             progressTexts[i] = (Label) Main.root.lookup("#progressText"+(i+1));
+            goalBox[i] = (TextField) Main.root.lookup("#goalBox"+(i+1));
         }
         breakfastList = (ListView<String>) Main.root.lookup("#breakfastList");
+        breakfastList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (focus == breakfastList) {
+                    focusedItem = newValue;
+                    updateNutritionLabel(newValue);
+                }
+            }
+        });
         lunchList = (ListView<String>) Main.root.lookup("#lunchList");
+        lunchList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (focus == lunchList) {
+                    focusedItem = newValue;
+                    updateNutritionLabel(newValue);
+                }
+            }
+        });
         dinnerList = (ListView<String>) Main.root.lookup("#dinnerList");
+        dinnerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (focus == dinnerList) {
+                    focusedItem = newValue;
+                    updateNutritionLabel(newValue);
+                }
+            }
+        });
         ageBox = (TextField) Main.root.lookup("#ageBox");
+        ageBox.setText("25");
         weightBox = (TextField) Main.root.lookup("#heightBox");
+        weightBox.setText("175");
         heightBox = (TextField) Main.root.lookup("#weightBox");
-
+        heightBox.setText("70");
         initComboBoxes();
+        calculateStuff(null);
 
+    }
+
+
+    private void initLabels() {
+    /*servingSize, caloriesTot, caloriesGoal, totalFatTot, totalFatGoal,
+            saturatedFatTot, saturatedFatGoal, cholesterolTot, cholesterolGoal, sodiumTot,
+            sodiumGoal, carbsTot, carbsGoal, sugarsGoal, sugarsTot, fiberTot, fiberGoal,
+            proteinTot, proteinGoal, calciumGoal, potassiumGoal, ironGoal, zincGoal,
+            vitAGoal, vitCGoal,vitB6Goal, vitB12Goal, vitDGoal, vitEGoal;
+    */
+        servingSize = (Label) Main.root.lookup("#ServingSizeLabel");
+        caloriesTot = (Label) Main.root.lookup("#CaloriesNumberLabel");
+        caloriesGoal= (Label) Main.root.lookup("#CaloriesPercentLabel");
+        totalFatTot = (Label) Main.root.lookup("#TotalFatGramsLabel");
+        totalFatGoal = (Label) Main.root.lookup("#TotalFatPercentLabel");
+        saturatedFatTot = (Label) Main.root.lookup("#SaturatedFatGramsLabel");
+        saturatedFatGoal = (Label) Main.root.lookup("#SaturatedFatPercentLabel");
+        cholesterolTot = (Label) Main.root.lookup("#CholesterolMilligramsLabel");
+        cholesterolGoal = (Label) Main.root.lookup("#CholesterolPercentLabel");
+        sodiumTot = (Label) Main.root.lookup("#SodiumMilligramsLabel");
+        sodiumGoal = (Label) Main.root.lookup("#SodiumPercentLabel");
+        carbsTot = (Label) Main.root.lookup("#TotalCarbohydratesGramsLabel");
+        carbsGoal = (Label) Main.root.lookup("#TotalCarbohydratesPercentLabel");
+        sugarsTot = (Label) Main.root.lookup("#SugarsGramsLabel");
+        sugarsGoal = (Label) Main.root.lookup("#SugarsPercentLabel");
+        fiberTot = (Label) Main.root.lookup("#DietaryFiberGramsLabel");
+        fiberGoal = (Label) Main.root.lookup("#DietaryFiberPercentLabel");
+        proteinTot = (Label) Main.root.lookup("#ProteinGramsLabel");
+        proteinGoal = (Label) Main.root.lookup("#ProteinPercentLabel");
+        calciumGoal= (Label) Main.root.lookup("#CalciumPercentLabel");
+        potassiumGoal= (Label) Main.root.lookup("#PotassiumPercentLabel");
+        ironGoal= (Label) Main.root.lookup("#IronPercentLabel");
+        zincGoal= (Label) Main.root.lookup("#ZincPercentLabel");
+        vitAGoal= (Label) Main.root.lookup("#VitaminAPercentLabel");
+        vitB6Goal= (Label) Main.root.lookup("#VitaminB6PercentLabel");
+        vitB12Goal= (Label) Main.root.lookup("#VitaminB12PercentLabel");
+        vitCGoal= (Label) Main.root.lookup("#VitaminCPercentLabel");
+        vitDGoal= (Label) Main.root.lookup("#VitaminDPercentLabel");
+        vitEGoal= (Label) Main.root.lookup("#VitaminEPercentLabel");
+
+    }
+
+    private void updateNutritionLabel(String newFocus) {
+        int rowIndex = model.nameToRowIndex.get(newFocus);
+        ArrayList<Double> values = model.table.get(rowIndex);
+        ArrayList<String> strings = model.stringTable.get(rowIndex);
+        servingSize.setText(strings.get(3));
+
+        double calories = values.get(0), totalFat=values.get(1), satFat = values.get(2),
+                sodium = values.get(4), cholesterol = values.get(3),  carbs = values.get(5),
+                sugars = values.get(6), fiber = values.get(7), protein = values.get(8),
+                calcium = values.get(9), potassium = values.get(10), iron = values.get(11),
+                spelter = values.get(12), vitA= values.get(13), vitB6 = values.get(14),
+                vitB12 = values.get(15), vitC = values.get(16), vitD = values.get(17),
+                vitE = values.get(18);
+
+        caloriesTot.setText(unitFormat.format(calories));
+        caloriesGoal.setText(percentageFormat.format(calories/model.getCalorieGoal()));
+        totalFatTot.setText(unitFormat.format(totalFat));
+        totalFatGoal.setText(percentageFormat.format(totalFat/model.getTotalFatGoal()));
+        saturatedFatTot.setText(unitFormat.format(satFat));
+        saturatedFatGoal.setText(percentageFormat.format(satFat/model.getSaturatedFatGoal()));
+        cholesterolTot.setText(unitFormat.format(cholesterol));
+        cholesterolGoal.setText(percentageFormat.format(cholesterol/model.getCholesterolGoal()));
+        sodiumTot.setText(unitFormat.format(sodium));
+        sodiumGoal.setText(percentageFormat.format(sodium/model.getSodiumGoal()));
+        carbsTot.setText(unitFormat.format(carbs));
+        carbsGoal.setText(percentageFormat.format(carbs/model.getCarbohydratesGoal()));
+        sugarsTot.setText(unitFormat.format(sugars));
+        sugarsGoal.setText(percentageFormat.format(sugars/model.getSugarGoal()));
+        fiberTot.setText(unitFormat.format(fiber));
+        fiberGoal.setText(percentageFormat.format(fiber/model.getDietaryFiberGoal()));
+        proteinTot.setText(unitFormat.format(protein));
+        proteinGoal.setText(percentageFormat.format(protein/model.getProteinGoal()));
+        calciumGoal.setText(percentageFormat.format(calcium/model.getCalciumGoal()));
+        potassiumGoal.setText(percentageFormat.format(potassium/model.getPotassiumGoal()));
+        ironGoal.setText(percentageFormat.format(iron/model.getIronGoal()));
+        zincGoal.setText(percentageFormat.format(spelter/model.getZincGoal()));
+        vitAGoal.setText(percentageFormat.format(vitA/model.getVitaminAGoal()));
+        vitB6Goal.setText(percentageFormat.format(vitB6/model.getVitaminB6Goal()));
+        vitB12Goal.setText(percentageFormat.format(vitB12/model.getVitaminB12Goal()));
+        vitCGoal.setText(percentageFormat.format(vitC/model.getVitaminCGoal()));
+        vitDGoal.setText(percentageFormat.format(vitD/model.getVitaminDGoal()));
+        vitEGoal.setText(percentageFormat.format(vitE/model.getVitaminEGoal()));
     }
 
 
@@ -81,10 +208,10 @@ public class Controller implements Observer {
         food = (ComboBox<String>)Main.root.lookup("#foodCombo");
         gender= (ComboBox<String>)Main.root.lookup("#genderCombo");
         activity= (ComboBox<String>)Main.root.lookup("#activityCombo");
-if (category == null || food == null || gender == null || activity == null){
-    System.err.println("Error building scene.");
-    System.exit(-1);
-}
+            if (category == null || food == null || gender == null || activity == null){
+                System.err.println("Error building scene.");
+                System.exit(-1);
+            }
 
         categoryList = new ArrayList<String>();
         for(String x : categories.keySet())categoryList.add(x);
@@ -110,15 +237,26 @@ if (category == null || food == null || gender == null || activity == null){
 
     public void makeBreakfastFocus(Event event) {//This is a change
         focus = breakfastList;
+        updateFocusedItem();
     }
+
 
     public void makeLunchFocus(Event event) {
         focus = lunchList;
+        updateFocusedItem();
     }
 
     public void makeDinnerFocus(Event e) {
         focus = dinnerList;
+        updateFocusedItem();
     }
+
+        private void updateFocusedItem() {
+            if(focus.getSelectionModel().getSelectedItem() != null) focusedItem = focus.getSelectionModel().getSelectedItem();
+            updateNutritionLabel(focusedItem);
+        }
+
+
 
 
 
@@ -178,35 +316,53 @@ if (category == null || food == null || gender == null || activity == null){
     @Override
     ///This is the method that updates info based on the model
     public void update(Observable o, Object arg) {
-
+        for (int i = 0; i < 5; i++) {
+            changeBoxAndAssigns(i);
+            }
+        updateGoalBoxes();
 
     }
     ///This is the method that runs the nutrientCalculator in the model
     public void calculateStuff(ActionEvent actionEvent) {
 
-        int age=0, height=0, weight=0;
+        double age=0, height=0, weight=0;
         try {
-            age = Integer.parseInt(ageBox.getText());
-            height = Integer.parseInt(heightBox.getText());
-            weight = Integer.parseInt(weightBox.getText());
+            age = Double.parseDouble(ageBox.getText());
+            height = Double.parseDouble(heightBox.getText());
+            weight = Double.parseDouble(weightBox.getText());
         }
         catch(Exception ignored){}  String genderString, activityLevel;
         genderString = gender.getSelectionModel().getSelectedItem();
         activityLevel = activity.getSelectionModel().getSelectedItem();
 
-        model.updateNutrientCalcBasedonPersonalDetails(age, height, weight, genderString, activityLevel);
-        System.err.println("Calculating things on click");
+        model.updateNutrientCalcBasedonPersonalDetails((int)age, (int)height, (int)weight, genderString, activityLevel);
+        updateGoalBoxes();
+        ageBox.setText(unitFormat.format(age));
+        weightBox.setText(unitFormat.format(weight));
+        heightBox.setText(unitFormat.format(height));
+    }
+
+    private void updateGoalBoxes() {
+        for (int i = 0; i < 5; i++) {
+            String nutrient = trackNutrient[i].getValue().toString();
+            double goal = model.nutrients.getGoal(nutrient);
+            goalBox[i].setText(unitFormat.format(goal));
+            changeBoxAndAssigns(i);
+        }
     }
 
     private void changeBoxAndAssigns(int i) {
-        String newLabel = trackNutrient[i].getValue().toString();
-        //TODO: Implement goal logic
-        //warningLabels[i].setVisible(overGoal(i));
-        nutrientLabels[i].setText(newLabel);
-        progressBars[i].setProgress(.3*i);
-        progressTexts[i].setText(percentageFormat.format(progressBars[i].getProgress()));
-    }
+        String nutrient = trackNutrient[i].getValue().toString();
+        int column = model.labelToIndex.get(nutrient);
+        double goal = model.nutrients.getGoal(nutrient);
+        double total = model.totalNutrients.get(column);
+        double percent = total/goal;
+        warningLabels[i].setVisible(total>goal);
+        nutrientLabels[i].setText(nutrient);
+        progressBars[i].setProgress(percent);
+        progressTexts[i].setText(percentageFormat.format(percent));
 
+    }
 
     public void updateBox1(ActionEvent actionEvent) {
         changeBoxAndAssigns(0);
