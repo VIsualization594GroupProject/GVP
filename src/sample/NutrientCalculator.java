@@ -71,11 +71,12 @@ public class NutrientCalculator {
     }
 
     private void calculateBMR() {
+        //Mifflin-St. Jeor Equations
         if(male){
-            BMR = 88.362 + (13.397*weight) + (4.799 *height) - (5.677 *age); // Male BMR
+            BMR = (4.536*weight) + (15.875*height) - (5*age) + 5; // Male BMR
         }
         else{
-            BMR = 447.593 + (9.247*weight) + (3.098 *height) - (4.330 *age); // Female BMR
+            BMR = (4.536*weight) + (15.875*height) - (5*age) - 161; // Female BMR
         }
     }
 
