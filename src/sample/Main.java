@@ -15,7 +15,7 @@ import java.net.URL;
 //Sets everything up, don't make any changes unless absolutely necessary.
 public class Main extends Application {
 
-    static Model model;
+    static sample.Model model;
     static Controller controller;
     static Parent root;
 

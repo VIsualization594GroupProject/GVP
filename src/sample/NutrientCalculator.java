@@ -84,26 +84,26 @@ public class NutrientCalculator {
         // 0 - Calories
         double tempCalories = 0;
         tempCalories = (double) Math.round(BMR * exerciseFactor);
-        goals.put(model.goalNames[0], tempCalories);
+        goals.put("Calories", tempCalories);
 
-        // 1 - Total Fat
+        // 1 - Saturated Fat (g)
         double tempTotalFat = 0;
         tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/9);
-        goals.put(model.goalNames[2], tempTotalFat);
+        goals.put("Total Fat (g)", tempTotalFat);
 
-        // 2 - Saturated Fat
+        // 2 - Saturated Fat (g)
         double tempSaturatedFat = 0;
         tempSaturatedFat = (double) Math.round(goals.get(model.goalNames[0])*0.07/9);
         if (tempSaturatedFat > 26){
             tempSaturatedFat = 26; // max recommended value for adults
         }
-        goals.put(model.goalNames[17], tempSaturatedFat);
+        goals.put("Saturated Fat (g)", tempSaturatedFat);
 
-        // 3 - Cholesterol
+        // 3 - Cholesterol (mg)
         double tempCholesterol = 300; // max recommended value for everyone? except heart patients =200
-        goals.put(model.goalNames[18], tempCholesterol);
+        goals.put("Cholesterol (mg)", tempCholesterol);
 
-        // 4 - Sodium
+        // 4 - Sodium (mg)
         double tempSodium = 0;
         if (age <= 3){
             tempSodium = 1000;
@@ -116,19 +116,19 @@ public class NutrientCalculator {
         } else if (age > 70 ){
             tempSodium = 1200;
         }
-        goals.put(model.goalNames[9], tempSodium);
+        goals.put("Sodium (mg)", tempSodium);
 
-        // 5 - Total Carbohydrates
+        // 5 - Carbohydrates (g)
         double tempCarbohydrates = 0;
         tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.50/4);
-        goals.put(model.goalNames[3], tempTotalFat);
+        goals.put("Carbohydrates (g)", tempTotalFat);
 
-        // 6 - Sugars
-        double tempSugars = 0;
-        tempSugars = (double) Math.round(goals.get(model.goalNames[0])*0.10/4);
-        goals.put(model.goalNames[5], tempSugars);
+        // 6 - Sugar (g)
+        double tempSugar = 0;
+        tempSugar = (double) Math.round(goals.get(model.goalNames[0])*0.10/4);
+        goals.put("Sugar (g)", tempSugar);
 
-        // 7 - Dietary Fiber
+        // 7 - Dietary Fiber (g)
         double tempFiber = 0;
         if (age <= 50 && male){
             tempFiber = 38;
@@ -139,14 +139,14 @@ public class NutrientCalculator {
         } else if (age > 50 && !male){
             tempFiber = 21;
         }
-        goals.put(model.goalNames[4], tempFiber);
+        goals.put("Dietary Fiber (g)", tempFiber);
 
-        // 8 - Protein
+        // 8 - Protein (g)
         double tempProtein = 0;
         tempProtein = (double) Math.round(goals.get(model.goalNames[0])*0.20/4);
-        goals.put(model.goalNames[1], tempProtein);
+        goals.put("Protein (g)", tempProtein);
 
-        // 9 - Calcium
+        // 9 - Calcium (mg)
         double tempCalcium = 0;
         if (age > 0 &&  age <= 3){
             tempCalcium = 700;
@@ -159,9 +159,9 @@ public class NutrientCalculator {
         } else if (age > 50) {
             tempCalcium = 1200;
         }
-        goals.put(model.goalNames[6], tempCalcium);
+        goals.put("Calcium (mg)", tempCalcium);
 
-        // 10 - Potassium
+        // 10 - Potassium (mg)
         double tempPotassium = 0;
         if (age > 0 &&  age <= 3){
             tempPotassium = 3;
@@ -172,9 +172,9 @@ public class NutrientCalculator {
         } else if (age > 13){
             tempPotassium = 4.7;
         }
-        goals.put(model.goalNames[8], tempPotassium);
+        goals.put("Potassium (mg)", tempPotassium);
 
-        // 11 - Iron
+        // 11 - Iron (mg)
         double tempIron = 0;
         if (age > 0 &&  age <= 3){
             tempIron = 7;
@@ -193,9 +193,9 @@ public class NutrientCalculator {
         } else if (age > 50 && !male){
             tempIron = 8;
         }
-        goals.put(model.goalNames[7], tempIron);
+        goals.put("Iron (mg)", tempIron);
 
-        // 12 - Zinc
+        // 12 - Zinc (mg)
         double tempZinc = 0;
         if (age > 0 &&  age <= 3){
             tempZinc = 3;
@@ -210,9 +210,9 @@ public class NutrientCalculator {
         } else if (age > 18 && !male){
             tempZinc = 8;
         }
-        goals.put(model.goalNames[10], tempZinc);
+        goals.put("Zinc (mg)", tempZinc);
 
-        // 13 - Vitamin A
+        // 13 - Vitamin A (IU)
         double tempVitaminA = 0;
         if (age > 0 &&  age <= 3){
             tempVitaminA = 1000;
@@ -227,9 +227,9 @@ public class NutrientCalculator {
         } else if (age > 18 && !male){
             tempVitaminA = 2300;
         }
-        goals.put(model.goalNames[14], tempVitaminA);
+        goals.put("Vitamin A (IU)", tempVitaminA);
 
-        // 14 - Vitamin B6
+        // 14 - Vitamin B6 (mg)
         double tempVitaminB6 = 0;
         if (age > 0 &&  age <= 3){
             tempVitaminB6 = 0.5;
@@ -244,9 +244,9 @@ public class NutrientCalculator {
         } else if (age > 18 && !male){
             tempVitaminB6 = 1.7;
         }
-        goals.put(model.goalNames[12], tempVitaminB6);
+        goals.put("Vitamin B6 (mg)", tempVitaminB6);
 
-        // 15 - Vitamin B12
+        // 15 - Vitamin B12 (mcg)
         double tempVitaminB12 = 0;
         if (age > 0 &&  age <= 3){
             tempVitaminB12 = 0.9;
@@ -257,9 +257,9 @@ public class NutrientCalculator {
         } else if (age > 13){
             tempVitaminB12 = 2.4;
         }
-        goals.put(model.goalNames[13], tempVitaminB12);
+        goals.put("Vitamin B12 (mcg)", tempVitaminB12);
 
-        // 16 - Vitamin C
+        // 16 - Vitamin C (mg)
         double tempVitaminC = 0;
         if (age > 0 &&  age <= 3){
             tempVitaminC = 15;
@@ -276,14 +276,14 @@ public class NutrientCalculator {
         } else if (age > 18  && male){
             tempVitaminC = 75;
         }
-        goals.put(model.goalNames[11], tempVitaminC);
+        goals.put("Vitamin C (mg)", tempVitaminC);
 
-        // 17 - Vitamin D
+        // 17 - Vitamin D (IU)
         double tempVitaminD = 0;
         tempVitaminD = 600; // for everyone!
-        goals.put(model.goalNames[16], tempVitaminD);
+        goals.put("Vitamin D (IU)", tempVitaminD);
 
-        // 18 - Vitamin E
+        // 18 - Vitamin E (mg)
         double tempVitaminE = 0;
         if (age > 0 &&  age <= 3){
             tempVitaminE = 13;
@@ -294,7 +294,7 @@ public class NutrientCalculator {
         } else if (age > 13){
             tempVitaminE = 33;
         }
-        goals.put(model.goalNames[15], tempVitaminE);
+        goals.put("Vitamin E (mg)", tempVitaminE);
 
     }
 
