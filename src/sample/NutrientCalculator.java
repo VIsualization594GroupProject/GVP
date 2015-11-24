@@ -88,12 +88,12 @@ public class NutrientCalculator {
 
         // 1 - Total Fat (g)
         double tempTotalFat = 0;
-        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.30/9);
+        tempTotalFat = (double) Math.round(goals.get("Calories")*0.30/9);
         goals.put("Total Fat (g)", tempTotalFat);
 
         // 2 - Saturated Fat (g)
         double tempSaturatedFat = 0;
-        tempSaturatedFat = (double) Math.round(goals.get(model.goalNames[0])*0.07/9);
+        tempSaturatedFat = (double) Math.round(goals.get("Calories")*0.07/9);
         if (tempSaturatedFat > 26){
             tempSaturatedFat = 26; // max recommended value for adults
         }
@@ -120,12 +120,12 @@ public class NutrientCalculator {
 
         // 5 - Carbohydrates (g)
         double tempCarbohydrates = 0;
-        tempTotalFat = (double) Math.round(goals.get(model.goalNames[0])*0.50/4);
+        tempTotalFat = (double) Math.round(goals.get("Calories")*0.50/4);
         goals.put("Carbohydrates (g)", tempTotalFat);
 
         // 6 - Sugar (g)
         double tempSugar = 0;
-        tempSugar = (double) Math.round(goals.get(model.goalNames[0])*0.10/4);
+        tempSugar = (double) Math.round(goals.get("Calories")*0.10/4);
         goals.put("Sugar (g)", tempSugar);
 
         // 7 - Dietary Fiber (g)
@@ -143,7 +143,7 @@ public class NutrientCalculator {
 
         // 8 - Protein (g)
         double tempProtein = 0;
-        tempProtein = (double) Math.round(goals.get(model.goalNames[0])*0.20/4);
+        tempProtein = (double) Math.round(goals.get("Calories")*0.20/4);
         goals.put("Protein (g)", tempProtein);
 
         // 9 - Calcium (mg)
@@ -315,7 +315,7 @@ public class NutrientCalculator {
 
 
     public void setCalories(double newCalories){
-        goals.put(model.goalNames[0], newCalories);
+        goals.put("Calories", newCalories);
     }
 
 
