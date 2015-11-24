@@ -20,13 +20,13 @@ import java.util.ArrayList;
  * Mateus Vicari and JulianG, from StackExchange.  Changed to suit my nefarious purpose (not autocompletion)
 
  */
-    public class AutoCompleteComboBoxListener{
+    public class AutocompleteComboBoxListener {
 
         private ComboBox<String> comboBox;
         private StringBuilder sb;
         private int lastLength;
 
-        public AutoCompleteComboBoxListener(final ComboBox<String> cb) {
+        public AutocompleteComboBoxListener(final ComboBox<String> cb) {
             this.comboBox = cb;
             sb = new StringBuilder();
 
@@ -115,12 +115,12 @@ import java.util.ArrayList;
         return ret;
     }
         private void selectClosestResultBasedOnTextFieldValue(boolean affect, boolean inFocus) {
-            ObservableList<String> items = AutoCompleteComboBoxListener.this.comboBox.getItems();
+            ObservableList<String> items = AutocompleteComboBoxListener.this.comboBox.getItems();
             boolean found = false;
             for (int i=0; i<items.size(); i++) {
-                if (AutoCompleteComboBoxListener.this.comboBox.getEditor().getText().toLowerCase().contains(items.get(i).toLowerCase())) {
+                if (AutocompleteComboBoxListener.this.comboBox.getEditor().getText().toLowerCase().contains(items.get(i).toLowerCase())) {
                     try {
-                        ListView lv = ((ComboBoxListViewSkin) AutoCompleteComboBoxListener.this.comboBox.getSkin()).getListView();
+                        ListView lv = ((ComboBoxListViewSkin) AutocompleteComboBoxListener.this.comboBox.getSkin()).getListView();
                         lv.getSelectionModel().clearAndSelect(i);
                         lv.scrollTo(lv.getSelectionModel().getSelectedIndex());
                         found = true;

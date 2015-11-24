@@ -93,8 +93,8 @@ if (category == null || food == null || gender == null || activity == null){
         prepComboBox(category, categoryList);
         prepComboBox(gender, genderList);
         prepComboBox(activity, activityList);
-        new AutoCompleteComboBoxListener(food);
-        new AutoCompleteComboBoxListener(category);
+        new AutocompleteComboBoxListener(food);
+        new AutocompleteComboBoxListener(category);
         for (int i = 0; i < 5; i++) {
             prepComboBox(trackNutrient[i], model.getNutrients());
             trackNutrient[i].setValue(model.getNutrients().get(i));
