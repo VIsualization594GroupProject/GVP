@@ -174,12 +174,18 @@ public class Model extends Observable{
     }
 
 
-    ///{"Calories","Protein (g)","Total Fat (g)","Carbohydrates (g)","Dietary Fiber (g)","Sugar (g)",
-//    "Calcium (mg)","Iron (mg)","Potassium (mg)",
-//            "Sodium (mg)","Zinc (mg)","Vitamin C (mg)","Vitamin B6 (mg)","Vitamin B12 (mcg)","Vitamin A (IU)",
-//            "Vitamin E (mg)","Vitamin D (IU)","Saturated Fat (g)", "Cholesterol (g)"};
+
     public double getCalorieGoal()
+    { return nutrients.getGoal("Calories");}
+    public double getCalorieTotal()
+    {return totalNutrients.get(0);
+    }
+    public double getProteinGoal()
     { return 0;}
+    public double getProteinTotal()
+    {return 0;
+    }
+
 
 
 }
