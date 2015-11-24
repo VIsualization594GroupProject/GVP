@@ -169,45 +169,24 @@ public class Model extends Observable{
 
     public void deleteSelectedItem(String selectedItem, int meal) {
         double holds;
-        int index, removed;
-        removed = 0;
+        int index;
+
         int row = nameToRowIndex.get(selectedItem);
         for(int i = 0; i < table.get(row).size(); i++) {
             holds = totalNutrients.get(i);
             holds -= table.get(row).get(i);
             totalNutrients.set(i, holds);
         }
-        for( int i = 0; i < Breakfast.size(); i++)
-        {
-            index = Breakfast.indexOf(selectedItem);
-            if(index != -1)
-            {
+            switch (meal)       {
+            case 0: index = Breakfast.indexOf(selectedItem);
                 Breakfast.remove(index);
-                removed = 1;
-            }
-        }
-        if(removed == 0)
-        {
-            for( int i = 0; i < Lunch.size(); i++)
-            {
-                index = Lunch.indexOf(selectedItem);
-                if(index != -1)
-                {
-                    Lunch.remove(index);
-                    removed = 1;
-                }
-            }
-        }
-        if(removed == 0)
-        {
-            for( int i = 0; i < Breakfast.size(); i++)
-            {
-                index = Breakfast.indexOf(selectedItem);
-                if(index != -1)
-                {
-                    Breakfast.remove(index);
-                }
-            }
+                break;
+            case 1: index = Lunch.indexOf(selectedItem);
+                Lunch.remove(index);
+                break;
+            case 2: index = Dinner.indexOf(selectedItem);
+                Dinner.remove(index);
+                break;
         }
         notifyObservers();
     }
@@ -396,7 +375,7 @@ public class Model extends Observable{
             goal = nutrients.getGoal(nutrient);
             reached = totalNutrients.get(col)/goal;
 
-            sb.append(String.format("%s          %s            %s%n", nutrient, goal, reached));
+            sb.append(String.format("%s          %s            %.2s%n", nutrient, goal, reached * 100));
             sb.append(String.format("----------------------------------------------------------%n"));
         }
         print = sb.toString();
