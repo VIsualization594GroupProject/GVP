@@ -177,7 +177,7 @@ public class Model extends Observable{
             holds -= table.get(row).get(i);
             totalNutrients.set(i, holds);
         }
-            switch (meal)       {
+            switch (meal) {
             case 0: index = Breakfast.indexOf(selectedItem);
                 Breakfast.remove(index);
                 break;
