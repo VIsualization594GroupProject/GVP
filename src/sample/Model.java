@@ -167,7 +167,7 @@ public class Model extends Observable{
         notifyObservers();
     }
 
-    public void deleteSelectedItem(String selectedItem) {
+    public void deleteSelectedItem(String selectedItem, int meal) {
         double holds;
         int index, removed;
         removed = 0;
