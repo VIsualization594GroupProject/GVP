@@ -101,9 +101,9 @@
                                         <ComboBox id="categoryCombo" editable="true" layoutX="111.0" layoutY="12.0" onAction="#changeCategory" prefHeight="25.0" prefWidth="180.0" promptText="Category" />
                                         <ComboBox id="foodCombo" editable="true" layoutX="382.0" layoutY="12.0" onAction="#selectItemFromFood" onMouseClicked="#selectText" prefHeight="25.0" prefWidth="263.0" promptText="Food" />
                                         <Label alignment="CENTER" layoutX="177.0" layoutY="45.0" prefHeight="21.0" prefWidth="300.0" text="Add food to:" textAlignment="CENTER" />
-                                        <Button id="removeButton" disable="true" layoutX="84.0" layoutY="261.0" mnemonicParsing="false" text="Remove Item" />
+                                        <Button id="removeButton" disable="true" layoutX="84.0" layoutY="261.0" mnemonicParsing="false" text="Remove Item" onAction="#removeFocusedItem" />
                                         <ListView id="breakfastList" layoutX="24.0" layoutY="116.0" onDragDropped="#addToBreakfast" onMouseClicked="#makeBreakfastFocus" prefHeight="123.0" prefWidth="190.0" />
-                                        <Button id="clearAllButton" disable="true" layoutX="272.0" layoutY="261.0" mnemonicParsing="false" text="Clear All Selections" />
+                                        <Button id="clearAllButton" disable="true" layoutX="272.0" layoutY="261.0" mnemonicParsing="false" onAction="#removeAllItems" text="Clear All Selections" />
                                         <Button layoutX="487.0" layoutY="261.0" mnemonicParsing="false" text="Print Your Plan!" />
                                         <Button layoutX="87.0" layoutY="77.0" mnemonicParsing="false" onAction="#addToBreakfast" prefHeight="32.0" prefWidth="81.0" text="Breakfast">
                                  <font>
