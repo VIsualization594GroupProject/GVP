@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="644.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox prefHeight="644.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <Pane prefHeight="32.0" prefWidth="866.0">
             <children>
@@ -101,10 +101,10 @@
                                         <ComboBox id="categoryCombo" editable="true" layoutX="111.0" layoutY="12.0" onAction="#changeCategory" prefHeight="25.0" prefWidth="180.0" promptText="Category" />
                                         <ComboBox id="foodCombo" editable="true" layoutX="382.0" layoutY="12.0" onAction="#selectItemFromFood" onMouseClicked="#selectText" prefHeight="25.0" prefWidth="263.0" promptText="Food" />
                                         <Label alignment="CENTER" layoutX="177.0" layoutY="45.0" prefHeight="21.0" prefWidth="300.0" text="Add food to:" textAlignment="CENTER" />
-                                        <Button id="removeButton" disable="true" layoutX="84.0" layoutY="261.0" mnemonicParsing="false" text="Remove Item" onAction="#removeFocusedItem" />
+                                        <Button id="removeButton" disable="true" layoutX="84.0" layoutY="261.0" mnemonicParsing="false" onAction="#removeFocusedItem" text="Remove Item" />
                                         <ListView id="breakfastList" layoutX="24.0" layoutY="116.0" onDragDropped="#addToBreakfast" onMouseClicked="#makeBreakfastFocus" prefHeight="123.0" prefWidth="190.0" />
                                         <Button id="clearAllButton" disable="true" layoutX="272.0" layoutY="261.0" mnemonicParsing="false" onAction="#removeAllItems" text="Clear All Selections" />
-                                        <Button layoutX="487.0" layoutY="261.0" mnemonicParsing="false" text="Print Your Plan!" />
+                                        <Button layoutX="487.0" layoutY="261.0" mnemonicParsing="false" onAction="#printLabels" text="Print Your Plan!" />
                                         <Button layoutX="87.0" layoutY="77.0" mnemonicParsing="false" onAction="#addToBreakfast" prefHeight="32.0" prefWidth="81.0" text="Breakfast">
                                  <font>
                                     <Font size="14.0" />

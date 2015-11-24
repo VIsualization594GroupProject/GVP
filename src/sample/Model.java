@@ -167,27 +167,47 @@ public class Model extends Observable{
         notifyObservers();
     }
 
-    public void deleteSelectedItem(String selectedItem, int meal) {
+    public void deleteSelectedItem(String selectedItem) {
         double holds;
-        int index;
+        int index, removed;
+        removed = 0;
         int row = nameToRowIndex.get(selectedItem);
         for(int i = 0; i < table.get(row).size(); i++) {
             holds = totalNutrients.get(i);
             holds -= table.get(row).get(i);
             totalNutrients.set(i, holds);
         }
-
-        switch(meal)
+        for( int i = 0; i < Breakfast.size(); i++)
         {
-            case 0: index = Breakfast.indexOf(selectedItem);
+            index = Breakfast.indexOf(selectedItem);
+            if(index != -1)
+            {
                 Breakfast.remove(index);
-                break;
-            case 1: index = Lunch.indexOf(selectedItem);
-                Lunch.remove(index);
-                break;
-            case 2: index = Dinner.indexOf(selectedItem);
-                Dinner.remove(index);
-                break;
+                removed = 1;
+            }
+        }
+        if(removed == 0)
+        {
+            for( int i = 0; i < Lunch.size(); i++)
+            {
+                index = Lunch.indexOf(selectedItem);
+                if(index != -1)
+                {
+                    Lunch.remove(index);
+                    removed = 1;
+                }
+            }
+        }
+        if(removed == 0)
+        {
+            for( int i = 0; i < Breakfast.size(); i++)
+            {
+                index = Breakfast.indexOf(selectedItem);
+                if(index != -1)
+                {
+                    Breakfast.remove(index);
+                }
+            }
         }
         notifyObservers();
     }

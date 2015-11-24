@@ -310,7 +310,7 @@ public class Controller implements Observer {
     }
 
     public void printLabels(ActionEvent actionEvent) {//Now Sofy added this change
-        System.err.println("Print Stuff");
+       model.print();
     }
 
     public void removeAllItems(ActionEvent actionEvent) {
