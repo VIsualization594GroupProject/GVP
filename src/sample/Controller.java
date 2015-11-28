@@ -133,7 +133,8 @@ public class Controller implements Observer {
         initComboBoxes();
         calculateStuff(null);
         food.getSelectionModel().select(0);
-        updateNutritionLabel(food.getSelectionModel().getSelectedItem());
+        selectedItem = food.getSelectionModel().getSelectedItem();
+        updateNutritionLabel(selectedItem);
     }
 
 
