@@ -6,9 +6,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -37,7 +47,7 @@ public class Controller implements Observer {
     static ProgressBar[] progressBars = new ProgressBar[5];
 
     static List<String> genderList, activityList;
-    static DecimalFormat percentageFormat = new DecimalFormat("    ##.#%"), unitFormat = new DecimalFormat("0.0");
+    static DecimalFormat percentageFormat = new DecimalFormat("##.#%"), unitFormat = new DecimalFormat("0.0");
     static TextField ageBox, heightBox, weightBox;
 
     static Label servingSize, caloriesTot, caloriesGoal, totalFatTot, totalFatGoal,
@@ -122,7 +132,8 @@ public class Controller implements Observer {
         heightBox.setText("70");
         initComboBoxes();
         calculateStuff(null);
-
+        food.getSelectionModel().select(0);
+        updateNutritionLabel(food.getSelectionModel().getSelectedItem());
     }
 
 
@@ -166,11 +177,11 @@ public class Controller implements Observer {
     }
 
     private void updateNutritionLabel(String newFocus) {
+        if(newFocus == null) return;
         int rowIndex = model.nameToRowIndex.get(newFocus);
         ArrayList<Double> values = model.table.get(rowIndex);
         ArrayList<String> strings = model.stringTable.get(rowIndex);
         servingSize.setText(strings.get(3));
-
         double calories = values.get(0), totalFat=values.get(1), satFat = values.get(2),
                 sodium = values.get(4), cholesterol = values.get(3),  carbs = values.get(5),
                 sugars = values.get(6), fiber = values.get(7), protein = values.get(8),
@@ -180,9 +191,6 @@ public class Controller implements Observer {
                 vitE = values.get(18);
 
         caloriesTot.setText(unitFormat.format(calories));
-        double calPercent = calories/model.getCalorieGoal();
-        double tfPercent = totalFat/model.getTotalFatGoal();
-        double tfGoal = model.getTotalFatGoal();
         caloriesGoal.setText(percentageFormat.format(calories/model.getCalorieGoal()));
         totalFatTot.setText(unitFormat.format(totalFat));
         totalFatGoal.setText(percentageFormat.format(totalFat/model.getTotalFatGoal()));
@@ -213,7 +221,7 @@ public class Controller implements Observer {
 
 
 
-    }
+        }
 
 
     public void initComboBoxes(){
@@ -270,26 +278,27 @@ public class Controller implements Observer {
             String tempItem = focus.getSelectionModel().getSelectedItem();
             if(tempItem != null){
                 focusedItem = tempItem;
-                clearAllButton.setDisable(false);
+                updateNutritionLabel(focusedItem);
             }
-            updateNutritionLabel(focusedItem);
 
             removeItemButton.setDisable(tempItem == null);
-
+            updateClearAllButton();
         }
 
-
-
-
+    private void updateClearAllButton() {
+        clearAllButton.setDisable(breakfastList.getItems().isEmpty() &&
+                lunchList.getItems().isEmpty() &&
+                dinnerList.getItems().isEmpty());//If all three are empty, disable clear all
+    }
 
 
     public void addToDinner(ActionEvent actionEvent) {
         System.err.println("Dinner Stuff");
-
         if(selectedItem.compareTo("none")!=0) {
             dinnerList.getItems().add(selectedItem);
             model.addSelectedItem(selectedItem, 2);
         }
+        updateClearAllButton();
     }
 
     public void addToLunch(ActionEvent actionEvent) {
@@ -298,19 +307,36 @@ public class Controller implements Observer {
             lunchList.getItems().add(selectedItem);
             model.addSelectedItem(selectedItem, 1);
         }
+        updateClearAllButton();
     }
 
     public void addToBreakfast(ActionEvent actionEvent) {//Official change by Anthony
         System.err.println("BreakfastStuff");
-
         if(selectedItem.compareTo("none")!=0) {
             breakfastList.getItems().add(selectedItem);
             model.addSelectedItem(selectedItem, 0);
+
         }
+        updateClearAllButton();
     }
 
-    public void printLabels(ActionEvent actionEvent) {//Now Sofy added this change
-       model.print();
+    static Parent dialogParent;
+    static Stage dialogStage;
+    @FXML
+    static Button closeButton;
+    public void printLabels(ActionEvent actionEvent) throws IOException {
+       String outString = model.print();
+        URL location = getClass().getResource("Dialog.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(location);
+        dialogParent = fxmlLoader.load(getClass().getResource("Dialog.fxml"));
+        fxmlLoader.setController(this);
+        final TextArea field = (TextArea) dialogParent.lookup("#field");
+        field.setText(outString);
+        dialogStage = new Stage();
+        dialogStage.setScene(new Scene(dialogParent));
+        dialogStage.showAndWait();
+
+
     }
 
     public void removeAllItems(ActionEvent actionEvent) {
@@ -323,8 +349,7 @@ public class Controller implements Observer {
         breakfastList.getItems().clear();
         lunchList.getItems().clear();
         dinnerList.getItems().clear();
-
-
+        updateFocusedItem();
     }
 
 
@@ -336,7 +361,7 @@ public class Controller implements Observer {
         //else meal = 2)
         model.deleteSelectedItem(itemToRemove, meal);
         focus.getItems().remove(itemToRemove);
-
+        updateFocusedItem();
 
     }
 
@@ -444,5 +469,9 @@ public class Controller implements Observer {
     }
     public void updateGoal5(ActionEvent actionEvent) {
         updateGoalFromBox(4);
+    }
+
+    public void closeDialog(ActionEvent actionEvent) {
+     dialogStage.close();
     }
 }

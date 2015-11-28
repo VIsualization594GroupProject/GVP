@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane fx:controller="sample.Controller" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="480.0"
+            scaleShape="false" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+    <header>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="69.0" prefWidth="640.0" />
+    </header>
+    <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="236.0" prefWidth="480.0">
+         <children>
+            <TextArea id="field" layoutX="14.0" prefHeight="387.0" prefWidth="451.0" />
+            <Button fx:id="closeButton"  layoutX="424.0" layoutY="398.0" mnemonicParsing="false" onAction="#closeDialog" text="OK" />
+         </children></AnchorPane>
+    </content>
+</DialogPane>

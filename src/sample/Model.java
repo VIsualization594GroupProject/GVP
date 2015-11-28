@@ -125,6 +125,9 @@ public class Model extends Observable{
                     line.next();
                 }
             }
+            while(tempData.size() < nutrientHeaders.size()) {
+                tempData.add(0.0);
+            }
             table.add(tempData);
 
 
@@ -331,7 +334,7 @@ public class Model extends Observable{
     { return totalNutrients.get(18);
     }
 
-    public void print()
+    public String print()
     {
         String desc, servSize, print;
         int row, col;
@@ -378,7 +381,6 @@ public class Model extends Observable{
             sb.append(String.format("%s          %.2f            %.2f%n", nutrient, goal, reached * 100));
             sb.append(String.format("----------------------------------------------------------%n"));
         }
-        print = sb.toString();
-        System.out.print(print);
+        return sb.toString();
     }
 }
