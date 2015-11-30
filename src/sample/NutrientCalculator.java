@@ -110,7 +110,7 @@ public class NutrientCalculator {
         if (age <= 3){
             tempSodium = 1000;
         } else if (age > 3 &&  age <= 9 ){
-            tempSodium = 12000;
+            tempSodium = 1200;
         } else if (age > 9 &&  age <= 50 ){
             tempSodium = 1500;
         } else if (age > 50 &&  age <= 70 ){
