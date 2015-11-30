@@ -30,7 +30,7 @@ public class NutrientCalculator {
         GenerateNewGoalsUsingAgeEtc(0,0,0, "Male", "Sedentary");
     }
 
-    public void GenerateNewGoalsUsingAgeEtc(int age, int weight, int height, String gender, String activityLevel)
+    public void GenerateNewGoalsUsingAgeEtc(int age, int height, int weight, String gender, String activityLevel)
     {
         this.age = age;
         this.weight = weight;
@@ -65,7 +65,6 @@ public class NutrientCalculator {
                 break;
             case Strenuous: exerciseFactor = 1.9;
                 break;
-            //TODO: Finish
         }
 
     }
