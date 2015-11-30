@@ -350,8 +350,8 @@ public class Model extends Observable{
 
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("               Let's Create a Meal Plan!%n"));
-        sb.append(String.format("                Daily Meal Plan Summary%n"));
-        sb.append("                           -----------------------------");
+        sb.append(String.format("               Daily Meal Plan Summary%n"));
+        sb.append("               -----------------------------");
         sb.append(String.format("%n%n"));
         sb.append(String.format("Meal %20s    Food Description %20s Serving Size%n"," "," "));
         sb.append(String.format("----- %20s     ------------------ %20s  --------------%n"," "," "));
@@ -359,23 +359,23 @@ public class Model extends Observable{
         {
             row = nameToRowIndex.get(Breakfast.get(i));
             servSize = stringTable.get(row).get(3);
-            sb.append(String.format("Breakfast     %-30.30s %10s %s%n", Breakfast.get(i), " ", servSize));
+            sb.append(String.format("Breakfast     %30.30s %-10s %s%n", Breakfast.get(i), " ", servSize));
         }
         for(int i = 0; i < Lunch.size(); i++)
         {
             row = nameToRowIndex.get(Lunch.get(i));
             servSize = stringTable.get(row).get(3);
-            sb.append(String.format("Lunch          %-30.30s %10s %s%n", Lunch.get(i), " ", servSize));
+            sb.append(String.format("Lunch          %30.30s %-10s %s%n", Lunch.get(i), " ", servSize));
         }
         for(int i = 0; i < Dinner.size(); i++)
         {
             row = nameToRowIndex.get(Dinner.get(i));
             servSize = stringTable.get(row).get(3);
-            sb.append(String.format("Dinner         %-30.30s %10s %s%n", Dinner.get(i), " ", servSize));
+            sb.append(String.format("Dinner         %30.30s %-10s %s%n", Dinner.get(i), " ", servSize));
         }
         sb.append(String.format("%n%n"));
         sb.append(String.format("Nutrient             Today's Goals           Percent Reached%n"));
-        sb.append(String.format("--------             -------------           ---------------%n"));
+        sb.append(String.format("--------                -------------               ---------------%n"));
         for(int i = 0; i < nutrientHeaders.size(); i++)
         {
 
@@ -385,7 +385,7 @@ public class Model extends Observable{
             goal = nutrients.getGoal(nutrient);
             reached = totalNutrients.get(col)/goal;
 
-            sb.append(String.format("%s          %.2f            %.2f%n", nutrient, goal, reached * 100));
+            sb.append(String.format("%-17.17s     %.2f            %.2f%n", nutrient, goal, reached * 100));
             sb.append(String.format("----------------------------------------------------------%n"));
         }
         return sb.toString();
