@@ -191,6 +191,13 @@ public class Model extends Observable{
                 Dinner.remove(index);
                 break;
         }
+        if(Breakfast.isEmpty() && Lunch.isEmpty() && Dinner.isEmpty())
+        {
+            for(int i = 0; i < totalNutrients.size(); i++)
+            {
+                totalNutrients.set(i, 0);
+            }
+        }
         notifyObservers();
     }
 
