@@ -63,7 +63,7 @@ public class Controller implements Observer {
     static Button removeItemButton, clearAllButton;
 
     static String[] styles = {"-fx-accent: pink","-fx-accent: cyan",
-            "-fx-accent: gold","-fx-accent: sienna","-fx-accent: orange" };
+            "-fx-accent: gold","-fx-accent: LightGreen","-fx-accent: orange" };
     static void prepComboBox(ComboBox<String> c, List<String> strings) {//Sets a combobox to contain the labels
         ObservableList<String> list = FXCollections.observableList(strings);
         c.setItems(list);
