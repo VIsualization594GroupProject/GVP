@@ -195,7 +195,7 @@ public class Model extends Observable{
         {
             for(int i = 0; i < totalNutrients.size(); i++)
             {
-                totalNutrients.set(i, 0);
+                totalNutrients.set(i, 0.0);
             }
         }
         notifyObservers();
