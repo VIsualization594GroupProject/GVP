@@ -353,25 +353,25 @@ public class Model extends Observable{
         sb.append(String.format("                Daily Meal Plan Summary%n"));
         sb.append("                           -----------------------------");
         sb.append(String.format("%n%n"));
-        sb.append(String.format("Meal%15sFood Description%15sServing Size%n"," "," "));
-        sb.append(String.format("-----%15s------------------%15s--------------%n"," "," "));
+        sb.append(String.format("Meal %20s    Food Description %20s Serving Size%n"," "," "));
+        sb.append(String.format("----- %20s     ------------------ %20s  --------------%n"," "," "));
         for(int i = 0; i < Breakfast.size(); i++)
         {
             row = nameToRowIndex.get(Breakfast.get(i));
             servSize = stringTable.get(row).get(3);
-            sb.append(String.format("Breakfast     %30.30s            %s%n", Breakfast.get(i), servSize));
+            sb.append(String.format("Breakfast     %-30.30s %10s %s%n", Breakfast.get(i), " ", servSize));
         }
         for(int i = 0; i < Lunch.size(); i++)
         {
             row = nameToRowIndex.get(Lunch.get(i));
             servSize = stringTable.get(row).get(3);
-            sb.append(String.format("Lunch          %30.30s            %s%n", Lunch.get(i), servSize));
+            sb.append(String.format("Lunch          %-30.30s %10s %s%n", Lunch.get(i), " ", servSize));
         }
         for(int i = 0; i < Dinner.size(); i++)
         {
             row = nameToRowIndex.get(Dinner.get(i));
             servSize = stringTable.get(row).get(3);
-            sb.append(String.format("Dinner         %30.30s            %s%n", Dinner.get(i), servSize));
+            sb.append(String.format("Dinner         %-30.30s %10s %s%n", Dinner.get(i), " ", servSize));
         }
         sb.append(String.format("%n%n"));
         sb.append(String.format("Nutrient             Today's Goals           Percent Reached%n"));
