@@ -27,7 +27,7 @@ public class Main extends Application {
         fxmlLoader.setController(controller);
         root = fxmlLoader.load(getClass().getResource("sample.fxml"));
 
-        primaryStage.setTitle("Not a title");
+        primaryStage.setTitle(" ");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         controller.setModel(model);
